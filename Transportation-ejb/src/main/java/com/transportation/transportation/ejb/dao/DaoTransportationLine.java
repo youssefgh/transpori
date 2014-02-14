@@ -6,6 +6,7 @@ package com.transportation.transportation.ejb.dao;
 
 import com.transportation.transportation.model.entites.Station;
 import com.transportation.transportation.model.entites.TransportationLine;
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
 
@@ -13,6 +14,5 @@ import javax.ejb.Remote;
  *
  * @author youssef
  */
-@Remote
 public interface DaoTransportationLine extends DaoGeneric<TransportationLine> {
 }

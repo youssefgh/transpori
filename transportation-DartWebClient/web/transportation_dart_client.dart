@@ -11,17 +11,25 @@ import 'custom_map.dart';
 import 'map_point.dart';
 import 'transportation_line.dart';
 import 'station.dart';
+import 'transportation_request.dart';
+import 'transportation_path.dart';
+import 'origin_position.dart';
+import 'destination.dart';
 
-String webServiceUrl = "http://localhost:8080/Transportation-web/rest/";
+String webServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/Transportation-web/rest/";
+//String webServiceUrl = "http://localhost:8080/Transportation-web/rest/";
+//String webServiceUrl = "http://localhost:8080/rest/";
 //TransportationLine transportationLine;
 CustomMap map;
 InputElement lineName = querySelector('#lineName');
 ButtonElement addLine = querySelector('#addLine');
 ButtonElement saveLine = querySelector('#saveLine');
+ButtonElement getPaths = querySelector('#getPaths');
 SelectElement lines = querySelector('#lines');
 SelectElement transportationLineType = querySelector('#transportationLineType');
 RadioButtonInputElement stationMode = querySelector('#stationMode');
 RadioButtonInputElement lineMode = querySelector('#lineMode');
+RadioButtonInputElement pathMode = querySelector('#pathMode');
 SelectElement stationType = querySelector('#stationType');
 ButtonElement saveStations = querySelector('#saveStations');
 void main() {
@@ -32,6 +40,9 @@ void main() {
   lineMode.onClick.listen((e){
     setLineMode();
   });
+  pathMode.onClick.listen((e){
+    setPathMode();
+  });
   map.selectedTransportationLine = new BusLine(map);
   refreshTransportationLines();
   refreshStations();
@@ -41,7 +52,8 @@ void main() {
       //print(response);
       Map transportationLineMap = JSON.decode(response);
       map.selectedTransportationLine.map = null;
-      map.selectedTransportationLine = createTransportationLine(transportationLineMap);
+      //map.selectedTransportationLine = createTransportationLine(transportationLineMap);
+      map.selectedTransportationLine = new TransportationLine.instanceFromMap(transportationLineMap, map);
       lineName.value = map.selectedTransportationLine.name;
     });
   });
@@ -82,7 +94,7 @@ void main() {
       if(station.marker.visible == false){
       //if(station.marker.map == null){
         HttpRequest httpRequest = new HttpRequest()
-          ..open("DELETE", "http://localhost:8080/Transportation-web/rest/Station/"+station.id)
+          ..open("DELETE", webServiceUrl+"Station/"+station.id)
           ..setRequestHeader('content-type', 'application/json')
           ..send()
           ;
@@ -97,6 +109,26 @@ void main() {
       ;
       //print(station.toJson());
     }
+  });
+  getPaths.onClick.listen((e){
+    map.clearSuggestions();
+    TransportationRequest transportationRequest = new TransportationRequest(map.originPosition, map.destination);
+    //print(transportationRequest.toJson());
+    HttpRequest httpRequest = new HttpRequest()
+      ..open("POST", webServiceUrl+"TransportationResponse")
+      ..setRequestHeader('content-type', 'application/json')
+      ..send(transportationRequest.toJson().toString())
+      ;
+    httpRequest.onLoadEnd.listen((e){
+      //TODO
+      //print(httpRequest.response);
+      Map transportationResponseMap = JSON.decode(httpRequest.response);
+      List transportationPathsMap = transportationResponseMap["transportationPaths"];
+      for(Map transportationPathMap in transportationPathsMap){
+        map.suggestions.add(new TransportationPath.fromMap(transportationPathMap, map));
+      }
+    });
+    //map.suggestions
   });
 }
 
@@ -134,6 +166,22 @@ void setStationMode(){
   });
 }
 
+void setPathMode(){
+  if(stream != null){
+    stream.cancel();
+  }
+  stream = map.onClick.listen((e){
+    if(map.originPosition == null || map.originPosition.marker.visible == false){
+      map.originPosition = new OriginPosition(e.latLng,map);
+    } else {
+      if(map.destination == null || map.destination.marker.visible == false){
+        map.destination = new Destination(e.latLng,map);
+      } //else
+          
+    }
+  });
+}
+
 void refreshTransportationLines(){
   HttpRequest.getString(webServiceUrl+"TransportationLine/").then((response){
     //print(response);
@@ -167,7 +215,7 @@ void refreshStations(){
     //map.showStations();
   });
 }
-
+/*
 TransportationLine createTransportationLine(Map transportationLineMap){
   TransportationLine transportationLine;
   switch (transportationLineMap["@type"]){
@@ -182,4 +230,4 @@ TransportationLine createTransportationLine(Map transportationLineMap){
       break;
   }
   return transportationLine;
-}
+}*/

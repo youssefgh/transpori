@@ -5,13 +5,12 @@
 package com.transportation.transportation.ejb.dao;
 
 import com.transportation.transportation.model.entites.BusLine;
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 
 /**
  *
  * @author youssef
  */
-@Remote
 public interface DaoBusLine extends DaoGeneric<BusLine> {
 }

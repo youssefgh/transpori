@@ -21,6 +21,14 @@ public class TransportationPath implements Serializable {
     {
         transportationLines = new ArrayList<>();
     }
+
+    public List<TransportationLine> getTransportationLines() {
+        return transportationLines;
+    }
+
+    public void setTransportationLines(List<TransportationLine> transportationLines) {
+        this.transportationLines = transportationLines;
+    }
     
     public void addTransportationLine(TransportationLine transportationLine){
         transportationLines.add(transportationLine);

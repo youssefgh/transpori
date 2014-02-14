@@ -60,4 +60,9 @@ public class MapPoint implements Serializable {
         return distance<0.005;
     }
 
+    @Override
+    public String toString() {
+        return "MapPoint{" + "latitude=" + latitude + ", longitude=" + longitude + '}';
+    }
+
 }

@@ -31,4 +31,9 @@ public class OriginPosition implements Serializable {
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return "OriginPosition{" + "latitude=" + latitude + ", longitude=" + longitude + '}';
+    }
 }

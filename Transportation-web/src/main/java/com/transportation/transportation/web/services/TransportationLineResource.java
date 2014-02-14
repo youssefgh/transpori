@@ -7,6 +7,8 @@ package com.transportation.transportation.web.services;
 
 import com.transportation.transportation.ejb.dao.DaoStation;
 import com.transportation.transportation.ejb.dao.DaoTransportationLine;
+import com.transportation.transportation.ejb.dao.impl.DaoStationImpl;
+import com.transportation.transportation.ejb.dao.impl.DaoTransportationLineImpl;
 import com.transportation.transportation.model.entites.MapPoint;
 import com.transportation.transportation.model.entites.Station;
 import com.transportation.transportation.model.entites.TransportationLine;

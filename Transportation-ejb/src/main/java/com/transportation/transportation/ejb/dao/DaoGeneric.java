@@ -5,14 +5,13 @@
 package com.transportation.transportation.ejb.dao;
 
 import java.util.List;
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
 /**
  *
  * @author youssef
  * @param <T>
  */
-@Remote
 public interface DaoGeneric<T> {
     void create(T entity);
     T read(Object id);

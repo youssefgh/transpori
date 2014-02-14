@@ -7,6 +7,7 @@ package com.transportation.transportation.web.services;
 
 import com.transportation.transportation.ejb.dao.DaoStation;
 import com.transportation.transportation.ejb.dao.DaoStation;
+import com.transportation.transportation.ejb.dao.impl.DaoStationImpl;
 import com.transportation.transportation.model.entites.BusStation;
 import com.transportation.transportation.model.entites.Station;
 import com.transportation.transportation.model.entites.TrainStation;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;

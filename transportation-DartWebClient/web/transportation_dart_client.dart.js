@@ -122,7 +122,7 @@ $$.Closure$20 = [P, {"": "Closure;call$2,$name",
 
 $$.Closure$4 = [P, {"": "Closure;call$4,$name"}];
 
-init.mangledNames = {$add: "+:1:0", $and: "&:1:0", $ge: ">=:1:0", $gt: ">:1:0", $index: "[]:1:0", $indexSet: "[]=:2:0", $lt: "<:1:0", $shl: "<<:1:0", $shr: ">>:1:0", $sub: "-:1:0", $xor: "^:1:0", _addError$2: "_addError:2:0", _addPending$1: "_addPending:1:0", _async$_add$1: "_add:1:0", _close$0: "_close:0:0", _complete$1: "_complete:1:0", _completeError$2: "_completeError:2:0", _onValue$1: "_onValue:1:0", _removeListeners$0: "_removeListeners:0:0", _replaceChild$2: "_replaceChild:2:0", _setError$2: "_setError:2:0", _setValue$1: "_setValue:1:0", _whenCompleteAction$0: "_whenCompleteAction:0:0", abs$0: "abs:0:0", add$1: "add:1:0", addEventListener$3: "addEventListener:3:0", addListener$3: "addListener:3:0", call$0: "call:0:0", call$1: "call:1:0", call$2: "call:2:0", call$2$onError: "call:2:0:onError", call$3: "call:3:0", call$3$async: "call:3:0:async", call$3$onDone$onError: "call:3:0:onDone:onError", call$4: "call:4:0", call$4$cancelOnError$onDone$onError: "call:4:0:cancelOnError:onDone:onError", callMethod$2: "callMethod:2:0", cancel$0: "cancel:0:0", cancelSchedule$0: "cancelSchedule:0:0", catchError$1: "catchError:1:0", codeUnitAt$1: "codeUnitAt:1:0", deserializeSendPort$1: "deserializeSendPort:1:0", endsWith$1: "endsWith:1:0", equals$1: "equals:1:0", eval$1: "eval:1:0", forEach$1: "forEach:1:0", get$LatLng: "LatLng", get$MVCObject: "MVCObject", get$Map: "Map", get$MapTypeId: "MapTypeId", get$Marker: "Marker", get$Object: "Object", get$Polyline: "Polyline", get$ROADMAP: "ROADMAP", get$Size: "Size", get$StreetViewPanorama: "StreetViewPanorama", get$__isolate_helper$_controller: "_controller", get$_collection$_value: "_value", get$_contents: "_contents", get$_duration: "_duration", get$_error: "_error", get$_errorTest: "_errorTest", get$_errorZone: "_errorZone", get$_hasError: "_hasError", get$_id: "_id", get$_isChained: "_isChained", get$_isComplete: "_isComplete", get$_jsObject: "_jsObject", get$_key: "_key", get$_name: "_name", get$_next: "_next", get$_nextListener: "_nextListener", get$_onCancel: "_onCancel", get$_onError: "_onError", get$_onListen: "_onListen", get$_onPause: "_onPause", get$_onResume: "_onResume", get$_onValue: "_onValue", get$_previous: "_previous", get$_value: "_value", get$_whenCompleteAction: "_whenCompleteAction", get$_zone: "_zone", get$current: "current", get$error: "error", get$event: "event", get$google: "google", get$inMilliseconds: "inMilliseconds", get$isClosed: "isClosed", get$isEmpty: "isEmpty", get$isGetter: "isGetter", get$isSetter: "isSetter", get$isolateStatics: "isolateStatics", get$iterator: "iterator", get$lat: "lat", get$latLng: "latLng", get$length: "length", get$lng: "lng", get$map: "map", get$maps: "maps", get$memberName: "memberName", get$namedArguments: "namedArguments", get$next: "next", get$positionalArguments: "positionalArguments", get$responseText: "responseText", get$selected: "selected", get$selectedOptions: "selectedOptions", get$stackTrace: "stackTrace", get$value: "value", get$varData: "varData", getAt$1: "getAt:1:0", getLength$0: "getLength:0:0", getMap$0: "getMap:0:0", getPath$0: "getPath:0:0", getVisible$0: "getVisible:0:0", handleUncaughtError$2: "handleUncaughtError:2:0", hasProperty$1: "hasProperty:1:0", inSameErrorZone$1: "inSameErrorZone:1:0", indexOf$1: "indexOf:1:0", instanceof$1: "instanceof:1:0", lat$0: "lat:0:0", lng$0: "lng:0:0", lookup$1: "lookup:1:0", map$1: "map:1:0", matchAsPrefix$2: "matchAsPrefix:2:0", moveNext$0: "moveNext:0:0", pause$0: "pause:0:0", perform$1: "perform:1:0", process$0: "process:0:0", push$1: "push:1:0", remove$0: "remove:0:0", removeAt$1: "removeAt:1:0", removeEventListener$3: "removeEventListener:3:0", removeListener$1: "removeListener:1:0", replaceWith$1: "replaceWith:1:0", resume$0: "resume:0:0", run$1: "run:1:0", schedule$1: "schedule:1:0", send$1: "send:1:0", set$_collection$_value: "_value=", set$_isChained: "_isChained=", set$_next: "_next=", set$_nextListener: "_nextListener=", set$_previous: "_previous=", set$length: "length=", set$next: "next=", set$value: "value=", set$varData: "varData=", setCenter$1: "setCenter:1:0", setEditable$1: "setEditable:1:0", setIcon$1: "setIcon:1:0", setMap$1: "setMap:1:0", setMapTypeId$1: "setMapTypeId:1:0", setPosition$1: "setPosition:1:0", setVisible$1: "setVisible:1:0", setZoom$1: "setZoom:1:0", skip$1: "skip:1:0", split$1: "split:1:0", startsWith$1: "startsWith:1:0", substring$1: "substring:1:0", substring$2: "substring:2:0", then$1: "then:1:0", then$2$onError: "then:2:0:onError", toJs$0: "toJs:0:0", toJson$0: "toJson:0:0", toList$0: "toList:0:0", visitList$1: "visitList:1:0", visitMap$1: "visitMap:1:0", visitPrimitive$1: "visitPrimitive:1:0", visitSendPort$1: "visitSendPort:1:0", write$1: "write:1:0", writeAll$2: "writeAll:2:0"};
+init.mangledNames = {$add: "+:1:0", $and: "&:1:0", $ge: ">=:1:0", $gt: ">:1:0", $index: "[]:1:0", $indexSet: "[]=:2:0", $lt: "<:1:0", $shl: "<<:1:0", $shr: ">>:1:0", $sub: "-:1:0", $xor: "^:1:0", _addError$2: "_addError:2:0", _addPending$1: "_addPending:1:0", _async$_add$1: "_add:1:0", _close$0: "_close:0:0", _complete$1: "_complete:1:0", _completeError$2: "_completeError:2:0", _onValue$1: "_onValue:1:0", _removeListeners$0: "_removeListeners:0:0", _replaceChild$2: "_replaceChild:2:0", _setError$2: "_setError:2:0", _setValue$1: "_setValue:1:0", _whenCompleteAction$0: "_whenCompleteAction:0:0", abs$0: "abs:0:0", add$1: "add:1:0", addEventListener$3: "addEventListener:3:0", addListener$3: "addListener:3:0", call$0: "call:0:0", call$1: "call:1:0", call$2: "call:2:0", call$2$onError: "call:2:0:onError", call$3: "call:3:0", call$3$async: "call:3:0:async", call$3$onDone$onError: "call:3:0:onDone:onError", call$4: "call:4:0", call$4$cancelOnError$onDone$onError: "call:4:0:cancelOnError:onDone:onError", callMethod$2: "callMethod:2:0", cancel$0: "cancel:0:0", cancelSchedule$0: "cancelSchedule:0:0", catchError$1: "catchError:1:0", codeUnitAt$1: "codeUnitAt:1:0", deserializeSendPort$1: "deserializeSendPort:1:0", endsWith$1: "endsWith:1:0", equals$1: "equals:1:0", eval$1: "eval:1:0", forEach$1: "forEach:1:0", get$LatLng: "LatLng", get$MVCObject: "MVCObject", get$Map: "Map", get$MapTypeId: "MapTypeId", get$Marker: "Marker", get$Object: "Object", get$Polyline: "Polyline", get$ROADMAP: "ROADMAP", get$StreetViewPanorama: "StreetViewPanorama", get$__isolate_helper$_controller: "_controller", get$_collection$_value: "_value", get$_contents: "_contents", get$_duration: "_duration", get$_error: "_error", get$_errorTest: "_errorTest", get$_errorZone: "_errorZone", get$_hasError: "_hasError", get$_id: "_id", get$_isChained: "_isChained", get$_isComplete: "_isComplete", get$_jsObject: "_jsObject", get$_key: "_key", get$_name: "_name", get$_next: "_next", get$_nextListener: "_nextListener", get$_onCancel: "_onCancel", get$_onError: "_onError", get$_onListen: "_onListen", get$_onPause: "_onPause", get$_onResume: "_onResume", get$_onValue: "_onValue", get$_previous: "_previous", get$_value: "_value", get$_whenCompleteAction: "_whenCompleteAction", get$_zone: "_zone", get$current: "current", get$error: "error", get$event: "event", get$google: "google", get$inMilliseconds: "inMilliseconds", get$isClosed: "isClosed", get$isEmpty: "isEmpty", get$isGetter: "isGetter", get$isSetter: "isSetter", get$isolateStatics: "isolateStatics", get$iterator: "iterator", get$lat: "lat", get$latLng: "latLng", get$length: "length", get$lng: "lng", get$map: "map", get$maps: "maps", get$memberName: "memberName", get$namedArguments: "namedArguments", get$next: "next", get$positionalArguments: "positionalArguments", get$responseText: "responseText", get$selected: "selected", get$selectedOptions: "selectedOptions", get$stackTrace: "stackTrace", get$transportationLines: "transportationLines", get$value: "value", get$varData: "varData", getAt$1: "getAt:1:0", getLength$0: "getLength:0:0", getMap$0: "getMap:0:0", getPath$0: "getPath:0:0", getVisible$0: "getVisible:0:0", handleUncaughtError$2: "handleUncaughtError:2:0", hasProperty$1: "hasProperty:1:0", inSameErrorZone$1: "inSameErrorZone:1:0", indexOf$1: "indexOf:1:0", instanceof$1: "instanceof:1:0", lat$0: "lat:0:0", lng$0: "lng:0:0", lookup$1: "lookup:1:0", map$1: "map:1:0", matchAsPrefix$2: "matchAsPrefix:2:0", moveNext$0: "moveNext:0:0", pause$0: "pause:0:0", perform$1: "perform:1:0", process$0: "process:0:0", push$1: "push:1:0", remove$0: "remove:0:0", removeAt$1: "removeAt:1:0", removeEventListener$3: "removeEventListener:3:0", removeListener$1: "removeListener:1:0", replaceWith$1: "replaceWith:1:0", resume$0: "resume:0:0", run$1: "run:1:0", schedule$1: "schedule:1:0", send$1: "send:1:0", set$_collection$_value: "_value=", set$_isChained: "_isChained=", set$_next: "_next=", set$_nextListener: "_nextListener=", set$_previous: "_previous=", set$length: "length=", set$map: "map=", set$next: "next=", set$value: "value=", set$varData: "varData=", setCenter$1: "setCenter:1:0", setEditable$1: "setEditable:1:0", setIcon$1: "setIcon:1:0", setMap$1: "setMap:1:0", setMapTypeId$1: "setMapTypeId:1:0", setPosition$1: "setPosition:1:0", setVisible$1: "setVisible:1:0", setZoom$1: "setZoom:1:0", skip$1: "skip:1:0", split$1: "split:1:0", startsWith$1: "startsWith:1:0", substring$1: "substring:1:0", substring$2: "substring:2:0", then$1: "then:1:0", then$2$onError: "then:2:0:onError", toJs$0: "toJs:0:0", toJson$0: "toJson:0:0", toList$0: "toList:0:0", visitList$1: "visitList:1:0", visitMap$1: "visitMap:1:0", visitPrimitive$1: "visitPrimitive:1:0", visitSendPort$1: "visitSendPort:1:0", write$1: "write:1:0", writeAll$2: "writeAll:2:0"};
 (function (reflectionData) {
   function map(x){x={x:x};delete x.x;return x}
   if (!init.libraries) init.libraries = [];
@@ -269,7 +269,7 @@ Interceptor: {"": "Object;",
     throw H.wrapException(P.NoSuchMethodError$(receiver, invocation.get$memberName(), invocation.get$positionalArguments(), invocation.get$namedArguments(), null));
   },
   "+noSuchMethod:1:0": 1,
-  "%": "DOMError|FileError|MediaError|MediaKeyError|Navigator|NavigatorUserMediaError|PositionError|SQLError|SVGAnimatedNumberList"
+  "%": "ArrayBuffer|DOMError|FileError|MediaError|MediaKeyError|Navigator|NavigatorUserMediaError|PositionError|SQLError|SVGAnimatedNumberList"
 },
 
 "+Interceptor": 0,
@@ -3049,7 +3049,15 @@ BusLine: {"": "TransportationLine;id-,name-,_onClick-,_onDblClick-,_onMousedown-
 
 "+BusLine": 0}],
 ["", "custom_map.dart", , N, {
-CustomMap: {"": "GMap;originPosition-,destination-,stations-,selectedTransportationLine-,transportationLines-,_onBoundsChanged-,_onCenterChanged-,_onClick-,_onDblClick-,_onDrag-,_onDragend-,_onDragstart-,_onHeadingChanged-,_onIdle-,_onMaptypeidChanged-,_onMousemove-,_onMouseout-,_onMouseover-,_onProjectionChanged-,_onResize-,_onRightclick-,_onTilesloaded-,_onTiltChanged-,_onZoomChanged-,$$unsafe-",
+CustomMap: {"": "GMap;originPosition-,destination-,stations-,selectedTransportationLine-,suggestions-,_onBoundsChanged-,_onCenterChanged-,_onClick-,_onDblClick-,_onDrag-,_onDragend-,_onDragstart-,_onHeadingChanged-,_onIdle-,_onMaptypeidChanged-,_onMousemove-,_onMouseout-,_onMouseover-,_onProjectionChanged-,_onResize-,_onRightclick-,_onTilesloaded-,_onTiltChanged-,_onZoomChanged-,$$unsafe-",
+  clearSuggestions$0: function() {
+    var t1, t2;
+    for (t1 = this.suggestions, t2 = new H.ListIterator(t1, t1.length, 0, null), H.setRuntimeTypeInfo(t2, [H.getRuntimeTypeArgument(t1, "JSArray", 0)]); t2.moveNext$0();)
+      for (t1 = J.get$iterator$ax(t2._current.get$transportationLines()); t1.moveNext$0() === true;)
+        J.set$map$ax(t1.get$current(), null);
+    this.suggestions = P.List_List(null, null);
+  },
+  "+clearSuggestions:0:0": 1,
   CustomMap$1: function(mapDiv) {
     var t1, t2;
     t1 = this.$$unsafe;
@@ -8599,10 +8607,6 @@ Object: {"": ";",
     return this.noSuchMethod$1(this, H.createInvocationMirror("ROADMAP", "get$ROADMAP", 1, [], []));
   },
   "+ROADMAP": 1,
-  get$Size: function() {
-    return this.noSuchMethod$1(this, H.createInvocationMirror("Size", "get$Size", 1, [], []));
-  },
-  "+Size": 1,
   get$StreetViewPanorama: function() {
     return this.noSuchMethod$1(this, H.createInvocationMirror("StreetViewPanorama", "get$StreetViewPanorama", 1, [], []));
   },
@@ -8803,6 +8807,10 @@ Object: {"": ";",
     return this.noSuchMethod$1(this, H.createInvocationMirror("stackTrace", "get$stackTrace", 1, [], []));
   },
   "+stackTrace": 1,
+  get$transportationLines: function() {
+    return this.noSuchMethod$1(this, H.createInvocationMirror("transportationLines", "get$transportationLines", 1, [], []));
+  },
+  "+transportationLines": 1,
   get$value: function($receiver) {
     return this.noSuchMethod$1(this, H.createInvocationMirror("value", "get$value", 1, [], []));
   },
@@ -8951,6 +8959,10 @@ Object: {"": ";",
     return this.noSuchMethod$1(this, H.createInvocationMirror("length=", "set$length", 2, [$0], []));
   },
   "+length=": 1,
+  set$map: function($receiver, $0) {
+    return this.noSuchMethod$1(this, H.createInvocationMirror("map=", "set$map", 2, [$0], []));
+  },
+  "+map=": 1,
   set$next: function($0) {
     return this.noSuchMethod$1(this, H.createInvocationMirror("next=", "set$next", 2, [$0], []));
   },
@@ -9168,6 +9180,15 @@ OptionElement_OptionElement$_: function(data, value, defaultSelected, selected) 
 
 "*_": [0, 0, 0, 0],
 
+_convertNativeToDart_XHR_Response: function(o) {
+  var t1 = J.getInterceptor(o);
+  if (typeof o === "object" && o !== null && !!t1.$isDocument)
+    return o;
+  return P.convertNativeToDart_AcceptStructuredClone(o, true);
+},
+
+"+_convertNativeToDart_XHR_Response:1:0": 1,
+
 _wrapZone: function(callback) {
   var t1 = $.Zone__current;
   if (t1 === C.C__RootZone)
@@ -9202,6 +9223,10 @@ ButtonElement: {"": "HtmlElement;value%-", "%": "HTMLButtonElement"},
 CharacterData: {"": "Node;length=-", "%": "CDATASection|CharacterData|Comment|ProcessingInstruction|Text"},
 
 "+CharacterData": 0,
+
+Document: {"": "Node;", $isDocument: true, "%": "Document|HTMLDocument|SVGDocument"},
+
+"+Document": 0,
 
 DomException: {"": "Interceptor;",
   toString$0: function(receiver) {
@@ -9374,7 +9399,7 @@ Node: {"": "EventTarget;",
   },
   "+_replaceChild:2:0": 1,
   $isNode: true,
-  "%": "Document|DocumentFragment|DocumentType|Entity|HTMLDocument|Notation|SVGDocument|ShadowRoot;Node"
+  "%": "DocumentFragment|DocumentType|Entity|Notation|ShadowRoot;Node"
 },
 
 "+Node": 0,
@@ -10644,6 +10669,67 @@ Uint64List: {"": "TypedData;", $isList: true,
 },
 
 "+Uint64List": 0}],
+["", "destination.dart", , X, {
+Destination: {"": "LatLng;marker-,$$unsafe-",
+  toJson$0: function() {
+    var json, t1;
+    json = P.LinkedHashMap_LinkedHashMap(null, null, null, null, null);
+    t1 = this.$$unsafe;
+    json.$indexSet(json, "\"latitude\"", t1.lat$0());
+    json.$indexSet(json, "\"longitude\"", t1.lng$0());
+    return json;
+  },
+  "+toJson:0:0": 1,
+  Destination$2: function(latLng, map) {
+    var t1, t2, t3, t4, t5;
+    t1 = $.get$maps().get$Marker();
+    t1 = t1 != null ? t1 : $.get$maps().get$MVCObject();
+    t1 = t1 != null ? t1 : $.get$context().get$Object();
+    t1 = new Z.Marker(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t1, [null], null));
+    t1._initStreams$0();
+    t2 = t1.$$unsafe;
+    t2.setMap$1(map);
+    t3 = this.$$unsafe;
+    t4 = t3.lat$0();
+    t3 = t3.lng$0();
+    t5 = $.get$maps().get$LatLng();
+    t5 = t5 != null ? t5 : $.get$context().get$Object();
+    t2.setPosition$1(new Z.LatLng(Q.Proxy_Proxy$withArgList(t5, [t4, t3, null], null)));
+    t3 = t1._onRightclick;
+    t3.get$stream(t3).listen$1(new X.Destination_closure(this));
+    t2.setIcon$1("images/finish.png");
+    this.marker = t1;
+  },
+  static: {
+Destination$: function(latLng, map) {
+  var t1, t2, t3;
+  t1 = latLng.get$lat();
+  t2 = latLng.get$lng();
+  t3 = $.get$maps().get$LatLng();
+  t3 = t3 != null ? t3 : $.get$context().get$Object();
+  t1 = new X.Destination(null, Q.Proxy_Proxy$withArgList(t3, [t1, t2, null], null));
+  t1.Destination$2(latLng, map);
+  return t1;
+},
+
+"+new Destination:2:0": 1}
+
+},
+
+"+Destination": 0,
+
+Destination_closure: {"": "Closure;this_0-",
+  call$1: function(e) {
+    var t1 = this.this_0;
+    t1.marker.$$unsafe.setVisible$1(false);
+    t1.marker.$$unsafe.setMap$1(null);
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+Destination_closure": 0}],
 ["google_maps", "package:google_maps/google_maps.dart", , Z, {
 NativeEvent: {"": "TypedProxy;$$unsafe-", static: {
 NativeEvent_cast: function(proxy) {
@@ -10688,19 +10774,6 @@ LatLng_cast: function(proxy) {
 },
 
 "+LatLng": 0,
-
-Size: {"": "TypedProxy;$$unsafe-",
-  equals$1: function(other) {
-    return this.$$unsafe.equals$1(other);
-  },
-  "+equals:1:0": 1,
-  toString$0: function(_) {
-    return J.toString$0(this.$$unsafe);
-  },
-  "+toString:0:0": 1
-},
-
-"+Size": 0,
 
 _Undefined: {"": "Object;"},
 
@@ -11044,6 +11117,10 @@ Marker: {"": "MVCObject;_onAnimationChanged-,_onClick-,_onClickableChanged-,_onC
   map$1: function($receiver, arg0) {
     return this.get$map($receiver).call$1(arg0);
   },
+  set$map: function(_, map) {
+    return this.$$unsafe.setMap$1(map);
+  },
+  "+map=": 1,
   static: {
 "": "Marker_MAX_ZINDEX-",
 }
@@ -11110,7 +11187,12 @@ PolylineOptions: {"": "TypedProxy;$$unsafe-",
   "+map": 1,
   map$1: function($receiver, arg0) {
     return this.get$map($receiver).call$1(arg0);
-  }
+  },
+  set$map: function(_, map) {
+    J.$indexSet$ax(this.$$unsafe, "map", map);
+    return map;
+  },
+  "+map=": 1
 },
 
 "+PolylineOptions": 0,
@@ -11131,6 +11213,124 @@ StreetViewPanorama: {"": "MVCObject;_onCloseclick-,_onLinksChanged-,_onPanoChang
 
 "+StreetViewPanorama": 0}],
 ["html_common", "dart:html_common", , P, {
+convertNativeToDart_DateTime: function(date) {
+  return P.DateTime$fromMillisecondsSinceEpoch(date.getTime(), true);
+},
+
+"+convertNativeToDart_DateTime:1:0": 1,
+
+convertNativeToDart_AcceptStructuredClone: function(object, mustCopy) {
+  var copies = [];
+  return new P.convertNativeToDart_AcceptStructuredClone_walk(mustCopy, new P.convertNativeToDart_AcceptStructuredClone_findSlot([], copies), new P.convertNativeToDart_AcceptStructuredClone_readSlot(copies), new P.convertNativeToDart_AcceptStructuredClone_writeSlot(copies)).call$1(object);
+},
+
+"+convertNativeToDart_AcceptStructuredClone:1:1:mustCopy": 1,
+
+"*convertNativeToDart_AcceptStructuredClone": [1],
+
+convertNativeToDart_AcceptStructuredClone_findSlot: {"": "Closure;values_0-,copies_1-",
+  call$1: function(value) {
+    var t1, $length, i, t2;
+    t1 = this.values_0;
+    $length = t1.length;
+    for (i = 0; i < $length; ++i) {
+      t2 = t1[i];
+      if (t2 == null ? value == null : t2 === value)
+        return i;
+    }
+    t1.push(value);
+    this.copies_1.push(null);
+    return $length;
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+convertNativeToDart_AcceptStructuredClone_findSlot": 0,
+
+convertNativeToDart_AcceptStructuredClone_readSlot: {"": "Closure;copies_2-",
+  call$1: function(i) {
+    var t1 = this.copies_2;
+    if (i >>> 0 !== i || i >= t1.length)
+      throw H.ioore(t1, i);
+    return t1[i];
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+convertNativeToDart_AcceptStructuredClone_readSlot": 0,
+
+convertNativeToDart_AcceptStructuredClone_writeSlot: {"": "Closure;copies_3-",
+  call$2: function(i, x) {
+    var t1 = this.copies_3;
+    if (i >>> 0 !== i || i >= t1.length)
+      throw H.ioore(t1, i);
+    t1[i] = x;
+  },
+  "+call:2:0": 1,
+  $isFunction: true,
+  $is_args2: true
+},
+
+"+convertNativeToDart_AcceptStructuredClone_writeSlot": 0,
+
+convertNativeToDart_AcceptStructuredClone_walk: {"": "Closure;mustCopy_4-,findSlot_5-,readSlot_6-,writeSlot_7-",
+  call$1: function(e) {
+    var slot, copy, t1, t2, key, $length, i;
+    if (e == null)
+      return e;
+    if (typeof e === "boolean")
+      return e;
+    if (typeof e === "number")
+      return e;
+    if (typeof e === "string")
+      return e;
+    if (e instanceof Date)
+      return P.convertNativeToDart_DateTime(e);
+    if (e instanceof RegExp)
+      throw H.wrapException(P.UnimplementedError$("structured clone of RegExp"));
+    if (Object.getPrototypeOf(e) === Object.prototype) {
+      slot = this.findSlot_5.call$1(e);
+      copy = this.readSlot_6.call$1(slot);
+      if (copy != null)
+        return copy;
+      copy = H.fillLiteralMap([], P.LinkedHashMap_LinkedHashMap(null, null, null, null, null));
+      this.writeSlot_7.call$2(slot, copy);
+      for (t1 = Object.keys(e), t2 = new H.ListIterator(t1, t1.length, 0, null), H.setRuntimeTypeInfo(t2, [H.getRuntimeTypeArgument(t1, "JSArray", 0)]); t2.moveNext$0();) {
+        key = t2._current;
+        copy.$indexSet(copy, key, this.call$1(e[key]));
+      }
+      return copy;
+    }
+    if (e instanceof Array) {
+      slot = this.findSlot_5.call$1(e);
+      copy = this.readSlot_6.call$1(slot);
+      if (copy != null)
+        return copy;
+      t1 = J.getInterceptor$asx(e);
+      $length = t1.get$length(e);
+      copy = this.mustCopy_4 ? new Array($length) : e;
+      this.writeSlot_7.call$2(slot, copy);
+      if (typeof $length !== "number")
+        throw H.iae($length);
+      t2 = J.getInterceptor$ax(copy);
+      i = 0;
+      for (; i < $length; ++i)
+        t2.$indexSet(copy, i, this.call$1(t1.$index(e, i)));
+      return copy;
+    }
+    return e;
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+convertNativeToDart_AcceptStructuredClone_walk": 0,
+
 FilteredElementList: {"": "ListBase;_node-,_childNodes-",
   get$_filtered: function() {
     var t1 = this._childNodes;
@@ -11486,6 +11686,67 @@ MapPoint: {"": "LatLng;$$unsafe-",
 },
 
 "+MapPoint": 0}],
+["", "origin_position.dart", , X, {
+OriginPosition: {"": "LatLng;marker-,$$unsafe-",
+  toJson$0: function() {
+    var json, t1;
+    json = P.LinkedHashMap_LinkedHashMap(null, null, null, null, null);
+    t1 = this.$$unsafe;
+    json.$indexSet(json, "\"latitude\"", t1.lat$0());
+    json.$indexSet(json, "\"longitude\"", t1.lng$0());
+    return json;
+  },
+  "+toJson:0:0": 1,
+  OriginPosition$2: function(latLng, map) {
+    var t1, t2, t3, t4, t5;
+    t1 = $.get$maps().get$Marker();
+    t1 = t1 != null ? t1 : $.get$maps().get$MVCObject();
+    t1 = t1 != null ? t1 : $.get$context().get$Object();
+    t1 = new Z.Marker(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t1, [null], null));
+    t1._initStreams$0();
+    t2 = t1.$$unsafe;
+    t2.setMap$1(map);
+    t3 = this.$$unsafe;
+    t4 = t3.lat$0();
+    t3 = t3.lng$0();
+    t5 = $.get$maps().get$LatLng();
+    t5 = t5 != null ? t5 : $.get$context().get$Object();
+    t2.setPosition$1(new Z.LatLng(Q.Proxy_Proxy$withArgList(t5, [t4, t3, null], null)));
+    t3 = t1._onRightclick;
+    t3.get$stream(t3).listen$1(new X.OriginPosition_closure(this));
+    t2.setIcon$1("images/start.png");
+    this.marker = t1;
+  },
+  static: {
+OriginPosition$: function(latLng, map) {
+  var t1, t2, t3;
+  t1 = latLng.get$lat();
+  t2 = latLng.get$lng();
+  t3 = $.get$maps().get$LatLng();
+  t3 = t3 != null ? t3 : $.get$context().get$Object();
+  t1 = new X.OriginPosition(null, Q.Proxy_Proxy$withArgList(t3, [t1, t2, null], null));
+  t1.OriginPosition$2(latLng, map);
+  return t1;
+},
+
+"+new OriginPosition:2:0": 1}
+
+},
+
+"+OriginPosition": 0,
+
+OriginPosition_closure: {"": "Closure;this_0-",
+  call$1: function(e) {
+    var t1 = this.this_0;
+    t1.marker.$$unsafe.setVisible$1(false);
+    t1.marker.$$unsafe.setMap$1(null);
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+OriginPosition_closure": 0}],
 ["", "station.dart", , X, {
 Station: {"": "MapPoint;id-,marker-,$$unsafe-",
   toJson$0: function() {
@@ -11502,8 +11763,8 @@ Station: {"": "MapPoint;id-,marker-,$$unsafe-",
     return json;
   },
   "+toJson:0:0": 1,
-  Station$4: function(map, id, box_0) {
-    var t1, t2, t3, t4, t5;
+  Station$4: function(lat, lng, map, id) {
+    var t1, t2, t3;
     this.id = id;
     t1 = $.get$maps().get$Marker();
     t1 = t1 != null ? t1 : $.get$maps().get$MVCObject();
@@ -11512,30 +11773,20 @@ Station: {"": "MapPoint;id-,marker-,$$unsafe-",
     t1._initStreams$0();
     t2 = t1.$$unsafe;
     t2.setMap$1(map);
-    t3 = box_0.lat_0;
-    t4 = box_0.lng_1;
-    t5 = $.get$maps().get$LatLng();
-    t5 = t5 != null ? t5 : $.get$context().get$Object();
-    t2.setPosition$1(new Z.LatLng(Q.Proxy_Proxy$withArgList(t5, [t3, t4, null], null)));
+    t3 = $.get$maps().get$LatLng();
+    t3 = t3 != null ? t3 : $.get$context().get$Object();
+    t2.setPosition$1(new Z.LatLng(Q.Proxy_Proxy$withArgList(t3, [lat, lng, null], null)));
     t2 = t1._onRightclick;
     t2.get$stream(t2).listen$1(new X.Station_closure(this));
-    t2 = t1._onDragend;
-    t2.get$stream(t2).listen$1(new X.Station_closure0(box_0));
     this.marker = t1;
   },
   static: {
 Station$: function(lat, lng, map, id) {
-  var t1, t2, t3, t4;
-  t1 = {};
-  t1.lat_0 = lat;
-  t1.lng_1 = lng;
-  t2 = t1.lat_0;
-  t3 = t1.lng_1;
-  t4 = $.get$maps().get$LatLng();
-  t4 = t4 != null ? t4 : $.get$context().get$Object();
-  t2 = new X.Station(null, null, Q.Proxy_Proxy$withArgList(t4, [t2, t3, null], null));
-  t2.Station$4(map, id, t1);
-  return t2;
+  var t1 = $.get$maps().get$LatLng();
+  t1 = t1 != null ? t1 : $.get$context().get$Object();
+  t1 = new X.Station(null, null, Q.Proxy_Proxy$withArgList(t1, [lat, lng, null], null));
+  t1.Station$4(lat, lng, map, id);
+  return t1;
 },
 
 "+new Station:4:0": 1,
@@ -11546,9 +11797,9 @@ Station$: function(lat, lng, map, id) {
 
 "+Station": 0,
 
-Station_closure: {"": "Closure;this_1-",
+Station_closure: {"": "Closure;this_0-",
   call$1: function(e) {
-    var t1 = this.this_1;
+    var t1 = this.this_0;
     t1.marker.$$unsafe.setMap$1(null);
     t1.marker.$$unsafe.setVisible$1(false);
   },
@@ -11559,46 +11810,22 @@ Station_closure: {"": "Closure;this_1-",
 
 "+Station_closure": 0,
 
-Station_closure0: {"": "Closure;box_0-",
-  call$1: function(e) {
-    var t1 = this.box_0;
-    t1.lat_0 = e.get$latLng().get$lat();
-    t1.lng_1 = e.get$latLng().get$lng();
-  },
-  "+call:1:0": 1,
-  $isFunction: true,
-  $is_args1: true
-},
-
-"+Station_closure": 0,
-
 BusStation: {"": "Station;id-,marker-,$$unsafe-",
   BusStation$4: function(lat, lng, map, id) {
-    var t1, icon, t2, t3;
+    var t1, icon;
     t1 = $.get$context().get$Object();
     icon = new Z.Icon(Q.Proxy_Proxy$withArgList(t1, [], null));
-    t1 = icon.$$unsafe;
-    t2 = J.getInterceptor$ax(t1);
-    t2.$indexSet(t1, "url", "images/bus_stop.png");
-    t3 = $.get$maps().get$Size();
-    t3 = t3 != null ? t3 : $.get$context().get$Object();
-    t2.$indexSet(t1, "size", new Z.Size(Q.Proxy_Proxy$withArgList(t3, [30, 30, null, null], null)));
+    J.$indexSet$ax(icon.$$unsafe, "url", "images/bus_station.png");
     this.marker.$$unsafe.setIcon$1(icon);
   },
   static: {
 BusStation$: function(lat, lng, map, id) {
-  var t1, t2, t3, t4;
-  t1 = {};
-  t1.lat_0 = lat;
-  t1.lng_1 = lng;
-  t2 = t1.lat_0;
-  t3 = t1.lng_1;
-  t4 = $.get$maps().get$LatLng();
-  t4 = t4 != null ? t4 : $.get$context().get$Object();
-  t2 = new X.BusStation(null, null, Q.Proxy_Proxy$withArgList(t4, [t2, t3, null], null));
-  t2.Station$4(map, id, t1);
-  t2.BusStation$4(lat, lng, map, id);
-  return t2;
+  var t1 = $.get$maps().get$LatLng();
+  t1 = t1 != null ? t1 : $.get$context().get$Object();
+  t1 = new X.BusStation(null, null, Q.Proxy_Proxy$withArgList(t1, [lat, lng, null], null));
+  t1.Station$4(lat, lng, map, id);
+  t1.BusStation$4(lat, lng, map, id);
+  return t1;
 },
 
 "+new BusStation:4:0": 1,
@@ -11611,31 +11838,20 @@ BusStation$: function(lat, lng, map, id) {
 
 TrainStation: {"": "Station;id-,marker-,$$unsafe-",
   TrainStation$4: function(lat, lng, map, id) {
-    var t1, icon, t2, t3;
+    var t1, icon;
     t1 = $.get$context().get$Object();
     icon = new Z.Icon(Q.Proxy_Proxy$withArgList(t1, [], null));
-    t1 = icon.$$unsafe;
-    t2 = J.getInterceptor$ax(t1);
-    t2.$indexSet(t1, "url", "images/bus_stop.png");
-    t3 = $.get$maps().get$Size();
-    t3 = t3 != null ? t3 : $.get$context().get$Object();
-    t2.$indexSet(t1, "size", new Z.Size(Q.Proxy_Proxy$withArgList(t3, [30, 30, null, null], null)));
+    J.$indexSet$ax(icon.$$unsafe, "url", "images/train_station.png");
     this.marker.$$unsafe.setIcon$1(icon);
   },
   static: {
 TrainStation$: function(lat, lng, map, id) {
-  var t1, t2, t3, t4;
-  t1 = {};
-  t1.lat_0 = lat;
-  t1.lng_1 = lng;
-  t2 = t1.lat_0;
-  t3 = t1.lng_1;
-  t4 = $.get$maps().get$LatLng();
-  t4 = t4 != null ? t4 : $.get$context().get$Object();
-  t2 = new X.TrainStation(null, null, Q.Proxy_Proxy$withArgList(t4, [t2, t3, null], null));
-  t2.Station$4(map, id, t1);
-  t2.TrainStation$4(lat, lng, map, id);
-  return t2;
+  var t1 = $.get$maps().get$LatLng();
+  t1 = t1 != null ? t1 : $.get$context().get$Object();
+  t1 = new X.TrainStation(null, null, Q.Proxy_Proxy$withArgList(t1, [lat, lng, null], null));
+  t1.Station$4(lat, lng, map, id);
+  t1.TrainStation$4(lat, lng, map, id);
+  return t1;
 },
 
 "+new TrainStation:4:0": 1,
@@ -11648,31 +11864,20 @@ TrainStation$: function(lat, lng, map, id) {
 
 TramwayStation: {"": "Station;id-,marker-,$$unsafe-",
   TramwayStation$4: function(lat, lng, map, id) {
-    var t1, icon, t2, t3;
+    var t1, icon;
     t1 = $.get$context().get$Object();
     icon = new Z.Icon(Q.Proxy_Proxy$withArgList(t1, [], null));
-    t1 = icon.$$unsafe;
-    t2 = J.getInterceptor$ax(t1);
-    t2.$indexSet(t1, "url", "images/bus_stop.png");
-    t3 = $.get$maps().get$Size();
-    t3 = t3 != null ? t3 : $.get$context().get$Object();
-    t2.$indexSet(t1, "size", new Z.Size(Q.Proxy_Proxy$withArgList(t3, [30, 30, null, null], null)));
+    J.$indexSet$ax(icon.$$unsafe, "url", "images/tramway_station.png");
     this.marker.$$unsafe.setIcon$1(icon);
   },
   static: {
 TramwayStation$: function(lat, lng, map, id) {
-  var t1, t2, t3, t4;
-  t1 = {};
-  t1.lat_0 = lat;
-  t1.lng_1 = lng;
-  t2 = t1.lat_0;
-  t3 = t1.lng_1;
-  t4 = $.get$maps().get$LatLng();
-  t4 = t4 != null ? t4 : $.get$context().get$Object();
-  t2 = new X.TramwayStation(null, null, Q.Proxy_Proxy$withArgList(t4, [t2, t3, null], null));
-  t2.Station$4(map, id, t1);
-  t2.TramwayStation$4(lat, lng, map, id);
-  return t2;
+  var t1 = $.get$maps().get$LatLng();
+  t1 = t1 != null ? t1 : $.get$context().get$Object();
+  t1 = new X.TramwayStation(null, null, Q.Proxy_Proxy$withArgList(t1, [lat, lng, null], null));
+  t1.Station$4(lat, lng, map, id);
+  t1.TramwayStation$4(lat, lng, map, id);
+  return t1;
 },
 
 "+new TramwayStation:4:0": 1,
@@ -11709,55 +11914,69 @@ main: function() {
   t1 = new W._EventStreamSubscription(0, t3._target, t3._eventType, W._wrapZone(new T.main_closure0()), t3._useCapture);
   H.setRuntimeTypeInfo(t1, [H.getRuntimeTypeArgument(t3, "_EventStream", 0)]);
   t1._tryResume$0();
-  t1 = $.map;
-  t3 = $.get$context().get$Object();
-  t3 = new Z.PolylineOptions(Q.Proxy_Proxy$withArgList(t3, [], null));
-  J.$indexSet$ax(t3.$$unsafe, "strokeColor", "#3ADF00");
+  t1 = $.get$pathMode();
+  t1.toString;
+  t1 = new W._ElementEventStreamImpl(t1, t2, false);
+  H.setRuntimeTypeInfo(t1, [null]);
+  t3 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.main_closure1()), t1._useCapture);
+  H.setRuntimeTypeInfo(t3, [H.getRuntimeTypeArgument(t1, "_EventStream", 0)]);
+  t3._tryResume$0();
+  t3 = $.map;
+  t1 = $.get$context().get$Object();
+  t1 = new Z.PolylineOptions(Q.Proxy_Proxy$withArgList(t1, [], null));
+  J.$indexSet$ax(t1.$$unsafe, "strokeColor", "#3ADF00");
   t4 = $.get$maps().get$Polyline();
   t4 = t4 != null ? t4 : $.get$maps().get$MVCObject();
   t4 = t4 != null ? t4 : $.get$context().get$Object();
-  t3 = new Q.BusLine(null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t4, [t3], null));
-  t3._initStreams$0();
-  t3.init$1(t1);
-  t1.selectedTransportationLine = t3;
+  t1 = new Q.BusLine(null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t4, [t1], null));
+  t1._initStreams$0();
+  t1.init$1(t3);
+  t3.selectedTransportationLine = t1;
   T.refreshTransportationLines();
   T.refreshStations();
-  t3 = $.get$lines();
-  t3.toString;
-  t1 = C.EventStreamProvider_change._eventType;
-  t3 = new W._ElementEventStreamImpl(t3, t1, false);
-  H.setRuntimeTypeInfo(t3, [null]);
-  t4 = new W._EventStreamSubscription(0, t3._target, t3._eventType, W._wrapZone(new T.main_closure1()), t3._useCapture);
-  H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t3, "_EventStream", 0)]);
-  t4._tryResume$0();
-  t4 = $.get$transportationLineType();
-  t4.toString;
-  t1 = new W._ElementEventStreamImpl(t4, t1, false);
+  t1 = $.get$lines();
+  t1.toString;
+  t3 = C.EventStreamProvider_change._eventType;
+  t1 = new W._ElementEventStreamImpl(t1, t3, false);
   H.setRuntimeTypeInfo(t1, [null]);
   t4 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.main_closure2()), t1._useCapture);
   H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t1, "_EventStream", 0)]);
+  t4._tryResume$0();
+  t4 = $.get$transportationLineType();
+  t4.toString;
+  t3 = new W._ElementEventStreamImpl(t4, t3, false);
+  H.setRuntimeTypeInfo(t3, [null]);
+  t4 = new W._EventStreamSubscription(0, t3._target, t3._eventType, W._wrapZone(new T.main_closure3()), t3._useCapture);
+  H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t3, "_EventStream", 0)]);
   t4._tryResume$0();
   t4 = $.get$addLine();
   t4.toString;
   t4 = new W._ElementEventStreamImpl(t4, t2, false);
   H.setRuntimeTypeInfo(t4, [null]);
-  t1 = new W._EventStreamSubscription(0, t4._target, t4._eventType, W._wrapZone(new T.main_closure3()), t4._useCapture);
-  H.setRuntimeTypeInfo(t1, [H.getRuntimeTypeArgument(t4, "_EventStream", 0)]);
-  t1._tryResume$0();
-  t1 = $.get$saveLine();
-  t1.toString;
-  t1 = new W._ElementEventStreamImpl(t1, t2, false);
-  H.setRuntimeTypeInfo(t1, [null]);
-  t4 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.main_closure4()), t1._useCapture);
-  H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t1, "_EventStream", 0)]);
+  t3 = new W._EventStreamSubscription(0, t4._target, t4._eventType, W._wrapZone(new T.main_closure4()), t4._useCapture);
+  H.setRuntimeTypeInfo(t3, [H.getRuntimeTypeArgument(t4, "_EventStream", 0)]);
+  t3._tryResume$0();
+  t3 = $.get$saveLine();
+  t3.toString;
+  t3 = new W._ElementEventStreamImpl(t3, t2, false);
+  H.setRuntimeTypeInfo(t3, [null]);
+  t4 = new W._EventStreamSubscription(0, t3._target, t3._eventType, W._wrapZone(new T.main_closure5()), t3._useCapture);
+  H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t3, "_EventStream", 0)]);
   t4._tryResume$0();
   t4 = $.get$saveStations();
   t4.toString;
-  t2 = new W._ElementEventStreamImpl(t4, t2, false);
+  t4 = new W._ElementEventStreamImpl(t4, t2, false);
+  H.setRuntimeTypeInfo(t4, [null]);
+  t3 = new W._EventStreamSubscription(0, t4._target, t4._eventType, W._wrapZone(new T.main_closure6()), t4._useCapture);
+  H.setRuntimeTypeInfo(t3, [H.getRuntimeTypeArgument(t4, "_EventStream", 0)]);
+  t3._tryResume$0();
+  t3 = $.get$getPaths();
+  t3.toString;
+  t2 = new W._ElementEventStreamImpl(t3, t2, false);
   H.setRuntimeTypeInfo(t2, [null]);
-  t4 = new W._EventStreamSubscription(0, t2._target, t2._eventType, W._wrapZone(new T.main_closure5()), t2._useCapture);
-  H.setRuntimeTypeInfo(t4, [H.getRuntimeTypeArgument(t2, "_EventStream", 0)]);
-  t4._tryResume$0();
+  t3 = new W._EventStreamSubscription(0, t2._target, t2._eventType, W._wrapZone(new T.main_closure7()), t2._useCapture);
+  H.setRuntimeTypeInfo(t3, [H.getRuntimeTypeArgument(t2, "_EventStream", 0)]);
+  t3._tryResume$0();
 },
 
 "+main:0:0": 1,
@@ -11782,6 +12001,16 @@ setStationMode: function() {
 
 "+setStationMode:0:0": 1,
 
+setPathMode: function() {
+  var t1 = $.stream;
+  if (t1 != null)
+    t1.cancel$0();
+  t1 = $.map._onClick;
+  $.stream = t1.get$stream(t1).listen$1(new T.setPathMode_closure());
+},
+
+"+setPathMode:0:0": 1,
+
 refreshTransportationLines: function() {
   W.HttpRequest_getString($.webServiceUrl + "TransportationLine/", null, null).then$1(new T.refreshTransportationLines_closure());
 },
@@ -11793,53 +12022,6 @@ refreshStations: function() {
 },
 
 "+refreshStations:0:0": 1,
-
-createTransportationLine: function(transportationLineMap) {
-  var t1, t2, t3, transportationLine;
-  switch (J.$index$asx(transportationLineMap, "@type")) {
-    case "BusLine":
-      t1 = $.map;
-      t2 = $.get$context().get$Object();
-      t2 = new Z.PolylineOptions(Q.Proxy_Proxy$withArgList(t2, [], null));
-      J.$indexSet$ax(t2.$$unsafe, "strokeColor", "#3ADF00");
-      t3 = $.get$maps().get$Polyline();
-      t3 = t3 != null ? t3 : $.get$maps().get$MVCObject();
-      t3 = t3 != null ? t3 : $.get$context().get$Object();
-      transportationLine = new Q.BusLine(null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t3, [t2], null));
-      transportationLine._initStreams$0();
-      transportationLine.TransportationLine$fromMap$3(transportationLineMap, t1, t2);
-      break;
-    case "TrainLine":
-      t1 = $.map;
-      t2 = $.get$context().get$Object();
-      t2 = new Z.PolylineOptions(Q.Proxy_Proxy$withArgList(t2, [], null));
-      J.$indexSet$ax(t2.$$unsafe, "strokeColor", "#FF4000");
-      t3 = $.get$maps().get$Polyline();
-      t3 = t3 != null ? t3 : $.get$maps().get$MVCObject();
-      t3 = t3 != null ? t3 : $.get$context().get$Object();
-      transportationLine = new G.TrainLine(null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t3, [t2], null));
-      transportationLine._initStreams$0();
-      transportationLine.init$1(t1);
-      break;
-    case "TramwayLine":
-      t1 = $.map;
-      t2 = $.get$context().get$Object();
-      t2 = new Z.PolylineOptions(Q.Proxy_Proxy$withArgList(t2, [], null));
-      J.$indexSet$ax(t2.$$unsafe, "strokeColor", "#2E64FE");
-      t3 = $.get$maps().get$Polyline();
-      t3 = t3 != null ? t3 : $.get$maps().get$MVCObject();
-      t3 = t3 != null ? t3 : $.get$context().get$Object();
-      transportationLine = new O.TramwayLine(null, null, null, null, null, null, null, null, null, null, Q.Proxy_Proxy$withArgList(t3, [t2], null));
-      transportationLine._initStreams$0();
-      transportationLine.TransportationLine$fromMap$3(transportationLineMap, t1, t2);
-      break;
-    default:
-      transportationLine = null;
-  }
-  return transportationLine;
-},
-
-"+createTransportationLine:1:0": 1,
 
 main_closure: {"": "Closure;",
   call$1: function(e) {
@@ -11865,6 +12047,17 @@ main_closure0: {"": "Closure;",
 
 main_closure1: {"": "Closure;",
   call$1: function(e) {
+    T.setPathMode();
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+main_closure": 0,
+
+main_closure2: {"": "Closure;",
+  call$1: function(e) {
     var option = J.get$first$ax(J.get$selectedOptions$x($.get$lines()));
     W.HttpRequest_getString(C.JSString_methods.$add($.webServiceUrl + "TransportationLine/", J.get$value$x(option)), null, null).then$1(new T.main__closure());
   },
@@ -11877,9 +12070,11 @@ main_closure1: {"": "Closure;",
 
 main__closure: {"": "Closure;",
   call$1: function(response) {
-    var transportationLineMap = C.C_JsonCodec.decode$1(response);
+    var transportationLineMap, t1;
+    transportationLineMap = C.C_JsonCodec.decode$1(response);
     $.map.selectedTransportationLine.$$unsafe.setMap$1(null);
-    $.map.selectedTransportationLine = T.createTransportationLine(transportationLineMap);
+    t1 = $.map;
+    t1.selectedTransportationLine = G.TransportationLine_TransportationLine$instanceFromMap(transportationLineMap, t1);
     J.set$value$x($.get$lineName(), $.map.selectedTransportationLine.name);
   },
   "+call:1:0": 1,
@@ -11889,7 +12084,7 @@ main__closure: {"": "Closure;",
 
 "+main__closure": 0,
 
-main_closure2: {"": "Closure;",
+main_closure3: {"": "Closure;",
   call$1: function(e) {
     var t1, t2, t3;
     $.map.selectedTransportationLine.$$unsafe.setMap$1(null);
@@ -11943,7 +12138,7 @@ main_closure2: {"": "Closure;",
 
 "+main_closure": 0,
 
-main_closure3: {"": "Closure;",
+main_closure4: {"": "Closure;",
   call$1: function(e) {
     var httpRequest;
     $.map.selectedTransportationLine.name = J.get$value$x($.get$lineName());
@@ -11959,7 +12154,7 @@ main_closure3: {"": "Closure;",
 
 "+main_closure": 0,
 
-main_closure4: {"": "Closure;",
+main_closure5: {"": "Closure;",
   call$1: function(e) {
     var httpRequest;
     $.map.selectedTransportationLine.name = J.get$value$x($.get$lineName());
@@ -11975,14 +12170,14 @@ main_closure4: {"": "Closure;",
 
 "+main_closure": 0,
 
-main_closure5: {"": "Closure;",
+main_closure6: {"": "Closure;",
   call$1: function(e) {
     var i, t1, station, httpRequest, t2;
     for (i = 0; t1 = $.map.stations, i < t1.length; ++i) {
       station = t1[i];
       if (J.$eq(station.marker.$$unsafe.getVisible$0(), false)) {
         httpRequest = new XMLHttpRequest();
-        C.HttpRequest_methods.open$2(httpRequest, "DELETE", C.JSString_methods.$add("http://localhost:8080/Transportation-web/rest/Station/", station.id));
+        C.HttpRequest_methods.open$2(httpRequest, "DELETE", C.JSString_methods.$add($.webServiceUrl + "Station/", station.id));
         httpRequest.setRequestHeader("content-type", "application/json");
         httpRequest.send();
         C.JSArray_methods.removeAt$1($.map.stations, i);
@@ -12002,6 +12197,46 @@ main_closure5: {"": "Closure;",
 },
 
 "+main_closure": 0,
+
+main_closure7: {"": "Closure;",
+  call$1: function(e) {
+    var t1, t2, httpRequest;
+    $.map.clearSuggestions$0();
+    t1 = $.map;
+    t2 = t1.originPosition;
+    t1 = t1.destination;
+    httpRequest = new XMLHttpRequest();
+    C.HttpRequest_methods.open$2(httpRequest, "POST", $.webServiceUrl + "TransportationResponse");
+    httpRequest.setRequestHeader("content-type", "application/json");
+    httpRequest.send(P.Maps_mapToString(new R.TransportationRequest(t2, t1).toJson$0()));
+    t1 = new W._EventStream(httpRequest, C.EventStreamProvider_loadend._eventType, false);
+    H.setRuntimeTypeInfo(t1, [null]);
+    t2 = new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new T.main__closure0(httpRequest)), t1._useCapture);
+    H.setRuntimeTypeInfo(t2, [H.getRuntimeTypeArgument(t1, "_EventStream", 0)]);
+    t2._tryResume$0();
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+main_closure": 0,
+
+main__closure0: {"": "Closure;httpRequest_0-",
+  call$1: function(e) {
+    var t1, transportationPathMap, t2;
+    for (t1 = J.get$iterator$ax(J.$index$asx(C.C_JsonCodec.decode$1(W._convertNativeToDart_XHR_Response(this.httpRequest_0.response)), "transportationPaths")); t1.moveNext$0() === true;) {
+      transportationPathMap = t1.get$current();
+      t2 = $.map;
+      t2.suggestions.push(F.TransportationPath$fromMap(transportationPathMap, t2));
+    }
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+main__closure": 0,
 
 setLineMode_closure: {"": "Closure;",
   call$1: function(e) {
@@ -12048,6 +12283,24 @@ setStationMode_closure: {"": "Closure;",
 },
 
 "+setStationMode_closure": 0,
+
+setPathMode_closure: {"": "Closure;",
+  call$1: function(e) {
+    var t1 = $.map.originPosition;
+    if (t1 == null || J.$eq(t1.marker.$$unsafe.getVisible$0(), false))
+      $.map.originPosition = X.OriginPosition$(e.get$latLng(), $.map);
+    else {
+      t1 = $.map.destination;
+      if (t1 == null || J.$eq(t1.marker.$$unsafe.getVisible$0(), false))
+        $.map.destination = X.Destination$(e.get$latLng(), $.map);
+    }
+  },
+  "+call:1:0": 1,
+  $isFunction: true,
+  $is_args1: true
+},
+
+"+setPathMode_closure": 0,
 
 refreshTransportationLines_closure: {"": "Closure;",
   call$1: function(response) {
@@ -12100,42 +12353,27 @@ refreshStations_closure: {"": "Closure;",
           t5 = t2.$index(station, "longitude");
           t6 = $.map;
           t2 = t2.$index(station, "id");
-          t7 = {};
-          t7.lat_0 = t4;
-          t7.lng_1 = t5;
-          t5 = t7.lat_0;
-          t4 = t7.lng_1;
-          t8 = $.get$maps().get$LatLng();
-          t8 = t8 != null ? t8 : $.get$context().get$Object();
-          t8 = t8.toJs$0().get$_jsObject();
-          t4 = new H.MappedListIterable([t5, t4, null], Q._serialize$closure);
-          t4.$builtinTypeInfo = [null, null];
-          t4 = new Q.Proxy(P.JsObject_JsObject(t8, t4.toList$0(t4)));
-          t4.$builtinTypeInfo = [null];
-          t4 = new X.BusStation(null, null, t4);
-          t4.Station$4(t6, t2, t7);
+          t7 = $.get$maps().get$LatLng();
+          t7 = t7 != null ? t7 : $.get$context().get$Object();
+          t7 = t7.toJs$0().get$_jsObject();
+          t8 = new H.MappedListIterable([t4, t5, null], Q._serialize$closure);
+          t8.$builtinTypeInfo = [null, null];
+          t7 = new Q.Proxy(P.JsObject_JsObject(t7, t8.toList$0(t8)));
+          t7.$builtinTypeInfo = [null];
+          t7 = new X.BusStation(null, null, t7);
+          t7.Station$4(t4, t5, t6, t2);
           t2 = $.get$context().get$Object();
-          t5 = [];
+          t4 = [];
           t2 = t2.toJs$0().get$_jsObject();
-          t5.toString;
-          t5 = new H.MappedListIterable(t5, Q._serialize$closure);
-          t5.$builtinTypeInfo = [null, null];
-          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t5.toList$0(t5)));
+          t4.toString;
+          t4 = new H.MappedListIterable(t4, Q._serialize$closure);
+          t4.$builtinTypeInfo = [null, null];
+          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t4.toList$0(t4)));
           t2.$builtinTypeInfo = [null];
           icon = new Z.Icon(t2);
-          t2 = icon.$$unsafe;
-          t5 = J.getInterceptor$ax(t2);
-          t5.$indexSet(t2, "url", "images/bus_stop.png");
-          t6 = $.get$maps().get$Size();
-          t6 = t6 != null ? t6 : $.get$context().get$Object();
-          t6 = t6.toJs$0().get$_jsObject();
-          t7 = new H.MappedListIterable([30, 30, null, null], Q._serialize$closure);
-          t7.$builtinTypeInfo = [null, null];
-          t6 = new Q.Proxy(P.JsObject_JsObject(t6, t7.toList$0(t7)));
-          t6.$builtinTypeInfo = [null];
-          t5.$indexSet(t2, "size", new Z.Size(t6));
-          t4.marker.$$unsafe.setIcon$1(icon);
-          t3.push(t4);
+          J.$indexSet$ax(icon.$$unsafe, "url", "images/bus_station.png");
+          t7.marker.$$unsafe.setIcon$1(icon);
+          t3.push(t7);
           break;
         case "TrainStation":
           t3 = $.map.stations;
@@ -12143,42 +12381,27 @@ refreshStations_closure: {"": "Closure;",
           t5 = t2.$index(station, "longitude");
           t6 = $.map;
           t2 = t2.$index(station, "id");
-          t7 = {};
-          t7.lat_0 = t4;
-          t7.lng_1 = t5;
-          t5 = t7.lat_0;
-          t4 = t7.lng_1;
-          t8 = $.get$maps().get$LatLng();
-          t8 = t8 != null ? t8 : $.get$context().get$Object();
-          t8 = t8.toJs$0().get$_jsObject();
-          t4 = new H.MappedListIterable([t5, t4, null], Q._serialize$closure);
-          t4.$builtinTypeInfo = [null, null];
-          t4 = new Q.Proxy(P.JsObject_JsObject(t8, t4.toList$0(t4)));
-          t4.$builtinTypeInfo = [null];
-          t4 = new X.TrainStation(null, null, t4);
-          t4.Station$4(t6, t2, t7);
+          t7 = $.get$maps().get$LatLng();
+          t7 = t7 != null ? t7 : $.get$context().get$Object();
+          t7 = t7.toJs$0().get$_jsObject();
+          t8 = new H.MappedListIterable([t4, t5, null], Q._serialize$closure);
+          t8.$builtinTypeInfo = [null, null];
+          t7 = new Q.Proxy(P.JsObject_JsObject(t7, t8.toList$0(t8)));
+          t7.$builtinTypeInfo = [null];
+          t7 = new X.TrainStation(null, null, t7);
+          t7.Station$4(t4, t5, t6, t2);
           t2 = $.get$context().get$Object();
-          t5 = [];
+          t4 = [];
           t2 = t2.toJs$0().get$_jsObject();
-          t5.toString;
-          t5 = new H.MappedListIterable(t5, Q._serialize$closure);
-          t5.$builtinTypeInfo = [null, null];
-          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t5.toList$0(t5)));
+          t4.toString;
+          t4 = new H.MappedListIterable(t4, Q._serialize$closure);
+          t4.$builtinTypeInfo = [null, null];
+          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t4.toList$0(t4)));
           t2.$builtinTypeInfo = [null];
           icon = new Z.Icon(t2);
-          t2 = icon.$$unsafe;
-          t5 = J.getInterceptor$ax(t2);
-          t5.$indexSet(t2, "url", "images/bus_stop.png");
-          t6 = $.get$maps().get$Size();
-          t6 = t6 != null ? t6 : $.get$context().get$Object();
-          t6 = t6.toJs$0().get$_jsObject();
-          t7 = new H.MappedListIterable([30, 30, null, null], Q._serialize$closure);
-          t7.$builtinTypeInfo = [null, null];
-          t6 = new Q.Proxy(P.JsObject_JsObject(t6, t7.toList$0(t7)));
-          t6.$builtinTypeInfo = [null];
-          t5.$indexSet(t2, "size", new Z.Size(t6));
-          t4.marker.$$unsafe.setIcon$1(icon);
-          t3.push(t4);
+          J.$indexSet$ax(icon.$$unsafe, "url", "images/train_station.png");
+          t7.marker.$$unsafe.setIcon$1(icon);
+          t3.push(t7);
           break;
         case "TramwayStation":
           t3 = $.map.stations;
@@ -12186,42 +12409,27 @@ refreshStations_closure: {"": "Closure;",
           t5 = t2.$index(station, "longitude");
           t6 = $.map;
           t2 = t2.$index(station, "id");
-          t7 = {};
-          t7.lat_0 = t4;
-          t7.lng_1 = t5;
-          t5 = t7.lat_0;
-          t4 = t7.lng_1;
-          t8 = $.get$maps().get$LatLng();
-          t8 = t8 != null ? t8 : $.get$context().get$Object();
-          t8 = t8.toJs$0().get$_jsObject();
-          t4 = new H.MappedListIterable([t5, t4, null], Q._serialize$closure);
-          t4.$builtinTypeInfo = [null, null];
-          t4 = new Q.Proxy(P.JsObject_JsObject(t8, t4.toList$0(t4)));
-          t4.$builtinTypeInfo = [null];
-          t4 = new X.TramwayStation(null, null, t4);
-          t4.Station$4(t6, t2, t7);
+          t7 = $.get$maps().get$LatLng();
+          t7 = t7 != null ? t7 : $.get$context().get$Object();
+          t7 = t7.toJs$0().get$_jsObject();
+          t8 = new H.MappedListIterable([t4, t5, null], Q._serialize$closure);
+          t8.$builtinTypeInfo = [null, null];
+          t7 = new Q.Proxy(P.JsObject_JsObject(t7, t8.toList$0(t8)));
+          t7.$builtinTypeInfo = [null];
+          t7 = new X.TramwayStation(null, null, t7);
+          t7.Station$4(t4, t5, t6, t2);
           t2 = $.get$context().get$Object();
-          t5 = [];
+          t4 = [];
           t2 = t2.toJs$0().get$_jsObject();
-          t5.toString;
-          t5 = new H.MappedListIterable(t5, Q._serialize$closure);
-          t5.$builtinTypeInfo = [null, null];
-          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t5.toList$0(t5)));
+          t4.toString;
+          t4 = new H.MappedListIterable(t4, Q._serialize$closure);
+          t4.$builtinTypeInfo = [null, null];
+          t2 = new Q.Proxy(P.JsObject_JsObject(t2, t4.toList$0(t4)));
           t2.$builtinTypeInfo = [null];
           icon = new Z.Icon(t2);
-          t2 = icon.$$unsafe;
-          t5 = J.getInterceptor$ax(t2);
-          t5.$indexSet(t2, "url", "images/bus_stop.png");
-          t6 = $.get$maps().get$Size();
-          t6 = t6 != null ? t6 : $.get$context().get$Object();
-          t6 = t6.toJs$0().get$_jsObject();
-          t7 = new H.MappedListIterable([30, 30, null, null], Q._serialize$closure);
-          t7.$builtinTypeInfo = [null, null];
-          t6 = new Q.Proxy(P.JsObject_JsObject(t6, t7.toList$0(t7)));
-          t6.$builtinTypeInfo = [null];
-          t5.$indexSet(t2, "size", new Z.Size(t6));
-          t4.marker.$$unsafe.setIcon$1(icon);
-          t3.push(t4);
+          J.$indexSet$ax(icon.$$unsafe, "url", "images/tramway_station.png");
+          t7.marker.$$unsafe.setIcon$1(icon);
+          t3.push(t7);
           break;
         default:
       }
@@ -12235,7 +12443,7 @@ refreshStations_closure: {"": "Closure;",
 "+refreshStations_closure": 0},
 1],
 ["", "transportation_line.dart", , G, {
-TransportationLine: {"": "Polyline;",
+TransportationLine: {"": "Polyline;id-,name-,_onClick-,_onDblClick-,_onMousedown-,_onMousemove-,_onMouseout-,_onMouseover-,_onMouseup-,_onRightclick-,$$unsafe-",
   init$1: function(map) {
     var t1;
     Z.Polyline.prototype.set$map.call(this, this, map);
@@ -12354,7 +12562,88 @@ TransportationLine: {"": "Polyline;",
           continue;
         }
       }
+  },
+  static: {
+TransportationLine_TransportationLine$instanceFromMap: function(transportationLineMap, map) {
+  var t1, t2, t3, transportationLine;
+  switch (J.$index$asx(transportationLineMap, "@type")) {
+    case "BusLine":
+      t1 = $.get$context().get$Object();
+      t2 = [];
+      t1 = t1.toJs$0().get$_jsObject();
+      t2.toString;
+      t2 = new H.MappedListIterable(t2, Q._serialize$closure);
+      t2.$builtinTypeInfo = [null, null];
+      t1 = new Q.Proxy(P.JsObject_JsObject(t1, t2.toList$0(t2)));
+      t1.$builtinTypeInfo = [null];
+      t1 = new Z.PolylineOptions(t1);
+      J.$indexSet$ax(t1.$$unsafe, "strokeColor", "#3ADF00");
+      t2 = $.get$maps().get$Polyline();
+      t2 = t2 != null ? t2 : $.get$maps().get$MVCObject();
+      t2 = t2 != null ? t2 : $.get$context().get$Object();
+      t2 = t2.toJs$0().get$_jsObject();
+      t3 = new H.MappedListIterable([t1], Q._serialize$closure);
+      t3.$builtinTypeInfo = [null, null];
+      t2 = new Q.Proxy(P.JsObject_JsObject(t2, t3.toList$0(t3)));
+      t2.$builtinTypeInfo = [null];
+      transportationLine = new Q.BusLine(null, null, null, null, null, null, null, null, null, null, t2);
+      transportationLine._initStreams$0();
+      transportationLine.TransportationLine$fromMap$3(transportationLineMap, map, t1);
+      break;
+    case "TrainLine":
+      t1 = $.get$context().get$Object();
+      t2 = [];
+      t1 = t1.toJs$0().get$_jsObject();
+      t2.toString;
+      t2 = new H.MappedListIterable(t2, Q._serialize$closure);
+      t2.$builtinTypeInfo = [null, null];
+      t1 = new Q.Proxy(P.JsObject_JsObject(t1, t2.toList$0(t2)));
+      t1.$builtinTypeInfo = [null];
+      t1 = new Z.PolylineOptions(t1);
+      J.$indexSet$ax(t1.$$unsafe, "strokeColor", "#FF4000");
+      t2 = $.get$maps().get$Polyline();
+      t2 = t2 != null ? t2 : $.get$maps().get$MVCObject();
+      t2 = t2 != null ? t2 : $.get$context().get$Object();
+      t2 = t2.toJs$0().get$_jsObject();
+      t1 = new H.MappedListIterable([t1], Q._serialize$closure);
+      t1.$builtinTypeInfo = [null, null];
+      t1 = new Q.Proxy(P.JsObject_JsObject(t2, t1.toList$0(t1)));
+      t1.$builtinTypeInfo = [null];
+      transportationLine = new G.TrainLine(null, null, null, null, null, null, null, null, null, null, t1);
+      transportationLine._initStreams$0();
+      transportationLine.init$1(map);
+      break;
+    case "TramwayLine":
+      t1 = $.get$context().get$Object();
+      t2 = [];
+      t1 = t1.toJs$0().get$_jsObject();
+      t2.toString;
+      t2 = new H.MappedListIterable(t2, Q._serialize$closure);
+      t2.$builtinTypeInfo = [null, null];
+      t1 = new Q.Proxy(P.JsObject_JsObject(t1, t2.toList$0(t2)));
+      t1.$builtinTypeInfo = [null];
+      t1 = new Z.PolylineOptions(t1);
+      J.$indexSet$ax(t1.$$unsafe, "strokeColor", "#2E64FE");
+      t2 = $.get$maps().get$Polyline();
+      t2 = t2 != null ? t2 : $.get$maps().get$MVCObject();
+      t2 = t2 != null ? t2 : $.get$context().get$Object();
+      t2 = t2.toJs$0().get$_jsObject();
+      t3 = new H.MappedListIterable([t1], Q._serialize$closure);
+      t3.$builtinTypeInfo = [null, null];
+      t2 = new Q.Proxy(P.JsObject_JsObject(t2, t3.toList$0(t3)));
+      t2.$builtinTypeInfo = [null];
+      transportationLine = new O.TramwayLine(null, null, null, null, null, null, null, null, null, null, t2);
+      transportationLine._initStreams$0();
+      transportationLine.TransportationLine$fromMap$3(transportationLineMap, map, t1);
+      break;
+    default:
+      transportationLine = null;
   }
+  return transportationLine;
+},
+
+"+new TransportationLine$instanceFromMap:2:0": 1}
+
 },
 
 "+TransportationLine": 0,
@@ -12410,6 +12699,37 @@ TransportationLine_init_closure: {"": "Closure;this_0-",
 },
 
 "+TransportationLine_init_closure": 0}],
+["", "transportation_path.dart", , F, {
+TransportationPath: {"": "Object;transportationLines<-",
+  TransportationPath$fromMap$2: function(transportationPathMap, map) {
+    var t1, t2;
+    for (t1 = J.get$iterator$ax(J.$index$asx(transportationPathMap, "transportationLines")), t2 = this.transportationLines; t1.moveNext$0() === true;)
+      t2.push(G.TransportationLine_TransportationLine$instanceFromMap(t1.get$current(), map));
+  },
+  static: {
+TransportationPath$fromMap: function(transportationPathMap, map) {
+  var t1 = new F.TransportationPath(P.List_List(null, null));
+  t1.TransportationPath$fromMap$2(transportationPathMap, map);
+  return t1;
+},
+
+"+new TransportationPath$fromMap:2:0": 1}
+
+},
+
+"+TransportationPath": 0}],
+["", "transportation_request.dart", , R, {
+TransportationRequest: {"": "Object;originPosition-,destination-",
+  toJson$0: function() {
+    var json = P.LinkedHashMap_LinkedHashMap(null, null, null, null, null);
+    json.$indexSet(json, "\"originPosition\"", this.originPosition.toJson$0());
+    json.$indexSet(json, "\"destination\"", this.destination.toJson$0());
+    return json;
+  },
+  "+toJson:0:0": 1
+},
+
+"+TransportationRequest": 0}],
 ["utils", "package:google_maps/src/utils.dart", , N, {
 IsEnum: {"": "Object;value>-",
   toJs$0: function() {
@@ -12574,18 +12894,18 @@ Z.LatLng.$isObject = true;
 Z.PolyMouseEvent.$isPolyMouseEvent = true;
 Z.PolyMouseEvent.$isMouseEvent = true;
 Z.PolyMouseEvent.$isObject = true;
-P._EventSink.$is_EventSink = true;
-P._EventSink.$isObject = true;
-P.StreamSubscription.$isStreamSubscription = true;
-P.StreamSubscription.$isObject = true;
 P.Future.$isFuture = true;
 P.Future.$isObject = true;
+P.StreamSubscription.$isStreamSubscription = true;
+P.StreamSubscription.$isObject = true;
+P._EventSink.$is_EventSink = true;
+P._EventSink.$isObject = true;
 P.Stream.$isStream = true;
 P.Stream.$isObject = true;
-P.DateTime.$isDateTime = true;
-P.DateTime.$isObject = true;
 P._DelayedEvent.$is_DelayedEvent = true;
 P._DelayedEvent.$isObject = true;
+P.DateTime.$isDateTime = true;
+P.DateTime.$isObject = true;
 // getInterceptor methods
 J.getInterceptor = function(receiver) {
   if (typeof receiver == "number") {
@@ -12678,6 +12998,7 @@ C.EventStreamProvider_change = H.setRuntimeTypeInfo(new W.EventStreamProvider("c
 C.EventStreamProvider_click = H.setRuntimeTypeInfo(new W.EventStreamProvider("click"), [W.MouseEvent0]);
 C.EventStreamProvider_error = H.setRuntimeTypeInfo(new W.EventStreamProvider("error"), [W.ProgressEvent]);
 C.EventStreamProvider_load = H.setRuntimeTypeInfo(new W.EventStreamProvider("load"), [W.ProgressEvent]);
+C.EventStreamProvider_loadend = H.setRuntimeTypeInfo(new W.EventStreamProvider("loadend"), [W.ProgressEvent]);
 C.HttpRequest_methods = W.HttpRequest.prototype;
 C.JSArray_methods = J.JSArray.prototype;
 C.JSInt_methods = J.JSInt.prototype;
@@ -12830,7 +13151,7 @@ $.Zone__current = C.C__RootZone;
 $.Expando__keyCount = 0;
 $.Device__isOpera = null;
 $.Device__isWebKit = null;
-$.webServiceUrl = "http://localhost:8080/Transportation-web/rest/";
+$.webServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/Transportation-web/rest/";
 $.map = null;
 $.stream = null;
 J.$add$ns = function(receiver, a0) {
@@ -12958,6 +13279,9 @@ J.replaceWith$1$x = function(receiver, a0) {
 J.send$1$x = function(receiver, a0) {
   return J.getInterceptor$x(receiver).send$1(receiver, a0);
 };
+J.set$map$ax = function(receiver, value) {
+  return J.getInterceptor$ax(receiver).set$map(receiver, value);
+};
 J.set$value$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$value(receiver, value);
 };
@@ -13064,6 +13388,9 @@ Isolate.$lazy($, "addLine", "addLine", "get$addLine", function() {
 Isolate.$lazy($, "saveLine", "saveLine", "get$saveLine", function() {
   return document.querySelector("#saveLine");
 });
+Isolate.$lazy($, "getPaths", "getPaths", "get$getPaths", function() {
+  return document.querySelector("#getPaths");
+});
 Isolate.$lazy($, "lines", "lines", "get$lines", function() {
   return document.querySelector("#lines");
 });
@@ -13075,6 +13402,9 @@ Isolate.$lazy($, "stationMode", "stationMode", "get$stationMode", function() {
 });
 Isolate.$lazy($, "lineMode", "lineMode", "get$lineMode", function() {
   return document.querySelector("#lineMode");
+});
+Isolate.$lazy($, "pathMode", "pathMode", "get$pathMode", function() {
+  return document.querySelector("#pathMode");
 });
 Isolate.$lazy($, "stationType", "stationType", "get$stationType", function() {
   return document.querySelector("#stationType");

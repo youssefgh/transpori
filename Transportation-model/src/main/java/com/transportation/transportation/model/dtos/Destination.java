@@ -32,4 +32,9 @@ public class Destination implements Serializable {
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return "Destination{" + "latitude=" + latitude + ", longitude=" + longitude + '}';
+    }
 }

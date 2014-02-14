@@ -31,4 +31,9 @@ public class TransportationRequest implements Serializable {
     public void setDestination(Destination destination) {
         this.destination = destination;
     }
+
+    @Override
+    public String toString() {
+        return "TransportationRequest{" + "originPosition=" + originPosition + ", destination=" + destination + '}';
+    }
 }

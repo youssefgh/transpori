@@ -30,11 +30,9 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.transportation.transportation.web.services.BusLineResource.class);
-        resources.add(com.transportation.transportation.web.services.DirectionResource.class);
         resources.add(com.transportation.transportation.web.services.StationResource.class);
         resources.add(com.transportation.transportation.web.services.TransportationLineResource.class);
-        resources.add(com.transportation.transportation.web.services.TransportationPathResource.class);
+        resources.add(com.transportation.transportation.web.services.TransportationResponseResource.class);
         resources.add(com.transportation.transportation.web.services.config.CrossDomainFilter.class);
         resources.add(com.transportation.transportation.web.services.config.ObjectMapperResolver.class);
     }

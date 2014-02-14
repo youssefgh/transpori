@@ -4,13 +4,15 @@ import 'origin_position.dart';
 import 'destination.dart';
 import 'station.dart';
 import 'transportation_line.dart';
+import 'transportation_path.dart';
+import 'transportation_response.dart';
 
 class CustomMap extends GMap {
   OriginPosition originPosition;
   Destination destination;
   List<Station> stations = new List();
   TransportationLine selectedTransportationLine;
-  List<TransportationLine> transportationLines = new List();
+  List<TransportationPath> suggestions = new List();
   CustomMap(Node mapDiv) : super(mapDiv){
     zoom = 11;
     center = new LatLng(33.55770396470521, -7.5963592529296875);
@@ -47,5 +49,15 @@ class CustomMap extends GMap {
     for(Station station in stations){
       station.marker.map = null;
     }
+  }
+  
+  void clearSuggestions(){
+    //for(int i = 0 ; i<suggestions.length ; i++)
+    for(TransportationPath transportationPath in suggestions){
+      for(TransportationLine transportationLine in transportationPath.transportationLines){
+        transportationLine.map = null;
+      }
+    }
+    suggestions = new List();
   }
 }
