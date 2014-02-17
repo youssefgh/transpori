@@ -15,7 +15,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <glassfish.directory>/home/youssef/Apps/glassfish-4.0</glassfish.directory>
-        <glassfish.admin.password>123456</glassfish.admin.password>
     </properties>
     <dependencies>
         <dependency>
@@ -82,7 +81,6 @@
                     <echo>true</echo>
                     <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
                     <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
-                    <adminPassword>${glassfish.admin.password}</adminPassword>
                     <passwordFile>${glassfish.directory}/glassfish/domains/domain1/config/domain-passwords</passwordFile>
                     <domain>
                         <name>domain1</name>
