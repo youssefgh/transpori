@@ -14,8 +14,8 @@
     <packaging>ear</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.directory>/home/youssef/Apps/glassfish-4.0</glassfish.directory>
-        <glassfish.admin.password>123456</glassfish.admin.password>
+        <glassfish.directory>./app-root/data/glassfish4</glassfish.directory>
+        <glassfish.admin.password></glassfish.admin.password>
     </properties>
     <dependencies>
         <dependency>
