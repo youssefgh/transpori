@@ -14,7 +14,7 @@
     <packaging>ear</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.directory>./app-root/data/glassfish4</glassfish.directory>
+        <glassfish.directory>~/app-root/data/glassfish4</glassfish.directory>
     </properties>
     <dependencies>
         <dependency>
