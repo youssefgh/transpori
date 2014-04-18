@@ -1,5 +1,4 @@
 import 'package:google_maps/google_maps.dart';
-import 'package:json_object/json_object.dart';
 import 'dart:collection';
 
 class MapPoint extends LatLng {

@@ -1,0 +1,6 @@
+#surefire
+#Tue Feb 25 21:20:12 WET 2014
+maven.ext.class.path=/home/youssef/Apps/netbeans-7.4/java/maven-nblib/netbeans-eventspy.jar
+user.dir=/home/youssef/NetBeansProjects/Transportation/Transportation-model
+localRepository=/home/youssef/.m2/repository
+basedir=/home/youssef/NetBeansProjects/Transportation/Transportation-model

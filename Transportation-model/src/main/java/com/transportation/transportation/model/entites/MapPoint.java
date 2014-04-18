@@ -45,8 +45,8 @@ public class MapPoint implements Serializable {
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
-
-    public boolean isNearStation(Station station) {
+    
+    public boolean isNearStation(Station station,Integer distanceMeter) {
         final Float radius = 6371F;
         Double dLatitude = Math.toRadians(station.getLatitude()-latitude);
         Double dLongitude = Math.toRadians(station.getLongitude()-longitude);
@@ -56,8 +56,12 @@ public class MapPoint implements Serializable {
                 Math.sin(dLongitude/2) * Math.sin(dLongitude/2) 
                 * Math.cos(latitude1) * Math.cos(latitude2);
         Double c = 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1-haversine));
-        Double distance = radius * c;
-        return distance<0.005;
+        Double calculatedDistanceMeter = radius * c * 1000;
+        return calculatedDistanceMeter<distanceMeter;
+    }
+
+    public boolean isNearStation(Station station) {
+        return isNearStation(station, 5);
     }
 
     @Override

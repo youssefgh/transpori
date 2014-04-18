@@ -59,6 +59,13 @@ public class TransportationResponseResource {
             transportationPath.addTransportationLine(transportationLine);
         }
         transportationResponse.addTransportationPath(transportationPath);
+        
+        
+        //////
+        //transportationRequest.get
+        
+        
+        
         return transportationResponse;
     }
 

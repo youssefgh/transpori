@@ -32,7 +32,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.geolocation": "0.3.5"
+    "org.apache.cordova.geolocation": "0.3.6"
 }
 // BOTTOM OF METADATA
 });
