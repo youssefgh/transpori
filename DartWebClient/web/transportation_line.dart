@@ -14,12 +14,7 @@ class TransportationLine extends Polyline {
   
   void init(GMap map){
     super.map = map;
-    editable = true;/*
-    onDblClick.listen((e) {
-      if(e.vertex != null){
-        (map as CustomMap).createStation(e.latLng.lat,e.latLng.lng,map);
-      }
-    });*/
+    editable = true;
     onRightclick.listen((e) {
       for(int i = 0;i<path.length;i++){
         if(e.latLng.equals(path.getAt(i))){

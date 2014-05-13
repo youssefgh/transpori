@@ -68,17 +68,10 @@ public class TransportationLine implements Serializable {
         this.mapPoints = mapPoints;
     }
 
-    public Boolean isWillPassBy(MapPoint baseMapPoint, MapPoint desiredMapPoint) {
-        int i;
-        for (i = 0; i < mapPoints.size(); i++) {
-            if (mapPoints.get(i).equals(baseMapPoint)) {
-                break;
-            }
-        }
-        for (int j = ++i; j < mapPoints.size(); j++) {
-            if (mapPoints.get(i).equals(desiredMapPoint)) {
+    public Boolean isWillPassBy(Station baseStation, Station desiredStation) {
+        if(mapPoints.contains(baseStation) && mapPoints.contains(desiredStation)){
+            if(mapPoints.indexOf(baseStation)<mapPoints.indexOf(desiredStation))
                 return true;
-            }
         }
         return false;
     }

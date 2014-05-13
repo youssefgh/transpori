@@ -58,7 +58,7 @@ public class TransportationLineResource {
         for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
             MapPoint mapPoint = transportationLine.getMapPoints().get(i);
             for (Station station : stations) {
-                if(mapPoint.isNearStation(station)){
+                if(mapPoint.isNear(station)){
                     transportationLine.getMapPoints().set(i, station);
                 }
             }
@@ -84,7 +84,7 @@ public class TransportationLineResource {
         for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
             MapPoint mapPoint = transportationLine.getMapPoints().get(i);
             for (Station station : stations) {
-                if(mapPoint.isNearStation(station)){
+                if(mapPoint.isNear(station)){
                     transportationLine.getMapPoints().set(i, station);
                 }
             }

@@ -6,33 +6,15 @@
 
 package com.transportation.transportation.model.dtos;
 
+import com.transportation.transportation.model.entites.MapPoint;
 import java.io.Serializable;
 
 /**
  *
  * @author youssef
  */
-public class Destination implements Serializable {
+public class Destination extends MapPoint implements Serializable {
     
-    private Float latitude;
-    private Float longitude;
-
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
     @Override
     public String toString() {
         return "Destination{" + "latitude=" + latitude + ", longitude=" + longitude + '}';

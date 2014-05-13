@@ -15,6 +15,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <glassfish.directory>/home/youssef/Apps/glassfish-4.0</glassfish.directory>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -44,7 +46,7 @@
                 <version>1.2.1</version>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
+                        <!--<phase>validate</phase>-->
                         <goals>
                             <goal>exec</goal>
                         </goals>
