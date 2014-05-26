@@ -5,15 +5,10 @@
  */
 package com.transportation.transportation.model.entites;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
-
 /**
  *
  * @author youssef
  */
-@JsonSubTypes({
-    @JsonSubTypes.Type(TramwayStation.class)
-})
-public class TramwayStation extends Station {
+public class TramwayStationSuggestion extends TramwayStation {
 
 }
