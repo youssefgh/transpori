@@ -51,10 +51,10 @@ public class TransportationLineResource {
     }
 
     @POST
-    @Path("{id}")
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public void postJson(@PathParam("id") String id, TransportationLine transportationLine) {
+    public void postJson(TransportationLine transportationLine) {
         List<Station> stations = daoStation.readAll();
+        //TODO implement in client side
         for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
             MapPoint mapPoint = transportationLine.getMapPoints().get(i);
             for (Station station : stations) {
@@ -70,10 +70,6 @@ public class TransportationLineResource {
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<TransportationLine> getJsons() {
         List<TransportationLine> transportationLines = dao.readAll();
-        for (int i = 0; i < transportationLines.size(); i++) {
-            TransportationLine transportationLine = transportationLines.get(i);
-            transportationLine.setMapPoints(null);
-        }
         return transportationLines;
     }
 
@@ -81,6 +77,7 @@ public class TransportationLineResource {
     @Consumes(value = MediaType.APPLICATION_JSON)
     public void putJson(TransportationLine transportationLine) {
         List<Station> stations = daoStation.readAll();
+        //TODO implement in client side
         for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
             MapPoint mapPoint = transportationLine.getMapPoints().get(i);
             for (Station station : stations) {

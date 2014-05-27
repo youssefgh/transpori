@@ -9,6 +9,6 @@ package com.transportation.transportation.model.entites;
  *
  * @author youssef
  */
-public class BusStationSuggestion extends BusStation {
+public class BusStationSuggestion extends StationSuggestion {
 
 }

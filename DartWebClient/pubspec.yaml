@@ -1,6 +1,9 @@
 name: transportation_dart_client
 description: A sample web application
 dependencies:
+  angular: any
+  angular_ui: any
   browser: any
   google_maps: any
   json_object: any
+  shadow_dom: any

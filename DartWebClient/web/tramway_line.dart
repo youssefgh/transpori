@@ -7,9 +7,9 @@ import 'transportation_line.dart';
 
 class TramwayLine extends TransportationLine {
   
-  TramwayLine(GMap map) : super(map,new PolylineOptions()..strokeColor = "#2E64FE");
+  TramwayLine() : super(new PolylineOptions()..strokeColor = "#2E64FE");
   
-  TramwayLine.fromJSON(String json,GMap map) : super.fromJSON(json,map,new PolylineOptions()..strokeColor = "#2E64FE");
+  TramwayLine.fromJSON(String json) : super.fromJSON(json, new PolylineOptions()..strokeColor = "#2E64FE");
 
-  TramwayLine.fromMap(Map tramwayLineMap,GMap map) : super.fromMap(tramwayLineMap, map,new PolylineOptions()..strokeColor = "#2E64FE");
+  TramwayLine.fromMap(Map tramwayLineMap) : super.fromMap(tramwayLineMap, new PolylineOptions()..strokeColor = "#2E64FE");
 }

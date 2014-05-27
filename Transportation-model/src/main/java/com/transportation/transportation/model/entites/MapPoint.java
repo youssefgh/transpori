@@ -69,6 +69,10 @@ public class MapPoint implements Serializable {
     public boolean isNear(MapPoint mapPoint,Double distanceInMeter) {
         return distanceTo(mapPoint)<distanceInMeter;
     }
+    
+    public boolean isStation() {
+        return this instanceof Station;
+    }
 
     @Override
     public String toString() {

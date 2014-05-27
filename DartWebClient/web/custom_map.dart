@@ -1,63 +1,81 @@
 import 'dart:html';
+import 'dart:js';
+import 'dart:async';
 import 'package:google_maps/google_maps.dart';
-import 'origin_position.dart';
-import 'destination.dart';
 import 'station.dart';
 import 'transportation_line.dart';
 import 'transportation_path.dart';
 import 'transportation_response.dart';
 
 class CustomMap extends GMap {
-  OriginPosition originPosition;
-  Destination destination;
+
   List<Station> stations = new List();
-  TransportationLine selectedTransportationLine;
+  List<Station> stationSuggestions = new List();
+  List<TransportationLine> transportationLines = new List();
   List<TransportationPath> suggestions = new List();
-  CustomMap(Node mapDiv) : super(mapDiv){
+  StreamSubscription onClickStreamSubscription;
+
+  static CustomMap $wrap(JsObject jsObject) => jsObject == null ? null : new CustomMap.fromJsObject(jsObject);
+  CustomMap.fromJsObject(JsObject jsObject): super.fromJsObject(jsObject);
+
+  CustomMap(Node mapDiv): super(mapDiv) {
     zoom = 11;
     center = new LatLng(33.55770396470521, -7.5963592529296875);
     mapTypeId = MapTypeId.ROADMAP;
+    visualRefresh = true;
   }
-  /*
-  void createStation(num lat, num lng,[String id]){
-    Station station = new Station(lat, lng, this)..id = id;
-    stations.add(station);
-    station.marker.onRightclick.listen((e){
-      for(num i = 0;i<stations.length;i++){
-        if(stations.elementAt(i).equals(station)){
-          stations.elementAt(i).deleteMarker();
-          break;
-        }
-      }
-    });
-  }*/
+
+  void deleteStation(Station station) {
+    stations.remove(station);
+    station.prepareForDelete();
+  }
   
-  void deleteStations(){
-    for(Station station in stations){
-      station.deleteMarker();
+  void deleteStationSuggestion(Station stationSuggestion) {
+      stations.remove(stationSuggestion);
+      stationSuggestion.prepareForDelete();
+  }
+
+  void clearStations() {
+    for (Station station in stations) {
+      station.prepareForDelete();
     }
-    stations = new List();
   }
-  
-  void showStations(){
-    for(Station station in stations){
+
+  void showStations() {
+    for (Station station in stations) {
       station.marker.map = this;
     }
   }
-  
-  void hideStations(){
-    for(Station station in stations){
-      station.marker.map = null;
+
+  void hideStations() {
+    for (Station station in stations) {
+      station.hide();
     }
   }
-  
-  void clearSuggestions(){
-    //for(int i = 0 ; i<suggestions.length ; i++)
-    for(TransportationPath transportationPath in suggestions){
-      for(TransportationLine transportationLine in transportationPath.transportationLines){
+
+  void showtransportationLines() {
+    for (TransportationLine transportationLine in transportationLines) {
+      transportationLine.map = this;
+    }
+  }
+
+  void hidetransportationLines() {
+    for (TransportationLine transportationLine in transportationLines) {
+      transportationLine.map = null;
+    }
+  }
+
+  void clearSuggestions() {
+    for (TransportationPath transportationPath in suggestions) {
+      for (TransportationLine transportationLine in transportationPath.transportationLines) {
         transportationLine.map = null;
       }
     }
-    suggestions = new List();
+  }
+
+  void cancelOnClick() {
+    if (onClickStreamSubscription != null) {
+      onClickStreamSubscription.cancel();
+    }
   }
 }

@@ -2,7 +2,6 @@ import 'dart:html';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:collection';
-import 'package:google_maps/google_maps.dart';
 import 'transportation_line.dart';
 import 'station.dart';
 import 'transportation_request.dart';
@@ -11,98 +10,147 @@ import 'transportation_path.dart';
 class WebserviceClient {
 
   //String webServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/rest/";
-  String webServiceUrl = "http://localhost:8080/rest/";
+  final String webServiceUrl = "http://localhost:8080/rest/";
+  final String httpPut = "PUT";
+  final String httpGet = "GET";
+  final String httpPost = "POST";
+  final String httpDelete = "DELETE";
+  final Map requestHeader = {
+    "content-type": "application/json"
+  };
 
 }
 
 class TransportationLineWS extends WebserviceClient {
 
-  void put(TransportationLine transportationLine) {
-    HttpRequest httpRequest = new HttpRequest()
-        ..open("PUT", webServiceUrl + "TransportationLine/")
-        ..setRequestHeader('content-type', 'application/json')
-        ..send(transportationLine.toJson().toString());
+  String webServiceUrl;
+
+  TransportationLineWS() {
+    webServiceUrl = super.webServiceUrl + "TransportationLine/";
   }
 
-  Future<TransportationLine> get(String id, GMap map) {
-    return HttpRequest.getString(webServiceUrl + "TransportationLine/" + id).then((response) {
-      if (id != "") {
+  Future<String> create(TransportationLine transportationLine) {
+    return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: transportationLine.toJson().toString()).then((httpRequest) {
+      return httpRequest.response;
+    });
+  }
+  
+  Future<TransportationLine> read(String id) {
+    return HttpRequest.getString(webServiceUrl + id).then((response) {
         Map transportationLineMap = JSON.decode(response);
-        return new TransportationLine.instanceFromMap(transportationLineMap, map);
-      }
+        return new TransportationLine.instanceFromMap(transportationLineMap);
+    });
+  }
+  //TODO export parse logic
+  Future<List<TransportationLine>> readAll() {
+    return HttpRequest.getString(webServiceUrl).then((response) {
       List<LinkedHashMap> transportationLineMaps = JSON.decode(response);
       List<TransportationLine> transportationLines = new List();
       for (int i = 0; i < transportationLineMaps.length; i++) {
-        transportationLines.add(new TransportationLine.instanceFromMap(transportationLineMaps.elementAt(i), map));
+        transportationLines.add(new TransportationLine.instanceFromMap(transportationLineMaps.elementAt(i)));
       }
       return transportationLines;
     });
   }
 
-  void post(TransportationLine transportationLine) {
-    HttpRequest httpRequest = new HttpRequest()
-        ..open("POST", webServiceUrl + "TransportationLine/" + transportationLine.id)
-        ..setRequestHeader('content-type', 'application/json')
-        ..send(transportationLine.toJson().toString());
+  Future update(TransportationLine transportationLine) {
+    return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: transportationLine.toJson().toString());
   }
-
 
 }
 
 class StationWS extends WebserviceClient {
 
-  Future<List<Station>> get(GMap map) {
-    return HttpRequest.getString(webServiceUrl + "Station/").then((response) {
+  String webServiceUrl;
+
+  StationWS() {
+    webServiceUrl = super.webServiceUrl + "Station/";
+  }
+
+  Future<String> create(Station station) {
+    return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(station)).then((httpRequest) {
+      return httpRequest.response;
+    });
+  }
+
+  Future<List<Station>> readAll() {
+    return HttpRequest.getString(webServiceUrl).then((response) {
       List<Map> stationMaps = JSON.decode(response);
+      //TODO export parse logic
       List<Station> stations = new List();
       Station station;
       for (Map stationMap in stationMaps) {
-        switch (stationMap["@type"]) {
-          case "BusStation":
-            station = new BusStation(stationMap["latitude"], stationMap["longitude"], map, stationMap["id"]);
-            break;
-          case "TrainStation":
-            station = new TrainStation(stationMap["latitude"], stationMap["longitude"], map, stationMap["id"]);
-            break;
-          case "TramwayStation":
-            station = new TramwayStation(stationMap["latitude"], stationMap["longitude"], map, stationMap["id"]);
-            break;
-        }
-        stations.add(station);
+        stations.add(new Station.instanceFromMap(stationMap));
       }
       return stations;
     });
   }
 
-  void post(Station station) {
-    HttpRequest httpRequest = new HttpRequest()
-        ..open("POST", webServiceUrl + "Station")
-        ..setRequestHeader('content-type', 'application/json')
-        ..send(JSON.encode(station));
+  Future update(Station station) {
+    return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: JSON.encode(station));
   }
 
-  void delete(Station station) {
-    HttpRequest httpRequest = new HttpRequest()
-        ..open("DELETE", webServiceUrl + "Station/" + station.id)
-        ..setRequestHeader('content-type', 'application/json')
-        ..send();
+  Future delete(Station station) {
+    return HttpRequest.request(webServiceUrl + station.id, method: httpDelete, requestHeaders: requestHeader);
+  }
+}
+
+class StationSuggestionWS extends WebserviceClient {
+
+  String webServiceUrl;
+
+  StationSuggestionWS() {
+    webServiceUrl = super.webServiceUrl + "Suggestion/";
+  }
+
+  Future<String> create(StationSuggestion stationSuggestion) {
+    return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(stationSuggestion)).then((httpRequest) {
+      return httpRequest.response;
+    });
+  }
+
+  Future<List<StationSuggestion>> readAll() {
+    return HttpRequest.getString(webServiceUrl).then((response) {
+      List<Map> stationSuggestionMaps = JSON.decode(response);
+      //TODO export parse logic
+      List<StationSuggestion> stationSuggestions = new List();
+      StationSuggestion stationSuggestion;
+      for (Map stationSuggestionMap in stationSuggestionMaps) {
+        stationSuggestions.add(new Station.instanceFromMap(stationSuggestionMap));
+      }
+      return stationSuggestions;
+    });
+  }
+
+  Future update(StationSuggestion stationSuggestion) {
+    return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: JSON.encode(stationSuggestion));
+  }
+
+  Future delete(StationSuggestion stationSuggestion) {
+    return HttpRequest.request(webServiceUrl + stationSuggestion.id, method: httpDelete, requestHeaders: requestHeader);
   }
 }
 
 class TransportationRequestWS extends WebserviceClient {
-  void post(TransportationRequest transportationRequest, GMap map, Function callback) {
-    HttpRequest httpRequest = new HttpRequest()
-        ..open("POST", webServiceUrl + "TransportationResponse")
-        ..setRequestHeader('content-type', 'application/json')
-        ..send(transportationRequest.toJson().toString());
-    httpRequest.onLoad.listen((e) {
-      Map transportationResponseMap = JSON.decode(httpRequest.response);
+
+  String webServiceUrl;
+
+  TransportationRequestWS() {
+    webServiceUrl = super.webServiceUrl + "TransportationResponse/";
+  }
+  
+  //TODO find alternative
+  //using POST for JAX-RS GET limits
+  //TODO export parse logic
+  Future<List<TransportationPath>> update(TransportationRequest transportationRequest) {
+    return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: transportationRequest.toJson().toString()).then((httpRequest) {
+    Map transportationResponseMap = JSON.decode(httpRequest.response);
       List transportationPathsMap = transportationResponseMap["transportationPaths"];
       List<TransportationPath> transportationPaths = new List();
       for (Map transportationPathMap in transportationPathsMap) {
-        transportationPaths.add(new TransportationPath.fromMap(transportationPathMap, map));
+        transportationPaths.add(new TransportationPath.fromMap(transportationPathMap));
       }
-      callback(transportationPaths);
+      return transportationPaths;
     });
   }
 }

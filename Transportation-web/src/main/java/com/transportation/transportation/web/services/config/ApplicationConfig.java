@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.transportation.transportation.web.services.StationResource.class);
+        resources.add(com.transportation.transportation.web.services.StationSuggestionResource.class);
         resources.add(com.transportation.transportation.web.services.TransportationLineResource.class);
         resources.add(com.transportation.transportation.web.services.TransportationResponseResource.class);
         resources.add(com.transportation.transportation.web.services.config.CrossDomainFilter.class);

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,7 +20,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonSubTypes({
     @JsonSubTypes.Type(BusStation.class),
     @JsonSubTypes.Type(TrainStation.class),
-    @JsonSubTypes.Type(TramwayStation.class)
+    @JsonSubTypes.Type(TramwayStation.class),
+    @JsonSubTypes.Type(StationSuggestion.class)
 })
 public class Station extends MapPoint implements Serializable {
 

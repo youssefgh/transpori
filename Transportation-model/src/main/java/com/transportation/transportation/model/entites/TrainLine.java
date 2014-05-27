@@ -5,6 +5,8 @@
  */
 package com.transportation.transportation.model.entites;
 
+import org.codehaus.jackson.annotate.JsonSubTypes;
+
 /**
  *
  * @author youssef
