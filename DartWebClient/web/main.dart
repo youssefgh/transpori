@@ -33,6 +33,7 @@ class HomeController {
   TransportationLineWS transportationLineWS = new TransportationLineWS();
   StationWS stationWS = new StationWS();
   TransportationRequestWS transportationRequestWS = new TransportationRequestWS();
+  UserWS userWS = new UserWS();
   //UIs
   bool adminPanelShown = false;
   String mapMode;
@@ -43,15 +44,24 @@ class HomeController {
 
   HomeController() {
     print("test");
-    map = new CustomMap(querySelector("#map"));
-    setPathMode();
+    try {
+      map = new CustomMap(querySelector("#map"));
+      setPathMode();
+    } catch (e) {
+      print("Map loading error");
+    }
+    user = new User();
     //manual login
     //user = new Administrator("youssef", "123456");
-    user = new User("youssef", "123456");
+    //user = new User("youssef", "123456");
     //for debugging purposes
     //TODO move
-    refreshTransportationLines();
-    refreshStations();
+    //refreshTransportationLines();
+    //refreshStations();
+  }
+  
+  bool isUserLoggedIn(){
+    return user != null && user.id != null;
   }
 
   void moveAdminPanel() {
@@ -283,7 +293,34 @@ class HomeController {
   }
 
   bool isReadyToSearchPaths() {
-    return destination != null && destination.isVisible() && originPosition != null && originPosition.isVisible();
+    return isHaveDestination() && isHaveOriginPosition();
+  }
+  
+  bool isHaveOriginPosition() {
+      return originPosition != null && originPosition.isVisible();
+  }
+  
+  bool isHaveDestination() {
+    return destination != null && destination.isVisible();
+  }
+  
+  void signUp(){
+    userWS.create(user).then((e){
+      print("subscribed");
+      user = new User();
+    });
+  }
+  
+  void logIn(){
+    userWS.read(user).then((user){
+      this.user = user;
+      print("logged");
+      transportationLineWS = new TransportationLineWS.withUser(user);
+      stationWS = new StationWS.withUser(user);
+    }).catchError((e){
+      user.password = "";
+      print("error");
+    });
   }
 }
 
@@ -296,12 +333,24 @@ class MyAppModule extends Module {
 
 void main() {
   applicationFactory().addModule(new MyAppModule()).run();
-
+  /*
+  User user = new User()
+      //..birthday = new DateTime.now()
+      //..email = "mail@m.com"
+      //..firstName = "fname"
+      ..name ="name"
+      ..password="123"
+      ..id = "id";
+  UserWS userWS = new UserWS();
+  userWS.create(user).then((res){
+    print("created");
+  });
+  userWS.read(user).then((user){
+    print(user.toJson());
+  });*/
+  
+  //.catchError((e){print("errr");});
+  
   //TODO remove
   //for test purpose only
-  /*
-  Marker marker = new Marker();
-  print(marker.get('map') == null); // true
-  print(marker.map == null);
-  */
 }

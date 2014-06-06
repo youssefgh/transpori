@@ -6,7 +6,7 @@
 
 package com.transportation.transportation.model.dtos;
 
-import com.transportation.transportation.model.entites.MapPoint;
+import com.transportation.transportation.model.entities.MapPoint;
 import java.io.Serializable;
 
 /**

@@ -5,7 +5,7 @@
 package com.transportation.transportation.ejb.dao.impl;
 
 import com.transportation.transportation.ejb.dao.DaoStationSuggestion;
-import com.transportation.transportation.model.entites.StationSuggestion;
+import com.transportation.transportation.model.entities.StationSuggestion;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 

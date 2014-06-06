@@ -5,7 +5,7 @@
 package com.transportation.transportation.ejb.dao.impl;
 
 import com.transportation.transportation.ejb.dao.DaoMapPoint;
-import com.transportation.transportation.model.entites.MapPoint;
+import com.transportation.transportation.model.entities.MapPoint;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;

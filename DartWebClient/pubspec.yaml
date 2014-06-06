@@ -7,3 +7,7 @@ dependencies:
   google_maps: any
   json_object: any
   shadow_dom: any
+transformers:
+- angular:
+    html_files:
+      - web/index.html

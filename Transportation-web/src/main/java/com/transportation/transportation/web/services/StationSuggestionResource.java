@@ -6,7 +6,7 @@
 package com.transportation.transportation.web.services;
 
 import com.transportation.transportation.ejb.dao.DaoStationSuggestion;
-import com.transportation.transportation.model.entites.StationSuggestion;
+import com.transportation.transportation.model.entities.StationSuggestion;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;

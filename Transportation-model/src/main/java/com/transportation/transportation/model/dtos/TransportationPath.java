@@ -6,7 +6,7 @@
 
 package com.transportation.transportation.model.dtos;
 
-import com.transportation.transportation.model.entites.TransportationLine;
+import com.transportation.transportation.model.entities.TransportationLine;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,7 @@
  */
 package com.transportation.transportation.ejb.dao;
 
-import com.transportation.transportation.model.entites.StationSuggestion;
+import com.transportation.transportation.model.entities.StationSuggestion;
 
 /**
  *

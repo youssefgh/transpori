@@ -20,7 +20,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <!-- Dart -->
-        <script src="packages/shadow_dom/shadow_dom.min.js"></script>
+        <!--<script src="packages/shadow_dom/shadow_dom.min.js"></script>-->
         <script type="application/dart" src="main.dart"></script>
         <script type="text/javascript" src="packages/browser/dart.js"></script>
     </head>
@@ -33,11 +33,16 @@
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                             class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori</a>
+                    <img src="images/header-logo.gif" style="width: 50px; height: 50px; position: absolute; left: 0" alt="logo">
+                    <a class="navbar-brand" href="#" data-toggle="modal" data-target="#aboutModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori <small style="font-size: 40%">BETA</small></a>                    
                 </div>
                 <div class="navbar-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" data-toggle="modal" data-target="#aboutModal">A propos</a></li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">A propos{{1 + 1}}</a></li>
+                        <!--                        <li><a href="#" data-toggle="modal" data-target="#signUpModal">Inscription</a></li>
+                                                <li><a href="#" data-toggle="modal" data-target="#logInModal">Connexion</a></li>-->
                     </ul>
                 </div>
             </div>
@@ -46,13 +51,14 @@
         <div id="map"></div>
 
         <div id="go" ng-show="ctrl.isPathMode()">
-            <button class="btn btn-info disabled" ng-show="!ctrl.isReadyToSearchPaths()">Chose directions</button>
-            <button class="btn btn-info" ng-show="ctrl.isReadyToSearchPaths()">Go</button>
+            <button class="btn btn-info disabled" ng-hide="ctrl.isHaveOriginPosition()">Veillez choisir le point de départ</button>
+            <button class="btn btn-info disabled" ng-show="ctrl.isHaveOriginPosition() && !ctrl.isHaveDestination()">Veillez choisir le point d'arrivée</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#soonModal" ng-show="ctrl.isReadyToSearchPaths()">Recherche</button>
         </div>
         <div id="go" ng-show="ctrl.isSuggestionMode()">
             <button class="btn btn-info disabled" style="">Cliquer sur un point pour suggérer une station</button>
         </div>
-        <div id="user-panel" ng-show="!ctrl.user.isAdministrator()">
+        <div id="user-panel" ng-show="ctrl.isUserLoggedIn() && !ctrl.user.isAdministrator()">
             <div>
                 <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setSuggestionMode()" ng-show="ctrl.isPathMode()">Suggérer</button>
                 <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setPathMode()" ng-show="ctrl.isSuggestionMode()">Terminer</button>
@@ -72,8 +78,8 @@
                                             <option ng-repeat="transportationLine in ctrl.map.transportationLines" ng-value="{{transportationLine}}">{{transportationLine.name}}</option>
                                         </select> 
                     <select ng-options="transportationLine.name for transportationLine in ctrl.map.transportationLines" ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()">
-                        <!--<option ng-repeat="" ng-value="{{transportationLine}}">{{transportationLine.name}}</option>-->
-                    </select> 
+                    <!--<option ng-repeat="" ng-value="{{transportationLine}}">{{transportationLine.name}}</option>-->
+                    <!--</select>--> 
                     <select ng-model="ctrl.selectedTransportationLineType">
                         <option ng-repeat="transportationLineType in ctrl.transportationLineTypes" value="{{transportationLineType.id}}">{{transportationLineType.type}}</option>
                     </select>
@@ -88,6 +94,101 @@
                         <option ng-repeat="stationType in ctrl.stationTypes" value="{{stationType.id}}">{{stationType.type}}</option>
                     </select>
                     <button id="saveStations">Save stations</button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Log In-->
+        <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Connexion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label" for="name">Identifiant</label>
+                            <input class="form-control" id="name" type="text" ng-model="ctrl.user.name">
+                            <label class="control-label" for="password">Mot de passe</label>
+                            <input class="form-control" id="password" type="text" ng-model="ctrl.user.password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="ctrl.logIn()">Se connecter</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Modal Log In-->
+        <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Connexion</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label" for="name">Identifiant</label>
+                            <input class="form-control" id="name" type="text" ng-model="ctrl.user.name">
+                            <label class="control-label" for="password">Mot de passe</label>
+                            <input class="form-control" id="password" type="text" ng-model="ctrl.user.password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="ctrl.logIn()">Se connecter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Soon-->
+        <div class="modal fade" id="soonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Prochainement</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center">
+                            <div style="text-align: center">
+                                <img src="images/logo.gif" style="width: 200px; height: 200px;" alt="logo">
+                                <h1>Transpori <small style="font-size: 40%">BETA</small></h1>
+                            </div>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar" style="width: 100%"></div>
+                            </div>
+                            <h6>Prochainement...</h6>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal About-->
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">A propos</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div style="text-align: center">
+                            <img src="images/logo.gif" style="width: 200px; height: 200px;" alt="logo">
+                            <h1>Transpori <small style="font-size: 40%">BETA</small></h1>
+                        </div>
+                        <blockquote>
+                            <p>1ère plateform marocaine d'assistance au transport.</p>
+                            <small>Idée et réalisation par <cite title="Source Title">Youssef GHOUBACH</cite></small>
+                        </blockquote>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>

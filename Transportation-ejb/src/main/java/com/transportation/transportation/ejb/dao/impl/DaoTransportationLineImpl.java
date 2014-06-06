@@ -7,7 +7,7 @@
 package com.transportation.transportation.ejb.dao.impl;
 
 import com.transportation.transportation.ejb.dao.DaoTransportationLine;
-import com.transportation.transportation.model.entites.TransportationLine;
+import com.transportation.transportation.model.entities.TransportationLine;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 
