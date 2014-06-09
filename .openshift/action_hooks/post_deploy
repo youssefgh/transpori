@@ -1,9 +1,7 @@
 #!/bin/bash
-cp $OPENSHIFT_REPO_DIR $OPENSHIFT_DATA_DIR 
-cd $OPENSHIFT_DATA_DIR/repo
-git checkout openshift
+cd $OPENSHIFT_REPO_DIR
 mvn install -s $OPENSHIFT_DATA_DIR/maven/settings.xml -X
-cp Transportation-ear/target/Transportation.ear ../glassfish4/glassfish/domains/domain1/autodeploy/
+cp Transportation-ear/target/Transportation.ear $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/
 
 
 
