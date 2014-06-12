@@ -23,13 +23,8 @@ public class DaoUserImpl extends DaoGenericImpl<User> implements DaoUser, Serial
     }
 
     @Override
-    public User findByName(User user) {System.out.println(getDb().findOne(new Query().addCriteria(Criteria.where("name").is(user.getName())), getEntityClass()).getClass().toString());
-        return getDb().findOne(new Query().addCriteria(Criteria.where("name").is(user.getName())), getEntityClass());
-    }
-    
-    @Override
-    public Boolean isNameExist(User user){
-        return getDb().exists(new Query().addCriteria(Criteria.where("name").is(user.getName())), getEntityClass());
+    public User findByEmail(User user) {
+        return getDb().findOne(new Query().addCriteria(Criteria.where("email").is(user.getEmail())), getEntityClass());
     }
     
     @Override

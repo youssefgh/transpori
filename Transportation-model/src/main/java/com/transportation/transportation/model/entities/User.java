@@ -7,6 +7,10 @@ package com.transportation.transportation.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.springframework.data.annotation.Id;
@@ -16,7 +20,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author youssef
  */
-@Document(collection = "user")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
+@Document(collection = "user")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 @JsonSubTypes({
     @JsonSubTypes.Type(Administrator.class)
 })
@@ -24,17 +29,24 @@ public class User implements Serializable {
 
     @Id
     private String id;
-    private String name;
-    private String password;
-    private String firstName;
+    //FIXME @Pattern(regexp = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$/")
+    @NotNull
     private String email;
+    @NotNull
+    @Size(min = 6)
+    private String password;
+    @NotNull
+    @Size(min = 2)
+    private String firstName;
+    @NotNull
+    @Past
     private Date birthday;
 
     public User() {
     }
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -44,14 +56,6 @@ public class User implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPassword() {

@@ -38,6 +38,8 @@ header {
 
 #go button {
     width: 100%;
+    animation: ready 3s;
+    animation-iteration-count: infinite;
     -webkit-animation: ready 3s;
     -webkit-animation-iteration-count: infinite;
 }

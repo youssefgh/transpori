@@ -20,7 +20,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 })
 public class StationSuggestion extends Station {
 
-    //private Us
     public StationSuggestion() {
     }
 

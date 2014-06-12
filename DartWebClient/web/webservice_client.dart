@@ -198,7 +198,7 @@ class UserWS extends WebserviceClient {
   }
 
   Future<User> read(User user) {
-    return HttpRequest.request(webServiceUrl + user.name + "/" + user.password).then((httpRequest) {
+    return HttpRequest.request(webServiceUrl + user.email + "/" + user.password).then((httpRequest) {
       Map userMap = JSON.decode(httpRequest.response);
       return new User.instanceFromMap(userMap);
     });

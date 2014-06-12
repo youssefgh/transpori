@@ -10,7 +10,6 @@ import com.transportation.transportation.ejb.service.ServiceUser;
 import com.transportation.transportation.model.entities.User;
 import com.transportation.transportation.model.exceptions.EmailExistException;
 import com.transportation.transportation.model.exceptions.InvalidCredentialsException;
-import com.transportation.transportation.model.exceptions.NameExistException;
 import com.transportation.transportation.model.exceptions.UserExistException;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -49,26 +48,27 @@ public class UserResource {
     @GET
     @Produces("application/json")
     public User getJson(){
+        //For test
         return new User("coucou","doudou");
     }
 
     /**
      * Retrieves representation of an instance of com.transportation.transportation.web.services.UserResource
-     * @param name
+     * @param email
      * @param password
      * @param requestContext
      * @return an instance of com.transportation.transportation.model.entities.User
      */
     @GET
-    @Path("{name}/{password}")
+    @Path("{email}/{password}")
     @Consumes("application/json")
     @Produces("application/json")
-    public Response getJsonByNameAndPassword(@PathParam("name") String name, @PathParam("password") String password, @Context ContainerRequestContext requestContext) {
+    public Response getJsonByNameAndPassword(@PathParam("email") String email, @PathParam("password") String password, @Context ContainerRequestContext requestContext) {
+        System.out.println(email+" "+password);
         try {
-            return Response.status(Response.Status.OK).entity(service.signIn(new User(name, password))).build();
+            return Response.status(Response.Status.OK).entity(service.signIn(new User(email, password))).build();
         } catch (InvalidCredentialsException ex) {
             return Response.status(Response.Status.UNAUTHORIZED).entity("Invalid credentials.").build();
-            //return null;
         }
     }
 
@@ -82,13 +82,11 @@ public class UserResource {
     public Response putJson(User user) {
         try {
             service.subscribe(user);
-            return Response.accepted().build();
-        } catch (NameExistException ex) {
-            return Response.notAcceptable(null).build(); 
+            return Response.accepted().build();/*
         } catch (EmailExistException ex) {
-            return Response.notAcceptable(null).build(); 
+            return Response.status(Response.Status.CONFLICT).build(); */
         } catch (UserExistException ex) {
-            return Response.notAcceptable(null).build(); 
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
         }
     }
 }

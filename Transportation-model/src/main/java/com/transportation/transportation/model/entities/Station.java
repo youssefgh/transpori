@@ -41,7 +41,6 @@ public class Station extends MapPoint implements Serializable {
 
     public void initId() {
         setId(new ObjectId().toString());
-        System.out.println("int " + id);
     }
 
     public String getId() {

@@ -5,12 +5,11 @@
  */
 package com.transportation.transportation.model.entities;
 
-import com.transportation.transportation.model.dtos.Destination;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import javax.xml.bind.annotation.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
@@ -33,6 +32,8 @@ public class TransportationLine implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private String id;
+    @NotNull
+    @Size(min = 2)
     private String name;
     private List<MapPoint> mapPoints;
 

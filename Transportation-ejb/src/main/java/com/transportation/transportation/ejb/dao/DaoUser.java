@@ -12,9 +12,7 @@ import com.transportation.transportation.model.entities.User;
  */
 public interface DaoUser extends DaoGeneric<User> {
 
-    public User findByName(User user);
-
-    public Boolean isNameExist(User user);
+    public User findByEmail(User user);
 
     public Boolean isEmailExist(User user);
 }

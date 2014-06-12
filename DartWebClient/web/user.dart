@@ -1,10 +1,9 @@
 
 class User {
   String id;
-  String name;
+  String email;
   String password;
   String firstName;
-  String email;
   DateTime birthday;
 
   User();
@@ -21,7 +20,6 @@ class User {
     }
     user
         ..id = userMap["id"]
-        ..name = userMap["name"]
         ..password = userMap["password"]
         ..firstName = userMap["firstName"]
         ..email = userMap["email"]
@@ -41,10 +39,9 @@ class User {
     Map json = new Map();
     json["@type"] = runtimeType.toString();
     json["id"] = id;
-    json["name"] = name;
+    json["email"] = email;
     json["password"] = password;
     json["firstName"] = firstName;
-    json["email"] = email;
     json["birthday"] = birthday.toIso8601String();
     return json;
   }

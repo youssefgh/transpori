@@ -9,10 +9,14 @@
     
     <mongo:mongo host="localhost" port="27017"/>
     <mongo:db-factory dbname="transportation"/>
-<!--    <mongo:mongo id="mongo" host="127.7.28.130" port="27017"/>
+    <!--    <mongo:mongo id="mongo" host="127.7.28.130" port="27017"/>
     <mongo:db-factory mongo-ref="mongo" dbname="tmorocco" username="admin" password="FntuxzybEX2A"/>-->
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
     </bean>
+    
+    <context:component-scan base-package="com.transportation.transportation.ejb.config.*"/>
+    <bean class="com.transportation.transportation.ejb.config.BeforeSaveValidator"/>
+    <bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 </beans>

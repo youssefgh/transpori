@@ -6,11 +6,9 @@
 package com.transportation.transportation.model.entities;
 
 import java.io.Serializable;
-import org.bson.types.ObjectId;
+import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
@@ -20,7 +18,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class MapPoint implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @NotNull
     protected Float latitude;
+    @NotNull
     protected Float longitude;
     @Transient
     private final Integer defaultNearbyDistanceInMeter = 5;

@@ -51,6 +51,10 @@ class HomeController {
       print("Map loading error");
     }
     user = new User();
+    user.birthday = new DateTime.utc(1990);
+    user.email = "admin@transpori.info";
+    user.firstName = "nnnnn";
+    user.password = "123456";
     //manual login
     //user = new Administrator("youssef", "123456");
     //user = new User("youssef", "123456");
@@ -59,13 +63,13 @@ class HomeController {
     //refreshTransportationLines();
     //refreshStations();
   }
-  
-  bool isUserLoggedIn(){
+
+  bool isUserLoggedIn() {
     return user != null && user.id != null;
   }
 
   void moveAdminPanel() {
-    //TODO improve with Angular style
+    //TODO improve with Angular style -> use decorator
     adminPanelShown = !adminPanelShown;
     if (adminPanelShown) {
       querySelector('#administrator-panel').style.animation = "slide-up 1s";
@@ -101,22 +105,22 @@ class HomeController {
       destination.hide();
     }
     map.cancelOnClick();
-        map.onClickStreamSubscription = map.onClick.listen((e) {
-          Station busStationSuggestion = new BusStationSuggestion(e.latLng.lat, e.latLng.lng);
-          stationWS.create(busStationSuggestion).then((id) {
-            busStationSuggestion.id = id;
-            busStationSuggestion.marker.map = map;
-            map.stationSuggestions.add(busStationSuggestion);
-            //TODO remove replicated code
-            busStationSuggestion.marker.onRightclick.listen((e) {
-              stationWS.delete(busStationSuggestion).then((e) {
-                map.deleteStation(busStationSuggestion);
-              });
-            });
-            busStationSuggestion.marker.onDragend.listen((e) => stationWS.update(busStationSuggestion));
+    map.onClickStreamSubscription = map.onClick.listen((e) {
+      Station busStationSuggestion = new BusStationSuggestion(e.latLng.lat, e.latLng.lng);
+      stationWS.create(busStationSuggestion).then((id) {
+        busStationSuggestion.id = id;
+        busStationSuggestion.marker.map = map;
+        map.stationSuggestions.add(busStationSuggestion);
+        //TODO remove replicated code
+        busStationSuggestion.marker.onRightclick.listen((e) {
+          stationWS.delete(busStationSuggestion).then((e) {
+            map.deleteStation(busStationSuggestion);
           });
         });
-    
+        busStationSuggestion.marker.onDragend.listen((e) => stationWS.update(busStationSuggestion));
+      });
+    });
+
   }
 
   bool isSuggestionMode() {
@@ -295,29 +299,38 @@ class HomeController {
   bool isReadyToSearchPaths() {
     return isHaveDestination() && isHaveOriginPosition();
   }
-  
+
   bool isHaveOriginPosition() {
-      return originPosition != null && originPosition.isVisible();
+    return originPosition != null && originPosition.isVisible();
   }
-  
+
   bool isHaveDestination() {
     return destination != null && destination.isVisible();
   }
-  
-  void signUp(){
-    userWS.create(user).then((e){
+
+  void signUp() {
+    print("uppu");
+    userWS.create(user).then((e) {
       print("subscribed");
       user = new User();
+      //FIXME find alternative solution
+      context.callMethod(r'$', ['#signUpModal']).callMethod('modal', ['toggle']);
+    }).catchError((e) {
+      if ((e.target as HttpRequest).status == 406) {
+        (querySelector('#email') as InputElement).placeholder = "Nouveau email";
+        user.email = "";
+      }
     });
   }
-  
-  void logIn(){
-    userWS.read(user).then((user){
+
+  void logIn() {
+    print("logou");
+    userWS.read(user).then((user) {
       this.user = user;
       print("logged");
       transportationLineWS = new TransportationLineWS.withUser(user);
       stationWS = new StationWS.withUser(user);
-    }).catchError((e){
+    }).catchError((e) {
       user.password = "";
       print("error");
     });
@@ -333,24 +346,25 @@ class MyAppModule extends Module {
 
 void main() {
   applicationFactory().addModule(new MyAppModule()).run();
-  /*
-  User user = new User()
-      //..birthday = new DateTime.now()
-      //..email = "mail@m.com"
-      //..firstName = "fname"
-      ..name ="name"
-      ..password="123"
-      ..id = "id";
+
+
+  User user = new User();
+  user.email = "admin@transpori.info";
+  user.password = "123456";
   UserWS userWS = new UserWS();
+  userWS.read(user).then((user) {
+    print("logged");
+  }).catchError((e) {
+    user.password = "";
+    print("error");
+  });
+  /*
   userWS.create(user).then((res){
     print("created");
   });
-  userWS.read(user).then((user){
-    print(user.toJson());
-  });*/
-  
+  */
   //.catchError((e){print("errr");});
-  
+
   //TODO remove
   //for test purpose only
 }

@@ -1,1 +1,5 @@
-/build
+build/
+packages/
+pubspec.lock
+.project
+.buildlog
