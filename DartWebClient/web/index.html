@@ -41,8 +41,10 @@
                         <li><a href="#" data-toggle="modal" data-target="#aboutModal">A propos</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" data-toggle="modal" data-target="#signUpModal">Inscription</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#logInModal">Connexion</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#signUpModal" ng-hide="ctrl.isUserLoggedIn()">Inscription</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#logInModal" ng-hide="ctrl.isUserLoggedIn()">Connexion</a></li>
+                        <li><a href="#" ng-show="ctrl.isUserLoggedIn()">{{ctrl.user.email}}</a></li>
+                        <li><a href="#" ng-click="ctrl.logOut()" ng-show="ctrl.isUserLoggedIn()">Déconnexion</a></li>
                     </ul>
                 </div>
             </div>
@@ -77,9 +79,13 @@
                     <!--                    <select ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()">
                                             <option ng-repeat="transportationLine in ctrl.map.transportationLines" ng-value="{{transportationLine}}">{{transportationLine.name}}</option>
                                         </select> 
-                    <select ng-options="transportationLine.name for transportationLine in ctrl.map.transportationLines" ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()">
+                    
                     <!--<option ng-repeat="" ng-value="{{transportationLine}}">{{transportationLine.name}}</option>-->
                     <!--</select>--> 
+                    <select ng-options="transportationLine.name as transportationLine.id for transportationLine in ctrl.map.transportationLines" ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()">
+                    </select>
+<!--                    <select ng-options="transportationLine.name as transportationLine.id for transportationLine in ctrl.map.transportationLines" ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()">
+                    </select>-->
                     <select ng-model="ctrl.selectedTransportationLineType">
                         <option ng-repeat="transportationLineType in ctrl.transportationLineTypes" value="{{transportationLineType.id}}">{{transportationLineType.type}}</option>
                     </select>

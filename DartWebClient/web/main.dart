@@ -32,6 +32,7 @@ class HomeController {
   //WSs
   TransportationLineWS transportationLineWS = new TransportationLineWS();
   StationWS stationWS = new StationWS();
+  StationSuggestionWS stationSuggestionWS = new StationSuggestionWS();
   TransportationRequestWS transportationRequestWS = new TransportationRequestWS();
   UserWS userWS = new UserWS();
   //UIs
@@ -51,10 +52,10 @@ class HomeController {
       print("Map loading error");
     }
     user = new User();
-    user.birthday = new DateTime.utc(1990);
     user.email = "admin@transpori.info";
-    user.firstName = "nnnnn";
     user.password = "123456";
+    //user.birthday = new DateTime.utc(1990);
+    //user.firstName = "nnnnn";
     //manual login
     //user = new Administrator("youssef", "123456");
     //user = new User("youssef", "123456");
@@ -107,13 +108,13 @@ class HomeController {
     map.cancelOnClick();
     map.onClickStreamSubscription = map.onClick.listen((e) {
       Station busStationSuggestion = new BusStationSuggestion(e.latLng.lat, e.latLng.lng);
-      stationWS.create(busStationSuggestion).then((id) {
+      stationSuggestionWS.create(busStationSuggestion).then((id) {
         busStationSuggestion.id = id;
         busStationSuggestion.marker.map = map;
         map.stationSuggestions.add(busStationSuggestion);
         //TODO remove replicated code
         busStationSuggestion.marker.onRightclick.listen((e) {
-          stationWS.delete(busStationSuggestion).then((e) {
+          stationSuggestionWS.delete(busStationSuggestion).then((e) {
             map.deleteStation(busStationSuggestion);
           });
         });
@@ -161,6 +162,8 @@ class HomeController {
 
   void setLineMode() {
     mapMode = "LINE_MODE";
+    refreshTransportationLines();
+    print(map.transportationLines.length);
   }
 
   void setStationMode() {
@@ -328,12 +331,23 @@ class HomeController {
     userWS.read(user).then((user) {
       this.user = user;
       print("logged");
+      //FIXME find alternative solution
+      context.callMethod(r'$', ['#logInModal']).callMethod('modal', ['toggle']);
       transportationLineWS = new TransportationLineWS.withUser(user);
       stationWS = new StationWS.withUser(user);
+      stationSuggestionWS = new StationSuggestionWS.withUser(user);
     }).catchError((e) {
       user.password = "";
       print("error");
     });
+  }
+
+  void logOut() {
+    print("logouto");
+    transportationLineWS = new TransportationLineWS();
+    stationWS = new StationWS();
+    stationSuggestionWS = new StationSuggestionWS();
+    user = new User();
   }
 }
 
@@ -347,7 +361,7 @@ class MyAppModule extends Module {
 void main() {
   applicationFactory().addModule(new MyAppModule()).run();
 
-
+/*
   User user = new User();
   user.email = "admin@transpori.info";
   user.password = "123456";
@@ -357,7 +371,7 @@ void main() {
   }).catchError((e) {
     user.password = "";
     print("error");
-  });
+  });*/
   /*
   userWS.create(user).then((res){
     print("created");

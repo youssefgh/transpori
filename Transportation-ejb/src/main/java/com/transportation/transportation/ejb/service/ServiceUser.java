@@ -19,5 +19,7 @@ public interface ServiceUser {
 
     public void subscribe(User user) throws UserExistException;
 
-    public boolean isAuthorized(String authorizationString);
+    public boolean isAuthorizedUser(String authorizationString);
+    
+    public boolean isAuthorizedAdministrator(String authorizationString);
 }

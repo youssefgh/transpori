@@ -45,16 +45,16 @@ class TransportationLineWS extends WebserviceClient {
     });
   }
 
-  Future<TransportationLine> read(String id) {
-    return HttpRequest.getString(webServiceUrl + id).then((response) {
-      Map transportationLineMap = JSON.decode(response);
+  Future<TransportationLine> read(TransportationLine transportationLine) {
+    return HttpRequest.request(webServiceUrl + transportationLine.id, method: httpGet, requestHeaders: requestHeader).then((response) {
+      Map transportationLineMap = JSON.decode(response.response);
       return new TransportationLine.instanceFromMap(transportationLineMap);
     });
   }
   //TODO export parse logic
   Future<List<TransportationLine>> readAll() {
-    return HttpRequest.getString(webServiceUrl).then((response) {
-      List<LinkedHashMap> transportationLineMaps = JSON.decode(response);
+    return HttpRequest.request(webServiceUrl, method: httpGet, requestHeaders: requestHeader).then((response) {
+      List<LinkedHashMap> transportationLineMaps = JSON.decode(response.response);
       List<TransportationLine> transportationLines = new List();
       for (int i = 0; i < transportationLineMaps.length; i++) {
         transportationLines.add(new TransportationLine.instanceFromMap(transportationLineMaps.elementAt(i)));
@@ -93,8 +93,8 @@ class StationWS extends WebserviceClient {
   }
 
   Future<List<Station>> readAll() {
-    return HttpRequest.getString(webServiceUrl).then((response) {
-      List<Map> stationMaps = JSON.decode(response);
+    return HttpRequest.request(webServiceUrl, method: httpGet, requestHeaders: requestHeader).then((response) {
+      List<Map> stationMaps = JSON.decode(response.response);
       //TODO export parse logic
       List<Station> stations = new List();
       Station station;
@@ -113,51 +113,34 @@ class StationWS extends WebserviceClient {
     return HttpRequest.request(webServiceUrl + station.id, method: httpDelete, requestHeaders: requestHeader);
   }
 }
-/*
+
 class StationSuggestionWS extends WebserviceClient {
 
   String webServiceUrl;
 
   void init() {
-    webServiceUrl = super.webServiceUrl + "Suggestion/";
+    webServiceUrl = super.webServiceUrl + "StationSuggestion/";
   }
 
   StationSuggestionWS() {
     init();
   }
-  
+
   StationSuggestionWS.withUser(User user) {
     init();
     requestHeader["authorization"] = user.getAuthorizationString();
   }
 
-  Future<String> create(StationSuggestion stationSuggestion) {
-    return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(stationSuggestion)).then((httpRequest) {
+  Future<String> create(Station station) {
+    return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(station)).then((httpRequest) {
       return httpRequest.response;
     });
   }
 
-  Future<List<StationSuggestion>> readAll() {
-    return HttpRequest.getString(webServiceUrl).then((response) {
-      List<Map> stationSuggestionMaps = JSON.decode(response);
-      //TODO export parse logic
-      List<StationSuggestion> stationSuggestions = new List();
-      StationSuggestion stationSuggestion;
-      for (Map stationSuggestionMap in stationSuggestionMaps) {
-        stationSuggestions.add(new Station.instanceFromMap(stationSuggestionMap));
-      }
-      return stationSuggestions;
-    });
+  Future delete(Station station) {
+    return HttpRequest.request(webServiceUrl + station.id, method: httpDelete, requestHeaders: requestHeader);
   }
-
-  Future update(StationSuggestion stationSuggestion) {
-    return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: JSON.encode(stationSuggestion));
-  }
-
-  Future delete(StationSuggestion stationSuggestion) {
-    return HttpRequest.request(webServiceUrl + stationSuggestion.id, method: httpDelete, requestHeaders: requestHeader);
-  }
-}*/
+}
 
 class TransportationRequestWS extends WebserviceClient {
 

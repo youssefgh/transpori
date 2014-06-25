@@ -7,11 +7,10 @@ package com.transportation.transportation.web.services;
 
 import com.transportation.transportation.ejb.dao.DaoStation;
 import com.transportation.transportation.ejb.dao.DaoTransportationLine;
-import com.transportation.transportation.ejb.dao.impl.DaoStationImpl;
-import com.transportation.transportation.ejb.dao.impl.DaoTransportationLineImpl;
 import com.transportation.transportation.model.entities.MapPoint;
 import com.transportation.transportation.model.entities.Station;
 import com.transportation.transportation.model.entities.TransportationLine;
+import com.transportation.transportation.web.services.security.AdministratorAuthorized;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -33,6 +32,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("TransportationLine")
 @RequestScoped
+@AdministratorAuthorized
 public class TransportationLineResource {
 
     @Context

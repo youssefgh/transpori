@@ -35,9 +35,10 @@ public class ApplicationConfig extends Application {
         resources.add(com.transportation.transportation.web.services.TransportationLineResource.class);
         resources.add(com.transportation.transportation.web.services.TransportationResponseResource.class);
         resources.add(com.transportation.transportation.web.services.UserResource.class);
-        resources.add(com.transportation.transportation.web.services.config.AuthorizationRequestFilter.class);
         resources.add(com.transportation.transportation.web.services.config.CrossDomainFilter.class);
         resources.add(com.transportation.transportation.web.services.config.ObjectMapperResolver.class);
+        resources.add(com.transportation.transportation.web.services.security.AdministratorAuthorizationRequestFilter.class);
+        resources.add(com.transportation.transportation.web.services.security.UserAuthorizationRequestFilter.class);
     }
 
 }

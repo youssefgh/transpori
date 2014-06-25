@@ -90,4 +90,9 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", birthday=" + birthday + '}';
+    }
+
 }
