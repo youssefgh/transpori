@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:collection';
 import 'transportation_line.dart';
+import 'train_line.dart';
 import 'station.dart';
 import 'transportation_request.dart';
 import 'transportation_path.dart';
@@ -10,8 +11,8 @@ import 'user.dart';
 
 class WebserviceClient {
 
-  //String webServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/rest/";
-  final String webServiceUrl = "http://localhost:8080/rest/";
+  //final String webServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/rest/";
+  final String webServiceUrl = "http://localhost:8081/rest/";
   final String httpPut = "PUT";
   final String httpGet = "GET";
   final String httpPost = "POST";
@@ -65,6 +66,10 @@ class TransportationLineWS extends WebserviceClient {
 
   Future update(TransportationLine transportationLine) {
     return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: transportationLine.toJson().toString());
+  }
+
+  Future delete(TransportationLine transportationLine) {
+    return HttpRequest.request(webServiceUrl+transportationLine.id, method: httpDelete, requestHeaders: requestHeader);
   }
 
 }
@@ -175,8 +180,6 @@ class UserWS extends WebserviceClient {
   }
 
   Future create(User user) {
-    print(user.toJson());
-    print(JSON.encode(user));
     return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(user));
   }
 

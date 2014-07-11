@@ -8,7 +8,7 @@ class User {
 
   User();
 
-  factory User.instanceFromMap(Map userMap) {print(userMap["@type"]);
+  factory User.instanceFromMap(Map userMap) {
     User user;
     switch (userMap["@type"]) {
       case "User":

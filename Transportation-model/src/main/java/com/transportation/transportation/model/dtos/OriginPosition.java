@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author youssef
  */
 public class OriginPosition extends MapPoint implements Serializable {
-
+    
     @Override
     public String toString() {
         return "OriginPosition{" + "latitude=" + latitude + ", longitude=" + longitude + '}';

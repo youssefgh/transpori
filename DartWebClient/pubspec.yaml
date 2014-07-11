@@ -6,8 +6,8 @@ dependencies:
   browser: any
   google_maps: any
   json_object: any
-  shadow_dom: any
+  web_components: any
 transformers:
 - angular:
     html_files:
-      - web/index.html
+    - web/index.html

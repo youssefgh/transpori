@@ -18,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
@@ -87,5 +88,13 @@ public class TransportationLineResource {
             }
         }
         dao.create(transportationLine);
+    }
+    
+    @DELETE
+    @Path("{id}")
+    public void deleteJson(@PathParam("id") String id) {
+        TransportationLine transportationLine = new TransportationLine();
+        transportationLine.setId(id);
+        dao.delete(transportationLine);
     }
 }

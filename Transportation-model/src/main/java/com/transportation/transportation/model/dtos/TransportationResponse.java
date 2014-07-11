@@ -5,6 +5,7 @@
  */
 package com.transportation.transportation.model.dtos;
 
+import com.transportation.transportation.model.entities.TransportationLine;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,15 @@ public class TransportationResponse implements Serializable {
     
     public void addTransportationPath(TransportationPath transportationPath){
         transportationPaths.add(transportationPath);
+    }
+    
+    public Boolean isHave(TransportationLine transportationLine) {
+        for (TransportationPath transportationPath : transportationPaths) {
+            if (transportationLine.isExistIn(transportationPath.getTransportationLines())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

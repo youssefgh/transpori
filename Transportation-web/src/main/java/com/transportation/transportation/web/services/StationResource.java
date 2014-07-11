@@ -77,6 +77,7 @@ public class StationResource {
         return dao.readAll();
     }
 
+    //TODO review pathparam vs oop
     @DELETE
     @Path("{id}")
     public void deleteJson(@PathParam("id") String id) {

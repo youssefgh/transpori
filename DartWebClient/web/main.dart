@@ -1,6 +1,6 @@
-import 'package:angular/angular.dart';
+import 'package:angular/angular.dart' hide Animation;
 import 'package:angular/application_factory.dart';
-import 'dart:html';
+import 'dart:html' hide Animation;
 import 'dart:js';
 import 'dart:async';
 import 'dart:collection';
@@ -42,27 +42,37 @@ class HomeController {
   List stationTypes = Station.types;
   String selectedTransportationLineType;
   String selectedStationType;
+  Marker navigationPosition;
 
   HomeController() {
-    print("test");
+    //print("test");
+    navigationPosition = new Marker()..animation = Animation.BOUNCE;
     try {
       map = new CustomMap(querySelector("#map"));
+      navigationPosition.map = map;
       setPathMode();
     } catch (e) {
       print("Map loading error");
     }
+    //for test purposes
     user = new User();
-    user.email = "admin@transpori.info";
-    user.password = "123456";
+    //user.id = "5399e80a2318e2764276aff6";
+    //user.email = "admin@transpori.info";
+    //user.password = "123456";
     //user.birthday = new DateTime.utc(1990);
     //user.firstName = "nnnnn";
     //manual login
     //user = new Administrator("youssef", "123456");
     //user = new User("youssef", "123456");
-    //for debugging purposes
-    //TODO move
-    //refreshTransportationLines();
-    //refreshStations();
+    /*
+    logIn().then((e){
+      refreshTransportationLines();
+    });*/
+    //originPosition = new OriginPosition(new LatLng(33.58716733904656, -7.6815032958984375), map);
+    //destination = new Destination(new LatLng(33.571149664447326, -7.5311279296875), map);
+    //originPosition = new OriginPosition(new LatLng(33.695208841799186, -7.38006591796875), map);
+    //destination = new Destination(new LatLng(33.53967772193588, -7.6348114013671875), map);
+    //getPaths();
   }
 
   bool isUserLoggedIn() {
@@ -80,21 +90,6 @@ class HomeController {
       querySelector('#administrator-panel').style.animationFillMode = "forwards";
       setPathMode();
     }
-  }
-
-  void setMapMode(String mapMode) {
-    switch (mapMode) {
-      case "PATH_MODE":
-        setPathMode();
-        break;
-      case "STATION_MODE":
-        setStationMode();
-        break;
-      case "LINE_MODE":
-        setLineMode();
-        break;
-    }
-    this.mapMode = mapMode;
   }
 
   void setSuggestionMode() {
@@ -160,14 +155,32 @@ class HomeController {
     });
   }
 
+  bool lineLinkMode = false;
+  MapPoint selectedMapPoint;
+
   void setLineMode() {
     mapMode = "LINE_MODE";
-    refreshTransportationLines();
-    print(map.transportationLines.length);
+    refreshTransportationLines().then((e) {
+      map.showtransportationLines();
+    });
+    refreshStations().then((e) {
+      map.showStations();
+    });
+    map.cancelOnClick();
+    map.onClickStreamSubscription = map.onClick.listen((e) {
+      if (selectedTransportationLine != null) {
+        if (!lineLinkMode) selectedTransportationLine.path.push(new MapPoint(e.latLng.lat, e.latLng.lng));
+      }
+    });
   }
 
   void setStationMode() {
     mapMode = "STATION_MODE";
+    map.cancelOnClick();
+    map.hidetransportationLines();
+    refreshStations().then((e) {
+      map.showStations();
+    });
     map.cancelOnClick();
     map.onClickStreamSubscription = map.onClick.listen((e) {
       Station station;
@@ -190,6 +203,7 @@ class HomeController {
         station.marker.map = map;
         map.stations.add(station);
         //TODO remove replicated code
+        //TODO review
         station.marker.onClick.listen((e) {
           if (isPathMode()) {
             selectedTransportationLine.path.push(station);
@@ -205,9 +219,10 @@ class HomeController {
     });
   }
 
-  void refreshTransportationLines() {
-    transportationLineWS.readAll().then((transportationLines) {
+  Future refreshTransportationLines() {
+    return transportationLineWS.readAll().then((transportationLines) {
       map.transportationLines = transportationLines;
+      /*
       for (TransportationLine transportationLine in transportationLines) {
         transportationLine.onClick.listen((e) {
           if (isLineMode()) {
@@ -215,20 +230,28 @@ class HomeController {
             if (newMapPoint != null) selectedTransportationLine.path.push(newMapPoint);
           }
         });
-      }
-      map.showtransportationLines();
+      }*//*
+      print("added "+map.transportationLines.length.toString());
+      map.transportationLines[1].path.push(new MapPoint(33.576595306396484+0.0005, -7.672984600067139+0.0005));
+      print(map.transportationLines[1].path.length);
+      print(map.transportationLines[0].path.length);*/
     });
   }
 
-  void refreshStations() {
-    stationWS.readAll().then((stations) {
+  Future refreshStations() {
+    return stationWS.readAll().then((stations) {
       map.clearStations();
       map.stations = stations;
       for (Station station in map.stations) {
         //TODO remove replicated code
         station.marker.onClick.listen((e) {
           if (isLineMode()) {
-            selectedTransportationLine.path.push(station);
+            if (lineLinkMode && selectedMapPoint != null) {
+              selectedTransportationLine.path.setAt(selectedTransportationLine.indexOf(selectedMapPoint), station);
+              lineLinkMode = false;
+            } else {
+              selectedTransportationLine.path.push(station);
+            }
           }
         });
         station.marker.onRightclick.listen((e) {
@@ -238,12 +261,7 @@ class HomeController {
         });
         station.marker.onDragend.listen((e) => stationWS.update(station));
       }
-      map.showStations();
     });
-  }
-
-  void saveLine() {
-    transportationLineWS.update(selectedTransportationLine);
   }
 
   void newLine() {
@@ -253,8 +271,6 @@ class HomeController {
     }
     if (selectedTransportationLine != null) {
       selectedTransportationLine.prepareForDelete();
-    } else {
-      map.cancelOnClick();
     }
     switch (selectedTransportationLineType) {
       case "BUS_LINE":
@@ -271,12 +287,32 @@ class HomeController {
         return;
     }
     selectedTransportationLine.map = map;
-    map.onClickStreamSubscription = map.onClick.listen((e) {
-      selectedTransportationLine.path.push(new MapPoint(e.latLng.lat, e.latLng.lng));
+    selectedTransportationLine.editable = true;
+  }
+
+  void addLine() {
+    if (selectedTransportationLine.path.length != 0) transportationLineWS.create(selectedTransportationLine); else window.alert("Line not added : path is empty");
+  }
+
+  void addReverseLine() {
+    selectedTransportationLine.id = null;
+    selectedTransportationLine.reverseMapPoints();
+    TransportationLine reverseLine = selectedTransportationLine;
+    transportationLineWS.create(reverseLine);
+  }
+
+  //TODO implement line type change
+  void saveLine() {
+    transportationLineWS.update(selectedTransportationLine);
+  }
+
+  void deleteLine() {
+    transportationLineWS.delete(selectedTransportationLine).then((e) {
+      resetLine();
     });
   }
 
-  void cancelLine() {
+  void resetLine() {
     if (selectedTransportationLine != null) {
       selectedTransportationLine.prepareForDelete();
       selectedTransportationLine = null;
@@ -285,18 +321,137 @@ class HomeController {
     }
   }
 
-  void addLine() {
-    if (selectedTransportationLine.path.length != 0) transportationLineWS.create(selectedTransportationLine); else window.alert("Line not added : path is empty");
+  void transportationLineChanged() {
+    if (selectedTransportationLine != null) selectedTransportationLine.editable = false;
+    new Future(() {
+      switch (selectedTransportationLine.runtimeType.toString()) {
+        case "BusLine":
+          selectedTransportationLineType = "BUS_LINE";
+          break;
+        case "TrainLine":
+          selectedTransportationLineType = "TRAIN_LINE";
+          break;
+        case "TramwayLine":
+          selectedTransportationLineType = "TRAMWAY_LINE";
+          break;
+      }
+      selectedTransportationLine.editable = true;
+      selectedTransportationLine.onClick.listen((e) {
+        if (lineLinkMode) {
+          //int index = selectedTransportationLine.path.getArray().indexOf(e.latLng);
+          selectedMapPoint = selectedTransportationLine.getClosestMapPoint(new MapPoint(e.latLng.lat, e.latLng.lng));
+          if (selectedMapPoint != null) {
+            //selectedMapPoint = selectedTransportationLine.path.getAt(index);
+          } else {
+            window.alert("No point selected");
+          }
+        }
+      });
+    });
   }
 
-  void getPaths() {
-    map.clearSuggestions();
+  void getPaths() {/*
+    MapPoint mapPoint = new MapPoint(0, 0);
+    //map.panToBounds(new LatLngBounds(originPosition, destination));
+    if (originPosition.lat > destination.lat) {
+      mapPoint.lat = originPosition.lat-(originPosition.lat - destination.lat);
+    } else {
+      mapPoint.lat = destination.lat - (destination.lat - originPosition.lat);
+    }print(originPosition.lat);
+    mapPoint.lat = originPosition.lat;
+    mapPoint.lng = originPosition.lng ;
+    //
+    if (originPosition.lng > destination.lng) {
+      mapPoint.lng = originPosition.lng - destination.lng;
+    } else {
+      mapPoint.lng = destination.lng - originPosition.lng;
+    }
+    print(mapPoint.toJson());
+    map.center = originPosition;*/
+    map.clearTransportationPaths();
+    if (timer != null && timer.isActive) {
+      clearNavigationPosition();
+    }
     TransportationRequest transportationRequest = new TransportationRequest(originPosition, destination);
     transportationRequestWS.update(transportationRequest).then((transportationPaths) {
       //TODO verify clear effect
-      map.suggestions.clear();
-      map.suggestions.addAll(transportationPaths);
+      map.transportationPaths.clear();
+      map.transportationPaths.addAll(transportationPaths);
+      //map.showTransportationPaths();
     });
+  }
+
+  Timer timer;
+  int ip ,jp;
+  TransportationPath selectedTransportationPath;
+  void select(TransportationPath transportationPath) {
+    if (selectedTransportationPath != null) {
+      selectedTransportationPath.hide();
+      navigationPosition.position = null;
+    }
+    selectedTransportationPath = transportationPath;
+    selectedTransportationPath.show(map);
+    int length = selectedTransportationPath.length;
+    if (timer != null && timer.isActive) {
+      clearNavigationPosition();
+    }
+    int i = 0;
+    ip = 0;
+    jp = 0;
+    timer = new Timer.periodic(new Duration(seconds: 1), (Timer timer) {
+      next();
+      if (i == length) {
+        clearNavigationPosition();
+      }
+      i++;
+    });
+  }
+
+  clearNavigationPosition() {
+    navigationPosition.map = null;
+    navigationPosition = new Marker()..animation = Animation.BOUNCE;
+    navigationPosition.map = map;
+    timer.cancel();
+  }
+  
+  bool next() {
+    if (navigationPosition.position == null) {
+      navigationPosition.position = selectedTransportationPath.transportationLines.first.mapPoints.first;
+    } else {
+      bool found = false;
+      for(int i = ip; i<selectedTransportationPath.transportationLines.length;i++){
+        TransportationLine transportationLine = selectedTransportationPath.transportationLines[i];
+        for(int j =jp;j<transportationLine.mapPoints.length;j++){
+          MapPoint mapPoint = transportationLine.mapPoints[j];
+          if (found && mapPoint is Station) {
+            navigationPosition.position = mapPoint;
+            ip = i;
+            jp = j;
+            return true;
+          }
+          if (mapPoint.equals(navigationPosition.position)) {
+            found = true;
+          }
+          jp =0;
+        }
+      }
+    }
+    return false;
+  }
+
+  previous() {
+    bool found = false;
+    for (TransportationLine transportationLine in selectedTransportationPath.transportationLines.reversed) {
+      for (MapPoint mapPoint in transportationLine.mapPoints.reversed) {
+        if (found && mapPoint is Station) {
+          navigationPosition.position = mapPoint;
+          return;
+        }
+        if (mapPoint.equals(navigationPosition.position)) {
+          found = true;
+        }
+      }
+    }
   }
 
   bool isReadyToSearchPaths() {
@@ -312,9 +467,7 @@ class HomeController {
   }
 
   void signUp() {
-    print("uppu");
     userWS.create(user).then((e) {
-      print("subscribed");
       user = new User();
       //FIXME find alternative solution
       context.callMethod(r'$', ['#signUpModal']).callMethod('modal', ['toggle']);
@@ -326,11 +479,9 @@ class HomeController {
     });
   }
 
-  void logIn() {
-    print("logou");
-    userWS.read(user).then((user) {
+  Future logIn() {
+    return userWS.read(user).then((user) {
       this.user = user;
-      print("logged");
       //FIXME find alternative solution
       context.callMethod(r'$', ['#logInModal']).callMethod('modal', ['toggle']);
       transportationLineWS = new TransportationLineWS.withUser(user);
@@ -338,12 +489,10 @@ class HomeController {
       stationSuggestionWS = new StationSuggestionWS.withUser(user);
     }).catchError((e) {
       user.password = "";
-      print("error");
     });
   }
 
   void logOut() {
-    print("logouto");
     transportationLineWS = new TransportationLineWS();
     stationWS = new StationWS();
     stationSuggestionWS = new StationSuggestionWS();
@@ -360,8 +509,16 @@ class MyAppModule extends Module {
 
 void main() {
   applicationFactory().addModule(new MyAppModule()).run();
-
-/*
+  /*
+  var s = new TransportationLine(null)
+  ..id = "539f5cce231890d52b8abe99"
+  ..toJson();
+  
+  HttpRequest.request("http://localhost:8081/rest/TransportationLine/", method: "DELETE", requestHeaders: {"content-type": "application/json", "authorization": "5399e80a2318e2764276aff6:123456"}, sendData: new TransportationLine(null)
+          ..id = "539f5cce231890d52b8abe99"
+          ..toJson().toString());
+  print("okey");*/
+  /*
   User user = new User();
   user.email = "admin@transpori.info";
   user.password = "123456";

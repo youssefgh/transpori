@@ -6,7 +6,9 @@
 package com.transportation.transportation.model.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.springframework.data.annotation.Transient;
 
@@ -40,7 +42,7 @@ public class MapPoint implements Serializable {
     public void setLatitude(Float latitude) {
         this.latitude = latitude;
     }
- 
+
     public Float getLongitude() {
         return longitude;
     }
@@ -48,28 +50,29 @@ public class MapPoint implements Serializable {
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
-    
-    public Double distanceTo(MapPoint mapPoint){
+
+    public Double distanceTo(MapPoint mapPoint) {
         final Float radius = 6371F;
-        Double dLatitude = Math.toRadians(mapPoint.getLatitude()-latitude);
-        Double dLongitude = Math.toRadians(mapPoint.getLongitude()-longitude);
+        Double dLatitude = Math.toRadians(mapPoint.getLatitude() - latitude);
+        Double dLongitude = Math.toRadians(mapPoint.getLongitude() - longitude);
         Double latitude1 = Math.toRadians(latitude);
         Double latitude2 = Math.toRadians(mapPoint.getLatitude());
-        Double haversine = Math.sin(dLatitude/2) * Math.sin(dLatitude/2) + 
-                Math.sin(dLongitude/2) * Math.sin(dLongitude/2) 
+        Double haversine = Math.sin(dLatitude / 2) * Math.sin(dLatitude / 2)
+                + Math.sin(dLongitude / 2) * Math.sin(dLongitude / 2)
                 * Math.cos(latitude1) * Math.cos(latitude2);
-        Double c = 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1-haversine));
+        Double c = 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
         return radius * c * 1000;
     }
-    
+
     public boolean isNear(MapPoint mapPoint) {
-        return distanceTo(mapPoint)<defaultNearbyDistanceInMeter;
+        return distanceTo(mapPoint) < defaultNearbyDistanceInMeter;
     }
-    
-    public boolean isNear(MapPoint mapPoint,Double distanceInMeter) {
-        return distanceTo(mapPoint)<distanceInMeter;
+
+    public boolean isNear(MapPoint mapPoint, Double distanceInMeter) {
+        return distanceTo(mapPoint) < distanceInMeter;
     }
-    
+
+    @JsonIgnore
     public boolean isStation() {
         return this instanceof Station;
     }

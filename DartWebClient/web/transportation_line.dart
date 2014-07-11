@@ -14,28 +14,11 @@ class TransportationLine extends Polyline {
   String name;
   InfoWindow infoWindow;
 
-  static final List types = [{
-      "id": "BUS_LINE",
-      "type": "BusLine"
-    }, {
-      "id": "TRAIN_LINE",
-      "type": "TrainLine"
-    }, {
-      "id": "TRAMWAY_LINE",
-      "type": "TramwayLine"
-    }];
+  static final List types = ["BUS_LINE", "TRAIN_LINE", "TRAMWAY_LINE"];
 
-  void init() {
-    editable = true;
-    onRightclick.listen((e) {
-      for (int i = 0; i < path.length; i++) {
-        if (e.latLng.equals(path.getAt(i))) {
-          path.removeAt(i);
-          break;
-        }
-      }
-    });
+  void init() {/*
     onMouseover.listen((e) {
+      if (infoWindow != null) infoWindow.close();
       infoWindow = new InfoWindow()
           ..position = e.latLng
           ..content = name;
@@ -43,14 +26,17 @@ class TransportationLine extends Polyline {
     });
     onMouseout.listen((e) {
       infoWindow.close();
-    });
+    });*/
   }
 
-  TransportationLine(PolylineOptions polylineOptions): super(polylineOptions) {
+  TransportationLine(PolylineOptions polylineOptions) : super(polylineOptions) {
     init();
   }
 
-  TransportationLine.fromJSON(String json, PolylineOptions polylineOptions): super(polylineOptions) {
+  //FIXME
+  //TODO review for redundancy
+  //DEPRECATED
+  TransportationLine.fromJSON(String json, PolylineOptions polylineOptions) : super(polylineOptions) {
     init();
     Map transportationLineMap = JSON.decode(json);
     id = transportationLineMap['id'];
@@ -71,7 +57,8 @@ class TransportationLine extends Polyline {
     }
   }
 
-  TransportationLine.fromMap(Map transportationLineMap, PolylineOptions polylineOptions): super(polylineOptions) {
+  //TODO export logic to MapPoint or Station
+  TransportationLine.fromMap(Map transportationLineMap, PolylineOptions polylineOptions) : super(polylineOptions) {
     init();
     id = transportationLineMap['id'];
     name = transportationLineMap['name'];
@@ -79,11 +66,25 @@ class TransportationLine extends Polyline {
       if (mapPointMap['@type'] == "MapPoint") {
         //TODO export parse logic
         path.push(new MapPoint(mapPointMap['latitude'], mapPointMap['longitude']));
+        mapPoints.add(new MapPoint(mapPointMap['latitude'], mapPointMap['longitude']));
         continue;
       }
-      if (mapPointMap['@type'] == "Station") {
+      if (mapPointMap['@type'] == "BusStation") {
         //TODO export parse logic
-        path.push(new Station(mapPointMap['latitude'], mapPointMap['longitude']));
+        path.push(new BusStation(mapPointMap['latitude'], mapPointMap['longitude']));
+        mapPoints.add(new BusStation(mapPointMap['latitude'], mapPointMap['longitude'])..id = mapPointMap['id']);
+        continue;
+      }
+      if (mapPointMap['@type'] == "TrainStation") {
+        //TODO export parse logic
+        path.push(new TrainStation(mapPointMap['latitude'], mapPointMap['longitude']));
+        mapPoints.add(new TrainStation(mapPointMap['latitude'], mapPointMap['longitude'])..id = mapPointMap['id']);
+        continue;
+      }
+      if (mapPointMap['@type'] == "TramwayStation") {
+        //TODO export parse logic
+        path.push(new TramwayStation(mapPointMap['latitude'], mapPointMap['longitude']));
+        mapPoints.add(new TramwayStation(mapPointMap['latitude'], mapPointMap['longitude'])..id = mapPointMap['id']);
         continue;
       }
     }
@@ -105,32 +106,105 @@ class TransportationLine extends Polyline {
     return transportationLine;
   }
 
+  StreamSubscription<PolyMouseEvent> onRightclickStreamSubscription;
+
+  void set editable(bool editable) {
+    super.editable = editable;
+    if (onRightclickStreamSubscription != null) onRightclickStreamSubscription.cancel();
+    if (editable) {
+      onRightclickStreamSubscription = onRightclick.listen((e) {
+        for (int i = 0; i < path.length; i++) {
+          if (e.latLng.equals(path.getAt(i))) {
+            path.removeAt(i);
+            break;
+          }
+        }
+      });
+    }
+  }
+
+  bool isNew() {
+    return id == null;
+  }
+
   void prepareForDelete() {
-    print("bef"+map.toString());
-    print(CustomMap.$wrap(map.$unsafe));
     CustomMap.$wrap(map.$unsafe).cancelOnClick();
+    hide();
+  }
+
+  show(CustomMap map) {
+    this.map = map;
+  }
+
+  hide() {
     map = null;
   }
-  
-  MapPoint getClosestMapPoint(MapPoint mapPoint){
+
+  MapPoint getClosestMapPoint(MapPoint mapPoint) {
     List<LatLng> mapPoints = path.getArray();
-    for(int i=0; i<mapPoints.length ; i++){
-      if(mapPoints.elementAt(i).lat == mapPoint.lat && mapPoints.elementAt(i).lng == mapPoint.lng){
-          return new MapPoint(mapPoints.elementAt(i).lat, mapPoints.elementAt(i).lng);
+    for (int i = 0; i < mapPoints.length; i++) {
+      if (mapPoints.elementAt(i).lat == mapPoint.lat && mapPoints.elementAt(i).lng == mapPoint.lng) {
+        return new MapPoint(mapPoints.elementAt(i).lat, mapPoints.elementAt(i).lng);
       }
     }
     return null;
+  }
+  //TODO optimize
+  int indexOf(MapPoint mapPoint) {
+    /*
+    path.forEach((latLng,i){
+      if(latLng.equals(mapPoint)) return i; 
+    });*/
+    List<LatLng> mapPoints = path.getArray();
+    for (int i = 0; i < mapPoints.length; i++) {
+      if (mapPoints.elementAt(i).lat == mapPoint.lat && mapPoints.elementAt(i).lng == mapPoint.lng) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  String get type => runtimeType.toString().replaceFirst("Line", "");
+
+  List<MapPoint> mapPoints = new List();
+
+  showStations() {
+    for (MapPoint mapPoint in mapPoints) {
+      if (mapPoint is Station) {
+        mapPoint.show(map);
+      }
+    }
+  }
+
+  hideStations() {
+    for (MapPoint mapPoint in mapPoints) {
+      if (mapPoint is Station) {
+        mapPoint.hide();
+      }
+    }
+  }
+
+  void reverseMapPoints() {
+    path = path.getArray().reversed.toList();
+  }
+  
+  double get traveledDistance{
+    double traveledDistance = 0.0;
+    for(int i = 0; i<mapPoints.length - 1;i++){
+      traveledDistance += mapPoints[i].distanceTo(mapPoints[i+1]);
+    }
+    return traveledDistance;
   }
 
   Map toJson() {
     Map json = new Map();
     json["\"@type\""] = "\"" + runtimeType.toString() + "\"";
     if (id != null) json["\"id\""] = "\"" + id + "\"";
-    json["\"name\""] = "\"" + name + "\"";
+    if (name != null) json["\"name\""] = "\"" + name + "\""; else json["\"name\""] = "\"\"";
     List mapPoints = new List();
     MapPoint mapPoint;
     for (int i = 0; i < path.length; i++) {
-      // TODO report and fix
+      // TODO fix
       //mapPoints.add(JSON.encode(path.getAt(i)));
       //mapPoints.add("{\"@type\" : \"MapPoint\",\"latitude\":"+path.getAt(i).lat.toString()+", \"longitude\":"+path.getAt(i).lng.toString()+"}");
       mapPoint = new MapPoint(path.getAt(i).lat, path.getAt(i).lng);
@@ -143,7 +217,6 @@ class TransportationLine extends Polyline {
     if (s.endsWith(",")) s = s.substring(0, s.length - 1);
     s += "]";
     json["\"mapPoints\""] = s;
-    //print(json);
     return json;
   }
 }

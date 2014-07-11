@@ -50,6 +50,10 @@ class Station extends MapPoint {
     hide();
   }
   
+  void show(GMap map){
+      marker.map = map;
+  }
+  
   void hide(){
     marker.map = null;
   }
@@ -86,6 +90,7 @@ class TramwayStation extends Station {
   TramwayStation(num lat, num lng, [String id]): super(lat, lng, id) {
     Icon icon = new Icon();
     icon.url = "images/tramway_station.png";
+    icon.scaledSize = new Size(12,12);
     marker.icon = icon;
   }
 }

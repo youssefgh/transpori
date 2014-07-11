@@ -39,7 +39,7 @@ class OriginPosition extends LatLng {
   
   Map toJson(){
     Map json = new Map();
-    //json["\"@type\""]= "\""+runtimeType.toString()+"\"";
+    json["\"@type\""]= "\""+runtimeType.toString()+"\"";
     json["\"latitude\""]= lat;
     json["\"longitude\""]= lng;
     return json;
