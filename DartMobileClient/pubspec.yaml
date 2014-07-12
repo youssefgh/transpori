@@ -1,5 +1,0 @@
-name: transportation_dart_client
-description: A sample web application
-dependencies:
-  browser: any
-  google_maps: any
