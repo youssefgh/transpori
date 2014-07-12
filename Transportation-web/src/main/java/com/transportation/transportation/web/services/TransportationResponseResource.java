@@ -73,32 +73,41 @@ public class TransportationResponseResource {
             if (transportationPath.getTransportationLines().get(0).getFirstMapPoint().distanceTo(originPosition) > 1000D) {
                 int size = transportationPath.getTransportationLines().size();
                 foundTransportationLines = find(originPosition, transportationPath.getTransportationLines().get(0).getMapPoints().get(0));
-                for (TransportationLine transportationLine : foundTransportationLines) {
-                    if (!transportationResponse.isHave(transportationLine)) {
-                        transportationPath.addTransportationLine(transportationLine);
-                    }
-                }
-                if (size < transportationPath.getTransportationLines().size()) {
-                    transportationPath.getTransportationLines().add(0, transportationPath.getTransportationLines().get(size));
-                    transportationPath.getTransportationLines().remove(size + 1);
-                }
-            }
-            if (transportationPath.getLastMapPoint().distanceTo(destination) > 1000D) {
-                foundTransportationLines = find(transportationPath.getLastMapPoint(), destination);
-                for (int j = 0; j < foundTransportationLines.size(); j++) {
-                    TransportationLine transportationLine = foundTransportationLines.get(j);
-                    while (foundTransportationLines.indexOf(transportationLine) != foundTransportationLines.lastIndexOf(transportationLine)) {
-                        foundTransportationLines.remove(foundTransportationLines.lastIndexOf(transportationLine));
-                    }
-                }
-                System.out.println("f s distinct" + foundTransportationLines.size());
+                keepDistinct(foundTransportationLines);
                 if (foundTransportationLines.size() == 1) {
                     for (TransportationLine transportationLine : foundTransportationLines) {
                         if (!transportationResponse.isHave(transportationLine)) {
                             transportationPath.addTransportationLine(transportationLine);
                         }
                     }
-                } else if (foundTransportationLines.size() > 1) {System.out.println("size "+transportationResponse.getTransportationPaths().size());
+                    if (size < transportationPath.getTransportationLines().size()) {
+                        transportationPath.getTransportationLines().add(0, transportationPath.getTransportationLines().get(size));
+                        transportationPath.getTransportationLines().remove(size + 1);
+                    }
+                } else if (foundTransportationLines.size() > 1) {
+                    TransportationPath oldTransportationPath = new TransportationPath(transportationPath);
+                    transportationPath.getTransportationLines().add(0,foundTransportationLines.get(0));
+                    TransportationPath newTransportationPath;
+                    for (int j = 1; j < foundTransportationLines.size(); j++) {
+                        TransportationLine transportationLine = foundTransportationLines.get(j);
+                        if (!transportationResponse.isHave(transportationLine)) {
+                            newTransportationPath = new TransportationPath(oldTransportationPath);
+                            newTransportationPath.getTransportationLines().add(0,transportationLine);
+                            transportationResponse.addTransportationPath(newTransportationPath);
+                        }
+                    }
+                }
+            }
+            if (transportationPath.getLastMapPoint().distanceTo(destination) > 1000D) {
+                foundTransportationLines = find(transportationPath.getLastMapPoint(), destination);
+                keepDistinct(foundTransportationLines);
+                if (foundTransportationLines.size() == 1) {
+                    for (TransportationLine transportationLine : foundTransportationLines) {
+                        if (!transportationResponse.isHave(transportationLine)) {
+                            transportationPath.addTransportationLine(transportationLine);
+                        }
+                    }
+                } else if (foundTransportationLines.size() > 1) {
                     TransportationPath oldTransportationPath = new TransportationPath(transportationPath);
                     transportationPath.addTransportationLine(foundTransportationLines.get(0));
                     TransportationPath newTransportationPath;
@@ -145,6 +154,15 @@ public class TransportationResponseResource {
             }
         }
         return foundTransportationLines;
+    }
+
+    private void keepDistinct(List<TransportationLine> transportationLines) {
+        for (int j = 0; j < transportationLines.size(); j++) {
+            TransportationLine transportationLine = transportationLines.get(j);
+            while (transportationLines.indexOf(transportationLine) != transportationLines.lastIndexOf(transportationLine)) {
+                transportationLines.remove(transportationLines.lastIndexOf(transportationLine));
+            }
+        }
     }
 
     List<Station> findNearbyStations(MapPoint mapPoint, Double distance
