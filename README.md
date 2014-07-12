@@ -14,6 +14,7 @@ Openshift branch changes :
     *Transpotration-ejb/.../SpringConfig.xml
     *Transpotration-web/pom.xml
     *DartClient/.../webservice_client.dart
+    *DartClient/.../index.html (rm account funcs)
     +.openshift
     
 
