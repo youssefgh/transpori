@@ -7,6 +7,8 @@ package com.transportation.transportation.web.services;
 
 import com.transportation.transportation.ejb.dao.DaoStation;
 import com.transportation.transportation.ejb.dao.DaoTransportationLine;
+import com.transportation.transportation.ejb.dao.impl.DaoStationImpl;
+import com.transportation.transportation.ejb.dao.impl.DaoTransportationLineImpl;
 import com.transportation.transportation.model.dtos.Destination;
 import com.transportation.transportation.model.dtos.OriginPosition;
 import com.transportation.transportation.model.dtos.TransportationPath;
@@ -41,10 +43,10 @@ public class TransportationResponseResource {
     private UriInfo context;
 
     @EJB
-    private DaoTransportationLine daoTransportationLine;
+    private DaoTransportationLine daoTransportationLine = new DaoTransportationLineImpl();
 
     @EJB
-    private DaoStation daoStation;
+    private DaoStation daoStation = new DaoStationImpl();
     private List<TransportationLine> transportationLines;
     private List<Station> stations;
 
