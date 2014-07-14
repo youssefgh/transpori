@@ -5,8 +5,6 @@ dependencies:
   angular_ui: any
   browser: any
   google_maps: any
-  json_object: any
-  web_components: any
 transformers:
 - angular:
     html_files:

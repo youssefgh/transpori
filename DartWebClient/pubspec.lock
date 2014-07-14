@@ -32,7 +32,7 @@ packages:
   collection:
     description: collection
     source: hosted
-    version: "0.9.3+1"
+    version: "0.9.4"
   di:
     description: di
     source: hosted
@@ -53,10 +53,6 @@ packages:
     description: js_wrapping
     source: hosted
     version: "0.1.1"
-  json_object:
-    description: json_object
-    source: hosted
-    version: "1.0.18+2"
   logging:
     description: logging
     source: hosted
