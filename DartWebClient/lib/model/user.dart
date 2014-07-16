@@ -1,3 +1,4 @@
+part of model;
 
 class User {
   String id;
@@ -8,31 +9,33 @@ class User {
 
   User();
 
+  User.fromMap(Map userMap) {
+    id = userMap["id"];
+    password = userMap["password"];
+    firstName = userMap["firstName"];
+    email = userMap["email"];
+    birthday = new DateTime.fromMillisecondsSinceEpoch(userMap["birthday"]);
+  }
+
   factory User.instanceFromMap(Map userMap) {
     User user;
     switch (userMap["@type"]) {
       case "User":
-        user = new User();
+        user = new User.fromMap(userMap);
         break;
       case "Administrator":
-        user = new Administrator();
+        user = new Administrator.fromMap(userMap);
         break;
     }
-    user
-        ..id = userMap["id"]
-        ..password = userMap["password"]
-        ..firstName = userMap["firstName"]
-        ..email = userMap["email"]
-        ..birthday = new DateTime.fromMillisecondsSinceEpoch(userMap["birthday"]);
     return user;
   }
 
   bool isAdministrator() {
-    return this.runtimeType.toString() == "Administrator";
+    return this is Administrator;
   }
-  
-  String getAuthorizationString(){
-    return id+":"+password;
+
+  String getAuthorizationString() {
+    return id + ":" + password;
   }
 
   Map toJson() {
@@ -49,4 +52,6 @@ class User {
 
 class Administrator extends User {
 
+  Administrator.fromMap(Map administratorMap) : super.fromMap(administratorMap);
+  
 }

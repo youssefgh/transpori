@@ -1,12 +1,4 @@
-import 'dart:html';
-import 'dart:js';
-import 'dart:async';
-import 'package:google_maps/google_maps.dart';
-import 'station.dart';
-import 'map_point.dart';
-import 'transportation_line.dart';
-import 'transportation_path.dart';
-import 'transportation_response.dart';
+part of model;
 
 class CustomMap extends GMap {
 
@@ -44,23 +36,17 @@ class CustomMap extends GMap {
 
   void deleteStation(Station station) {
     stations.remove(station);
-    station.prepareForDelete();
+    station.hide();
   }
   
   void deleteStationSuggestion(Station stationSuggestion) {
       stations.remove(stationSuggestion);
-      stationSuggestion.prepareForDelete();
-  }
-
-  void clearStations() {
-    for (Station station in stations) {
-      station.prepareForDelete();
-    }
+      stationSuggestion.hide();
   }
 
   void showStations() {
     for (Station station in stations) {
-      station.marker.map = this;
+      station.show(this);
     }
   }
 

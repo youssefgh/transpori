@@ -1,32 +1,12 @@
-import 'package:google_maps/google_maps.dart';
-import 'custom_map.dart';
-import 'transportation_line.dart';
-import 'station.dart';
-import 'map_point.dart';
+part of model;
 
 class TransportationPath {
 
   List<TransportationLine> transportationLines = new List();
 
   TransportationPath.fromMap(Map transportationPathMap) {
-    //List transportationLinesMap = transportationPathMap["transportationLineas"];
     for (Map transportationLineMap in transportationPathMap["transportationLines"]) {
       transportationLines.add(new TransportationLine.instanceFromMap(transportationLineMap));
-    }
-  }
-
-  show(CustomMap map) {
-    for (TransportationLine transportationLine in transportationLines) {
-      transportationLine.show(map);
-      //TODO Review for alt solution
-      transportationLine.showStations();
-    }
-  }
-
-  hide() {
-    for (TransportationLine transportationLine in transportationLines) {
-      transportationLine.hide();
-      transportationLine.hideStations();
     }
   }
 
@@ -37,10 +17,10 @@ class TransportationPath {
     }
     return length;
   }
-  
+
   String get avgInTransportationDistanceInKM {
-    double avgInTransportationDistanceInKM = (avgInTransportationDistance/1000);
-    return avgInTransportationDistanceInKM.toString().substring(0,avgInTransportationDistanceInKM.toString().indexOf(".")+2);
+    double avgInTransportationDistanceInKM = (avgInTransportationDistance / 1000);
+    return avgInTransportationDistanceInKM.toString().substring(0, avgInTransportationDistanceInKM.toString().indexOf(".") + 2);
   }
 
   double get avgInTransportationDistance {
@@ -60,12 +40,17 @@ class TransportationPath {
     avgOutTransportationDistance += transportationLines.last.mapPoints.last.distanceTo(destination);
     return avgOutTransportationDistance * 1.5;
   }
-  /*
-    Map toJson(){
-      Map json = new Map();
-      //json["\"@type\""]= "\""+runtimeType.toString()+"\"";
-      json["\"originPosition\""]= originPosition.toJson();
-      json["\"destination\""]= destination.toJson();
-      return json;
-    }*/
+
+  show(CustomMap map) {
+    for (TransportationLine transportationLine in transportationLines) {
+      transportationLine.showWithStations(map);
+    }
+  }
+
+  hide() {
+    for (TransportationLine transportationLine in transportationLines) {
+      transportationLine.hideWithStations();
+    }
+  }
+
 }
