@@ -1,18 +1,10 @@
-import 'dart:html' hide Animation;
-import 'dart:js';
-import 'dart:async';
-import 'package:angular/angular.dart' hide Animation;
-import 'package:google_maps/google_maps.dart';
-import 'package:transpori/model/model.dart';
-import 'package:transpori/model/transportation_line/transportation_line.dart';
-import 'package:transpori/model/station/station.dart';
-import 'package:transpori/service/webservice_client.dart';
+part of controller;
 
 @Controller(selector: '[home-ctrl]', publishAs: 'ctrl')
 class HomeController {
 
   //models
-  CustomMap map;
+  CustomMap customMap;
   User user;
   TransportationLine selectedTransportationLine;
   OriginPosition originPosition;
@@ -34,32 +26,11 @@ class HomeController {
 
   HomeController() {
     navigationPosition = new Marker()..animation = Animation.BOUNCE;
-    try {
-      map = new CustomMap(querySelector("#map"));
-      navigationPosition.map = map;
+    //TODO separate ctrl consernes
+    new Future.delayed(new Duration(seconds: 1), () {
+      navigationPosition.map = customMap;
       setPathMode();
-    } catch (e) {
-      print("Map loading error");
-    }
-    //for test purposes
-    user = new User();
-    //user.id = "5399e80a2318e2764276aff6";
-    //user.email = "admin@transpori.info";
-    //user.password = "123456";
-    //user.birthday = new DateTime.utc(1990);
-    //user.firstName = "nnnnn";
-    //manual login
-    //user = new Administrator("youssef", "123456");
-    //user = new User("youssef", "123456");
-    /*
-    logIn().then((e){
-      refreshTransportationLines();
-    });*/
-    //originPosition = new OriginPosition(new LatLng(33.58716733904656, -7.6815032958984375), map);
-    //destination = new Destination(new LatLng(33.571149664447326, -7.5311279296875), map);
-    //originPosition = new OriginPosition(new LatLng(33.695208841799186, -7.38006591796875), map);
-    //destination = new Destination(new LatLng(33.53967772193588, -7.6348114013671875), map);
-    //getPaths();
+    });
   }
 
   bool isUserLoggedIn() {
@@ -87,17 +58,17 @@ class HomeController {
     if (destination != null) {
       destination.hide();
     }
-    map.cancelOnClick();
-    map.onClickStreamSubscription = map.onClick.listen((e) {
+    customMap.cancelOnClick();
+    customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
       Station busStationSuggestion = new BusStationSuggestion(e.latLng.lat, e.latLng.lng);
       stationSuggestionWS.create(busStationSuggestion).then((id) {
         busStationSuggestion.id = id;
-        busStationSuggestion.stationMarker.map = map;
-        map.stationSuggestions.add(busStationSuggestion);
+        busStationSuggestion.stationMarker.map = customMap;
+        customMap.stationSuggestions.add(busStationSuggestion);
         //TODO remove replicated code
         busStationSuggestion.stationMarker.onRightclick.listen((e) {
           stationSuggestionWS.delete(busStationSuggestion).then((e) {
-            map.deleteStation(busStationSuggestion);
+            customMap.deleteStation(busStationSuggestion);
           });
         });
         busStationSuggestion.stationMarker.onDragend.listen((e) => stationWS.update(busStationSuggestion));
@@ -125,18 +96,18 @@ class HomeController {
   void setPathMode() {
     mapMode = "PATH_MODE";
     if (originPosition != null) {
-      originPosition.show(map);
+      originPosition.show(customMap);
     }
     if (destination != null) {
-      destination.show(map);
+      destination.show(customMap);
     }
-    map.cancelOnClick();
-    map.onClickStreamSubscription = map.onClick.listen((e) {
+    customMap.cancelOnClick();
+    customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
       if (originPosition == null || !originPosition.isVisible()) {
-        originPosition = new OriginPosition(e.latLng, map);
+        originPosition = new OriginPosition(e.latLng, customMap);
       } else {
         if (destination == null || !destination.isVisible()) {
-          destination = new Destination(e.latLng, map);
+          destination = new Destination(e.latLng, customMap);
         }
       }
     });
@@ -148,13 +119,13 @@ class HomeController {
   void setLineMode() {
     mapMode = "LINE_MODE";
     refreshTransportationLines().then((e) {
-      map.showtransportationLines();
+      customMap.showtransportationLines();
     });
     refreshStations().then((e) {
-      map.showStations();
+      customMap.showStations();
     });
-    map.cancelOnClick();
-    map.onClickStreamSubscription = map.onClick.listen((e) {
+    customMap.cancelOnClick();
+    customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
       if (selectedTransportationLine != null) {
         if (!lineLinkMode) selectedTransportationLine.path.push(new MapPoint(e.latLng.lat, e.latLng.lng));
       }
@@ -163,13 +134,13 @@ class HomeController {
 
   void setStationMode() {
     mapMode = "STATION_MODE";
-    map.cancelOnClick();
-    map.hidetransportationLines();
+    customMap.cancelOnClick();
+    customMap.hidetransportationLines();
     refreshStations().then((e) {
-      map.showStations();
+      customMap.showStations();
     });
-    map.cancelOnClick();
-    map.onClickStreamSubscription = map.onClick.listen((e) {
+    customMap.cancelOnClick();
+    customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
       Station station;
       switch (selectedStationType) {
         case "BUS_STATION":
@@ -187,8 +158,8 @@ class HomeController {
       }
       stationWS.create(station).then((id) {
         station.id = id;
-        station.stationMarker.map = map;
-        map.stations.add(station);
+        station.stationMarker.map = customMap;
+        customMap.stations.add(station);
         //TODO remove replicated code
         //TODO review
         station.stationMarker.onClick.listen((e) {
@@ -198,7 +169,7 @@ class HomeController {
         });
         station.stationMarker.onRightclick.listen((e) {
           stationWS.delete(station).then((e) {
-            map.deleteStation(station);
+            customMap.deleteStation(station);
           });
         });
         station.stationMarker.onDragend.listen((e) => stationWS.update(station));
@@ -208,7 +179,7 @@ class HomeController {
 
   Future refreshTransportationLines() {
     return transportationLineWS.readAll().then((transportationLines) {
-      map.transportationLines = transportationLines;
+      customMap.transportationLines = transportationLines;
       /*
       for (TransportationLine transportationLine in transportationLines) {
         transportationLine.onClick.listen((e) {
@@ -224,9 +195,9 @@ class HomeController {
 
   Future refreshStations() {
     return stationWS.readAll().then((stations) {
-      map.hideStations();
-      map.stations = stations;
-      for (Station station in map.stations) {
+      customMap.hideStations();
+      customMap.stations = stations;
+      for (Station station in customMap.stations) {
         //TODO remove replicated code
         station.stationMarker.onClick.listen((e) {
           if (isLineMode()) {
@@ -240,7 +211,7 @@ class HomeController {
         });
         station.stationMarker.onRightclick.listen((e) {
           stationWS.delete(station).then((e) {
-            map.deleteStation(station);
+            customMap.deleteStation(station);
           });
         });
         station.stationMarker.onDragend.listen((e) => stationWS.update(station));
@@ -270,7 +241,7 @@ class HomeController {
         window.alert("No line created");
         return;
     }
-    selectedTransportationLine.map = map;
+    selectedTransportationLine.map = customMap;
     selectedTransportationLine.editable = true;
   }
 
@@ -334,7 +305,8 @@ class HomeController {
     });
   }
 
-  void getPaths() {/*
+  void getPaths() {
+    /*
     MapPoint mapPoint = new MapPoint(0, 0);
     //map.panToBounds(new LatLngBounds(originPosition, destination));
     if (originPosition.lat > destination.lat) {
@@ -351,21 +323,21 @@ class HomeController {
       mapPoint.lng = destination.lng - originPosition.lng;
     }
     map.center = originPosition;*/
-    map.clearTransportationPaths();
+    customMap.clearTransportationPaths();
     if (timer != null && timer.isActive) {
       clearNavigationPosition();
     }
     TransportationRequest transportationRequest = new TransportationRequest(originPosition, destination);
     transportationRequestWS.update(transportationRequest).then((transportationPaths) {
       //TODO verify clear effect
-      map.transportationPaths.clear();
-      map.transportationPaths.addAll(transportationPaths);
+      customMap.transportationPaths.clear();
+      customMap.transportationPaths.addAll(transportationPaths);
       //map.showTransportationPaths();
     });
   }
 
   Timer timer;
-  int ip ,jp;
+  int ip, jp;
   TransportationPath selectedTransportationPath;
   void select(TransportationPath transportationPath) {
     if (selectedTransportationPath != null) {
@@ -373,7 +345,7 @@ class HomeController {
       navigationPosition.position = null;
     }
     selectedTransportationPath = transportationPath;
-    selectedTransportationPath.show(map);
+    selectedTransportationPath.show(customMap);
     int length = selectedTransportationPath.length;
     if (timer != null && timer.isActive) {
       clearNavigationPosition();
@@ -393,21 +365,21 @@ class HomeController {
   clearNavigationPosition() {
     navigationPosition.map = null;
     navigationPosition = new Marker()..animation = Animation.BOUNCE;
-    navigationPosition.map = map;
+    navigationPosition.map = customMap;
     timer.cancel();
   }
-  
+
   MapPoint mapPointPosition;
-  
+
   bool next() {
     if (navigationPosition.position == null) {
       navigationPosition.position = selectedTransportationPath.transportationLines.first.mapPoints.first;
       mapPointPosition = selectedTransportationPath.transportationLines.first.mapPoints.first;
     } else {
       bool found = false;
-      for(int i = ip; i<selectedTransportationPath.transportationLines.length;i++){
+      for (int i = ip; i < selectedTransportationPath.transportationLines.length; i++) {
         TransportationLine transportationLine = selectedTransportationPath.transportationLines[i];
-        for(int j =jp;j<transportationLine.mapPoints.length;j++){
+        for (int j = jp; j < transportationLine.mapPoints.length; j++) {
           MapPoint mapPoint = transportationLine.mapPoints[j];
           if (found && mapPoint is Station) {
             navigationPosition.position = mapPoint;
@@ -419,7 +391,7 @@ class HomeController {
           if (mapPoint.equals(mapPointPosition)) {
             found = true;
           }
-          jp =0;
+          jp = 0;
         }
       }
     }

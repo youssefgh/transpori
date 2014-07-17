@@ -51,7 +51,7 @@
             </div>
         </header>
 
-        <div id="map"></div>
+        <div id="map" gmaps="ctrl.customMap"></div>
 
         <div style="background-color: white; opacity: 0.9; width: 100px; top: 55px;left: 90px;position: absolute;-moz-border-radius: 10px;-webkit-border-radius: 10px; -moz-border-radius: 10px;padding: 10px">
             <table style="opacity: 2">
@@ -69,7 +69,7 @@
 
         <div style="position: absolute; max-height: 70%; top: 15%; right: -13px;overflow: scroll; overflow-x: hidden">
             <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="transportationPath in ctrl.map.transportationPaths" ng-click="ctrl.select(transportationPath)" ng-class="{active : transportationPath == ctrl.selectedTransportationPath}">
+                <a href="#" class="list-group-item" ng-repeat="transportationPath in ctrl.customMap.transportationPaths" ng-click="ctrl.select(transportationPath)" ng-class="{active : transportationPath == ctrl.selectedTransportationPath}">
                     <div>Environ {{transportationPath.avgInTransportationDistanceInKM}} Km en transport</div>
                     <span ng-repeat="transportationLine in transportationPath.transportationLines">
                         <span class="label label-success" title="{{transportationLine.name}}">{{transportationLine.type}}</span>&nbsp;
@@ -103,7 +103,7 @@
                 </div>
                 <div ng-show="ctrl.isLineMode()">
                     <select ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()" ng-hide="ctrl.selectedTransportationLine != null && ctrl.selectedTransportationLine.isNew()">
-                        <option ng-repeat="transportationLine in ctrl.map.transportationLines" ng-value="transportationLine">{{transportationLine.name}}</option>
+                        <option ng-repeat="transportationLine in ctrl.customMap.transportationLines" ng-value="transportationLine">{{transportationLine.name}}</option>
                     </select>
                     <select ng-model="ctrl.selectedTransportationLineType" ng-show="ctrl.selectedTransportationLine == null || ctrl.selectedTransportationLine.isNew()">
                         <option ng-repeat="transportationLineType in ctrl.transportationLineTypes" ng-value="transportationLineType">{{transportationLineType}}</option>
