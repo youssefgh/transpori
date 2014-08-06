@@ -34,9 +34,7 @@ class User {
     return this is Administrator;
   }
 
-  String getAuthorizationString() {
-    return id + ":" + password;
-  }
+  String get authorizationString => id + ":" + password;
 
   Map toJson() {
     Map json = new Map();

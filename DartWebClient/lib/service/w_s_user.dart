@@ -1,12 +1,10 @@
 part of webservice_client;
 
 class WSUser extends WebserviceClient {
+  
+  WSUser(User user) : super(user);
 
-  String webServiceUrl;
-
-  WSUser() {
-    webServiceUrl = super.webServiceUrl + "User/";
-  }
+  get webServiceUrl => super.rawWebServiceUrl + "User/";
 
   Future create(User user) {
     return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(user));

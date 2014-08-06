@@ -17,9 +17,11 @@ class TransportationLine extends Polyline {
   StreamSubscription<PolyMouseEvent> onRightclickStreamSubscription;
 
   //TODO find alt
+  @deprecated
   static final List types = ["BUS_LINE", "TRAIN_LINE", "TRAMWAY_LINE"];
 
-  void init() {/*
+  void init() {
+    /*
     onMouseover.listen((e) {
       if (infoWindow != null) infoWindow.close();
       infoWindow = new InfoWindow()
@@ -30,6 +32,15 @@ class TransportationLine extends Polyline {
     onMouseout.listen((e) {
       infoWindow.close();
     });*/
+    path.onInsertAt.listen((i){
+      mapPoints.add(new MapPoint.fromLatLng(path.getAt(i)));
+    });
+    path.onSetAt.listen((i){
+      mapPoints[i.index] = new MapPoint.fromLatLng(path.getAt(i.index));
+    });
+    path.onRemoveAt.listen((i){
+      mapPoints.removeAt(i.index);
+    });
   }
 
   TransportationLine(PolylineOptions polylineOptions) : super(polylineOptions) {
@@ -43,7 +54,7 @@ class TransportationLine extends Polyline {
     for (Map mapPointMap in transportationLineMap['mapPoints']) {
       MapPoint mapPoint = new MapPoint.instanceFromMap(mapPointMap);
       path.push(mapPoint);
-      mapPoints.add(mapPoint);
+      if(mapPoint is Station) mapPoints[mapPoints.length-1] = mapPoint;
     }
   }
 
@@ -80,9 +91,7 @@ class TransportationLine extends Polyline {
 
   String get type => runtimeType.toString().replaceFirst("Line", "");
 
-  bool isNew() {
-    return id == null;
-  }
+  bool get isNew => id == null;
 
   prepareForDelete() {
     CustomMap.$wrap(map.$unsafe).cancelOnClick();
@@ -121,7 +130,7 @@ class TransportationLine extends Polyline {
 
   reverseMapPoints() {
     path = path.getArray().reversed.toList();
-    mapPoints = mapPoints.reversed;
+    mapPoints = mapPoints.reversed.toList();
   }
 
   double get traveledDistance {

@@ -6,9 +6,9 @@
 package com.transportation.transportation.model.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.springframework.data.annotation.Transient;
 
@@ -17,6 +17,9 @@ import org.springframework.data.annotation.Transient;
  * @author youssef
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
+@JsonSubTypes({
+    @JsonSubTypes.Type(Station.class)
+})
 public class MapPoint implements Serializable {
 
     private static final long serialVersionUID = 1L;

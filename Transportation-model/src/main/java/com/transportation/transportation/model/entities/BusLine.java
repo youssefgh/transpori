@@ -11,4 +11,16 @@ package com.transportation.transportation.model.entities;
  */
 public class BusLine extends TransportationLine {
 
+    public BusLine() {
+    }
+
+    public BusLine(TransportationLine transportationLine) {
+        super(transportationLine);
+    }
+
+    @Override
+    public TransportationLine clone() {
+        return new BusLine(this);
+    }
+
 }

@@ -15,3 +15,4 @@ part 'transportation_request.dart';
 part 'transportation_response.dart';
 part 'transportation_path.dart';
 part 'user.dart';
+part 'custom_map_repository.dart';

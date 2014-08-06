@@ -12,6 +12,7 @@ class Station extends MapPoint {
   StationMarker stationMarker;
 
   //TODO find alt
+  @deprecated
   static final List types = [{
       "id": "BUS_STATION",
       "type": "BusStation"
@@ -46,6 +47,8 @@ class Station extends MapPoint {
     }
     return station;
   }
+  
+  bool get isNew => id == null;
 
   void syncLatLng() {
     lat = stationMarker.position.lat;
@@ -77,6 +80,10 @@ class BusStation extends Station {
   BusStation(num lat, num lng, [String id]) : super(lat, lng, id) {
     init();
   }
+  
+  BusStation.fromLatLng(LatLng latLng, [String id]) : super(latLng.lat, latLng.lng, id) {
+    init();
+  }
 
   BusStation.fromMap(Map busStationMap) : super.fromMap(busStationMap) {
     init();
@@ -97,6 +104,10 @@ class TrainStation extends Station {
   TrainStation(num lat, num lng, [String id]) : super(lat, lng, id) {
     init();
   }
+  
+  TrainStation.fromLatLng(LatLng latLng, [String id]) : super(latLng.lat, latLng.lng, id) {
+    init();
+  }
 
   TrainStation.fromMap(Map trainStationMap) : super.fromMap(trainStationMap) {
     init();
@@ -115,6 +126,10 @@ class TramwayStation extends Station {
   }
 
   TramwayStation(num lat, num lng, [String id]) : super(lat, lng, id) {
+    init();
+  }
+
+  TramwayStation.fromLatLng(LatLng latLng, [String id]) : super(latLng.lat, latLng.lng, id) {
     init();
   }
 

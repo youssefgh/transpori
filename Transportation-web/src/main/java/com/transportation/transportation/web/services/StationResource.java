@@ -5,11 +5,8 @@
  */
 package com.transportation.transportation.web.services;
 
-import com.transportation.transportation.ejb.dao.DaoStation;
-import com.transportation.transportation.ejb.dao.DaoTransportationLine;
-import com.transportation.transportation.model.entities.MapPoint;
+import com.transportation.transportation.ejb.service.ServiceStation;
 import com.transportation.transportation.model.entities.Station;
-import com.transportation.transportation.model.entities.TransportationLine;
 import com.transportation.transportation.web.services.security.AdministratorAuthorized;
 import java.util.List;
 import javax.ejb.EJB;
@@ -40,48 +37,32 @@ public class StationResource {
     private UriInfo context;
 
     @EJB
-    private DaoStation dao;
-    @EJB
-    private DaoTransportationLine daoTransportationLine;
+    private ServiceStation service;
 
     @PUT
     @Consumes(value = MediaType.APPLICATION_JSON)
     @Produces(value = MediaType.TEXT_PLAIN)
     public String putJson(Station station) {
-        station.initId();
-        dao.create(station);
-        return station.getId();
+        return service.create(station);
     }
 
     @POST
     @Consumes(value = MediaType.APPLICATION_JSON)
     public void postJson(Station station) {
-        List<TransportationLine> transportationLines = daoTransportationLine.readAll();
-        for (int i = 0; i < transportationLines.size(); i++) {
-            TransportationLine transportationLine = transportationLines.get(i);
-            for (int j = 0; j < transportationLine.getMapPoints().size(); j++) {
-                MapPoint mapPoint = transportationLine.getMapPoints().get(j);
-                if (mapPoint.equals(station)) {
-                    transportationLine.getMapPoints().set(i, station);
-                    daoTransportationLine.update(transportationLine);
-                    break;
-                }
-            }
-        }
-        dao.update(station);
+        service.update(station);
     }
 
     @GET
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<Station> getJsons() {
-        return dao.readAll();
+        return service.readAll();
     }
 
     //TODO review pathparam vs oop
     @DELETE
     @Path("{id}")
     public void deleteJson(@PathParam("id") String id) {
-        dao.delete(new Station(id));
+        service.delete(id);
     }
 
 }

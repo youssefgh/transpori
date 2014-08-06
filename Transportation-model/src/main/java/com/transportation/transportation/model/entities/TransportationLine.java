@@ -31,7 +31,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
     @JsonSubTypes.Type(TrainLine.class),
     @JsonSubTypes.Type(TramwayLine.class)
 })
-public class TransportationLine implements Serializable {
+public abstract class TransportationLine implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,6 +43,15 @@ public class TransportationLine implements Serializable {
 
     {
         mapPoints = new ArrayList<>();
+    }
+
+    public TransportationLine() {
+    }
+    
+    public TransportationLine(TransportationLine transportationLine) {
+        id = transportationLine.getId();
+        name = transportationLine.getName();
+        mapPoints.addAll(transportationLine.getMapPoints());
     }
 
     public void initId() {
@@ -79,15 +88,15 @@ public class TransportationLine implements Serializable {
         }
         return stations;
     }
-    
+
     @JsonIgnore
     public MapPoint getFirstMapPoint() {
         return mapPoints.get(0);
     }
-    
+
     @JsonIgnore
-    public MapPoint getLastMapPoint(){
-        return mapPoints.get(mapPoints.size()-1);
+    public MapPoint getLastMapPoint() {
+        return mapPoints.get(mapPoints.size() - 1);
     }
 
     public void setMapPoints(List<MapPoint> mapPoints) {
@@ -110,11 +119,10 @@ public class TransportationLine implements Serializable {
         }
         return false;
     }
-    
+
     public Boolean isExistIn(List<TransportationLine> transportationLines) {
         for (TransportationLine transportationLine : transportationLines) {
-            if (transportationLine.equals(this) && this.getLastMapPoint().equals(transportationLine.getLastMapPoint()) 
-                    /*&& this.getFirstMapPoint().equals(transportationLine.getFirstMapPoint())*/) {
+            if (transportationLine.equals(this) && this.getLastMapPoint().equals(transportationLine.getLastMapPoint()) /*&& this.getFirstMapPoint().equals(transportationLine.getFirstMapPoint())*/) {
                 return true;
             }
         }
@@ -126,7 +134,7 @@ public class TransportationLine implements Serializable {
     }
 
     public void removeAfter(Station station) {
-        mapPoints = mapPoints.subList(0, mapPoints.indexOf(station)+1);
+        mapPoints = mapPoints.subList(0, mapPoints.indexOf(station) + 1);
     }
 
     @Override
@@ -150,10 +158,12 @@ public class TransportationLine implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "com.transportation.transportation.model.entites.TransportationLine[ id=" + id + " ]";
     }
+
+    public abstract TransportationLine clone();
 
 }

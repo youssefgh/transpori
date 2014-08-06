@@ -2,11 +2,9 @@ part of webservice_client;
 
 class WSTransportationRequest extends WebserviceClient {
 
-  String webServiceUrl;
+  WSTransportationRequest(User user) : super(user);
 
-  WSTransportationRequest() {
-    webServiceUrl = super.webServiceUrl + "TransportationResponse/";
-  }
+  get webServiceUrl => super.rawWebServiceUrl + "TransportationResponse/";
 
   Future<List<TransportationPath>> update(TransportationRequest transportationRequest) {
     return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: JSON.encode(transportationRequest)).then((httpRequest) {

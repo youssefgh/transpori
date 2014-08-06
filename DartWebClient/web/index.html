@@ -1,284 +1,286 @@
 <!DOCTYPE html>
 <html ng-app>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Transpori</title>
-        <!-- Bootstrap style -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/perso.css">
-        <!-- Angular style -->
-        <link href="packages/angular_ui/css/angular.css" rel="stylesheet">
-        <!-- GMaps API -->
-        <script
-        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCdXjZUsvzh5TReAlXhV8nNEfzOWjU7gGM&sensor=false"></script>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Dart -->
-        <!--TODO put WebComponent here-->
-        <script type="application/dart" src="main.dart"></script>
-        <script type="text/javascript" src="packages/browser/dart.js"></script>
-    </head>
-    <body home-ctrl ng-cloak="">
-        <header>
-            <div class="navbar navbar-default">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".navbar-responsive-collapse">
-                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                            class="icon-bar"></span>
-                    </button>
-                    <img src="images/header-logo.gif" style="width: 50px; height: 50px; position: absolute; left: 0" alt="logo">
-                    <a class="navbar-brand" href="#" data-toggle="modal" data-target="#aboutModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori <small style="font-size: 40%">BETA</small></a>                    
-                </div>
-                <div class="navbar-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" data-toggle="modal" data-target="#linesModal">Lines inclus</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#aboutModal">A propos</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" data-toggle="modal" data-target="#signUpModal" ng-hide="ctrl.isUserLoggedIn()">Inscription</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#logInModal" ng-hide="ctrl.isUserLoggedIn()">Connexion</a></li>
-                        <li><a href="#" ng-show="ctrl.isUserLoggedIn()">{{ctrl.user.email}}</a></li>
-                        <li><a href="#" ng-click="ctrl.logOut()" ng-show="ctrl.isUserLoggedIn()">Déconnexion</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Transpori</title>
+<!-- Bootstrap style -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/perso.css">
+<!-- Angular style -->
+<link href="packages/angular_ui/css/angular.css" rel="stylesheet">
+<!-- GMaps API -->
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCdXjZUsvzh5TReAlXhV8nNEfzOWjU7gGM&sensor=false"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Dart -->
+<!--TODO put WebComponent here-->
+<script type="application/dart" src="main.dart"></script>
+<script type="text/javascript" src="packages/browser/dart.js"></script>
+</head>
+<body ng-cloak="">
+	<header>
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-responsive-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<img src="images/header-logo.gif"
+					style="width: 50px; height: 50px; position: absolute; left: 0"
+					alt="logo"> <a class="navbar-brand"
+					data-toggle="modal" data-target="#aboutModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori
+					<small style="font-size: 40%">BETA</small>
+				</a>
+			</div>
+			<div class="navbar-collapse collapse navbar-responsive-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="" data-toggle="modal" data-target="#linesModal">Lines
+							inclus</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#aboutModal">A
+							propos</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" user-ctrl>
+					<li><a href="#" data-toggle="modal" data-target="#signUpModal"
+						ng-hide="ctrl.isUserLoggedIn()">Inscription</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#logInModal"
+						ng-hide="ctrl.isUserLoggedIn()">Connexion</a></li>
+					<li><a href="#" ng-show="ctrl.isUserLoggedIn()">{{ctrl.selected.email}}</a></li>
+					<li><a href="#" ng-click="ctrl.logOut()"
+						ng-show="ctrl.isUserLoggedIn()">Déconnexion</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+    
+	<ng-view></ng-view>
+        
+	<!-- Modal Log In-->
+	<div class="modal fade" id="logInModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto" user-ctrl>
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
+				</div>
+				<form name="logInForm" ng-submit="ctrl.logIn()">
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label" for="email1">Email</label> <input
+								class="form-control" id="email1" type="email"
+								ng-model="ctrl.selected.email" required> <label
+								class="control-label" for="password">Mot de passe</label> <input
+								class="form-control" id="password" type="password"
+								ng-model="ctrl.selected.password" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-success"
+							ng-disabled="logInForm.invalid">Se connecter</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-        <div id="map" gmaps="ctrl.customMap"></div>
+	<!-- Modal Sign Up-->
+	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto" user-ctrl>
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Inscription</h4>
+				</div>
+				<form name="signUpForm" ng-submit="ctrl.signUp()">
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label" for="email">Email</label> <input
+								class="form-control" id="email" type="email"
+								ng-model="ctrl.selected.email" required> <label
+								class="control-label" for="password">Mot de passe</label> <input
+								class="form-control" id="password" type="password"
+								ng-model="ctrl.selected.password" required pattern=".{6,}"
+								title="Doit contenir au minimum 6 caractères"> <label
+								class="control-label" for="firstName">Prénom</label> <input
+								class="form-control" id="firstName" type="text"
+								ng-model="ctrl.selected.firstName" required pattern=".{2,}"
+								title="Doit contenir au minimum 2 caractères"> <label
+								class="control-label" for="birthday">Date de naissance</label> <input
+								class="form-control" id="birthday" type="date"
+								ng-model="ctrl.selected.birthday" max="2004-01-01" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-success">S'inscrire</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Soon-->
+	<div class="modal fade" id="soonModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Prochainement</h4>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center">
+						<div style="text-align: center">
+							<img src="images/logo.gif" style="width: 200px; height: 200px;"
+								alt="logo">
+							<h1>
+								Transpori <small style="font-size: 40%">BETA</small>
+							</h1>
+						</div>
+						<div class="progress progress-striped active">
+							<div class="progress-bar" style="width: 100%"></div>
+						</div>
+						<h6>Prochainement...</h6>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Lines-->
+	<div class="modal fade" id="linesModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Lignes de transport
+						inclus</h4>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center">
+						<img src="images/logo.gif" style="width: 70px; height: 70px;"
+							alt="logo">
+						<h2>
+							Transpori <small style="font-size: 20%">BETA</small>
+						</h2>
+					</div>
+					<div style="width: 90%; margin: auto">
+						<p>
+							<span class="label label-success">Train</span> (Navettes rapides)
+						</p>
+						<p class="blink_text">
+							<span class="label label-success">Tramway</span> Casablanca
+						</p>
+            <p class="blink_text">
+              <span class="label label-success">Tramway</span> Rabat
+            </p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Train</span> (Grandes lignes) <span
+								class="blink_text">- En cours -</span>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Bus</span> Casablanca <span
+								class="blink_text">- En cours -</span>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Bus</span> Marrakech <span
+								class="blink_text">- En cours -</span>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Bus</span> Tanger <span
+								class="blink_text">- En cours -</span>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Bus</span> Agadir <span
+								class="blink_text">- En cours -</span>
+						</p>
+						<p>
+							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
+								class="label label-primary">Bus</span> Rabat <span
+								class="blink_text">- En cours -</span>
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        <div style="background-color: white; opacity: 0.9; width: 100px; top: 55px;left: 90px;position: absolute;-moz-border-radius: 10px;-webkit-border-radius: 10px; -moz-border-radius: 10px;padding: 10px">
-            <table style="opacity: 2">
-                <tr><td><div style="background-color: yellowgreen; height: 5px;width: 20px"></div></td><td>&nbsp;Bus</td></tr>
-                <tr><td><div style="background-color: red; height: 5px;width: 20px"></div></td><td>&nbsp;Train</td></tr>
-                <tr><td><div style="background-color: blue; height: 5px;width: 20px"></div></td><td>&nbsp;Tramway</td></tr>
-            </table>
-        </div>
-        <div id="go" ng-show="ctrl.isPathMode()">
-            <button class="btn btn-info disabled" ng-hide="ctrl.isHaveOriginPosition()">Veillez choisir le point de départ</button>
-            <button class="btn btn-info disabled" ng-show="ctrl.isHaveOriginPosition() && !ctrl.isHaveDestination()">Veillez choisir le point d'arrivée</button>
-            <button class="btn btn-info" ng-show="ctrl.isReadyToSearchPaths()" ng-click="ctrl.getPaths()">Recherche</button>
-            <!--<button class="btn btn-info" data-toggle="modal" data-target="#soonModal" ng-show="ctrl.isReadyToSearchPaths()">Recherche</button>-->
-        </div>
+	<!-- Modal About-->
+	<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">A propos</h4>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center">
+						<img src="images/logo.gif" style="width: 200px; height: 200px;"
+							alt="logo">
+						<h1>
+							Transpori <small style="font-size: 40%">BETA</small>
+						</h1>
+					</div>
+					<blockquote>
+						<p>1ère plateform marocaine d'assistance au transport.</p>
+						<small>Idée et réalisation par <cite title="Source Title">Youssef
+								GHOUBACH</cite></small>
+					</blockquote>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        <div style="position: absolute; max-height: 70%; top: 15%; right: -13px;overflow: scroll; overflow-x: hidden">
-            <div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="transportationPath in ctrl.customMap.transportationPaths" ng-click="ctrl.select(transportationPath)" ng-class="{active : transportationPath == ctrl.selectedTransportationPath}">
-                    <div>Environ {{transportationPath.avgInTransportationDistanceInKM}} Km en transport</div>
-                    <span ng-repeat="transportationLine in transportationPath.transportationLines">
-                        <span class="label label-success" title="{{transportationLine.name}}">{{transportationLine.type}}</span>&nbsp;
-                        <span ng-hide="transportationLine == transportationPath.transportationLines.last">&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;</span>
-                    </span>
-                    <!--                    <ul class="pager" ng-show="transportationPath == ctrl.selectedTransportationPath">
-                                            <li class="previous" ng-click="ctrl.previous()">← Older</li>
-                                            <li class="next" ng-click="ctrl.next()">Newer →</li>
-                                        </ul>-->
-                </a>
-            </div>
-        </div>
+	<!-- Google Analytics-->
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
 
-        <div id="go" ng-show="ctrl.isSuggestionMode()">
-            <button class="btn btn-info disabled" style="">Cliquer sur un point pour suggérer une station</button>
-        </div>
-        <div id="user-panel" ng-show="ctrl.isUserLoggedIn() && !ctrl.user.isAdministrator()">
-            <div>
-                <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setSuggestionMode()" ng-show="ctrl.isPathMode()">Suggérer</button>
-                <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setPathMode()" ng-show="ctrl.isSuggestionMode()">Terminer</button>
-            </div>
-        </div>
-        <div id="administrator-panel" ng-show="ctrl.user.isAdministrator()">
-            <div><button id="edit" class="btn btn-danger" ng-click="ctrl.moveAdminPanel()">Edit</button></div>
-            <div id="administrator-box">
-                <div>
-                    <div class="btn-group btn-group-justified">
-                        <a class="btn btn-default" ng-click="ctrl.setStationMode()">Stations</a>
-                        <a class="btn btn-default" ng-click="ctrl.setLineMode()">Lines</a>
-                    </div>
-                </div>
-                <div ng-show="ctrl.isLineMode()">
-                    <select ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()" ng-hide="ctrl.selectedTransportationLine != null && ctrl.selectedTransportationLine.isNew()">
-                        <option ng-repeat="transportationLine in ctrl.customMap.transportationLines" ng-value="transportationLine">{{transportationLine.name}}</option>
-                    </select>
-                    <select ng-model="ctrl.selectedTransportationLineType" ng-show="ctrl.selectedTransportationLine == null || ctrl.selectedTransportationLine.isNew()">
-                        <option ng-repeat="transportationLineType in ctrl.transportationLineTypes" ng-value="transportationLineType">{{transportationLineType}}</option>
-                    </select>
-                    <input ng-model="ctrl.selectedTransportationLine.name" ng-show="ctrl.selectedTransportationLine != null"/>
-                    <input type="checkbox" ng-model="ctrl.lineLinkMode">lineLinkMode
-                    <button ng-click="ctrl.addReverseLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Add reverse line</button><br>
-                    <button ng-click="ctrl.newLine()" ng-show="ctrl.selectedTransportationLine == null">New line</button>
-                    <button ng-click="ctrl.addLine()" ng-show="ctrl.selectedTransportationLine != null && ctrl.selectedTransportationLine.isNew()">Add line</button>
-                    <button ng-click="ctrl.saveLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Save line</button>
-                    <button ng-click="ctrl.deleteLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Delete line</button>
-                    <button ng-click="ctrl.resetLine()">reset</button>
-                </div>
-                <div ng-show="ctrl.isStationMode()">
-                    <select ng-model="ctrl.selectedStationType">
-                        <option ng-repeat="stationType in ctrl.stationTypes" value="{{stationType.id}}">{{stationType.type}}</option>
-                    </select>
-                    <button id="saveStations">Save stations</button>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Log In-->
-        <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Connexion</h4>
-                    </div>
-                    <form name="logInForm" ng-submit="ctrl.logIn()">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="control-label" for="email1">Email</label>
-                                <input class="form-control" id="email1" type="email" ng-model="ctrl.user.email" required>
-                                <label class="control-label" for="password">Mot de passe</label>
-                                <input class="form-control" id="password" type="password" ng-model="ctrl.user.password" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-success" ng-disabled="logInForm.invalid">Se connecter</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Sign Up-->
-        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Inscription</h4>
-                    </div>
-                    <form name="signUpForm" ng-submit="ctrl.signUp()">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
-                                <input class="form-control" id="email" type="email" ng-model="ctrl.user.email" required>
-                                <label class="control-label" for="password">Mot de passe</label>
-                                <input class="form-control" id="password" type="password" ng-model="ctrl.user.password" required pattern=".{6,}" title="Doit contenir au minimum 6 caractères">
-                                <label class="control-label" for="firstName">Prénom</label>
-                                <input class="form-control" id="firstName" type="text" ng-model="ctrl.user.firstName" required pattern=".{2,}" title="Doit contenir au minimum 2 caractères">
-                                <label class="control-label" for="birthday">Date de naissance</label>
-                                <input class="form-control" id="birthday" type="date" ng-model="ctrl.user.birthday" max="2004-01-01" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-success" >S'inscrire</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Soon-->
-        <div class="modal fade" id="soonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Prochainement</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div style="text-align: center">
-                            <div style="text-align: center">
-                                <img src="images/logo.gif" style="width: 200px; height: 200px;" alt="logo">
-                                <h1>Transpori <small style="font-size: 40%">BETA</small></h1>
-                            </div>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar" style="width: 100%"></div>
-                            </div>
-                            <h6>Prochainement...</h6>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Lines-->
-        <div class="modal fade" id="linesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Lignes de transport inclus</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div style="text-align: center">
-                            <img src="images/logo.gif" style="width: 70px; height: 70px;" alt="logo">
-                            <h2>Transpori <small style="font-size: 20%">BETA</small></h2>
-                        </div>
-                        <div style="width: 90%; margin: auto">
-                            <p><span class="label label-success">Train</span> (Navettes rapides) </p>
-                            <p class="blink_text"><span class="label label-success">Tramway</span> Casablanca</p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Train</span> (Grandes lignes) <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Tramway</span> Rabat <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Bus</span> Casablanca <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Bus</span> Marrakech <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Bus</span> Tanger <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Bus</span> Agadir <span class="blink_text" >- En cours -</span></p>
-                            <p><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span class="label label-primary">Bus</span> Rabat <span class="blink_text" >- En cours -</span></p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal About-->
-        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="overflow-y: auto">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">A propos</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div style="text-align: center">
-                            <img src="images/logo.gif" style="width: 200px; height: 200px;" alt="logo">
-                            <h1>Transpori <small style="font-size: 40%">BETA</small></h1>
-                        </div>
-                        <blockquote>
-                            <p>1ère plateform marocaine d'assistance au transport.</p>
-                            <small>Idée et réalisation par <cite title="Source Title">Youssef GHOUBACH</cite></small>
-                        </blockquote>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Google Analytics-->
-        <script>
-            (function(i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-            ga('create', 'UA-11039753-3', 'auto');
-            ga('send', 'pageview');
-        </script>
-    </body>
+		ga('create', 'UA-11039753-3', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
 </html>

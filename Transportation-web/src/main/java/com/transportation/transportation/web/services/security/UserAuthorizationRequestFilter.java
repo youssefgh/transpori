@@ -6,15 +6,9 @@
 package com.transportation.transportation.web.services.security;
 
 import com.transportation.transportation.ejb.service.ServiceUser;
-import com.transportation.transportation.ejb.service.impl.ServiceUserImpl;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.ManagedBean;
-import javax.annotation.Resource;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.container.ContainerRequestContext;

@@ -2,20 +2,9 @@ part of webservice_client;
 
 class WSStationSuggestion extends WebserviceClient {
 
-  String webServiceUrl;
+  WSStationSuggestion(User user) : super(user);
 
-  void init() {
-    webServiceUrl = super.webServiceUrl + "StationSuggestion/";
-  }
-
-  WSStationSuggestion() {
-    init();
-  }
-
-  WSStationSuggestion.withUser(User user) {
-    init();
-    requestHeader["authorization"] = user.getAuthorizationString();
-  }
+  get webServiceUrl => super.rawWebServiceUrl + "StationSuggestion/";
 
   Future<String> create(Station station) {
     return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(station)).then((httpRequest) {
@@ -26,5 +15,5 @@ class WSStationSuggestion extends WebserviceClient {
   Future delete(Station station) {
     return HttpRequest.request(webServiceUrl + station.id, method: httpDelete, requestHeaders: requestHeader);
   }
-  
+
 }

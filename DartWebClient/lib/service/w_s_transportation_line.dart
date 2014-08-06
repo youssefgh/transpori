@@ -2,20 +2,9 @@ part of webservice_client;
 
 class WSTransportationLine extends WebserviceClient {
 
-  String webServiceUrl;
+  WSTransportationLine(User user) : super(user);
 
-  void init() {
-    webServiceUrl = super.webServiceUrl + "TransportationLine/";
-  }
-
-  WSTransportationLine() {
-    init();
-  }
-
-  WSTransportationLine.withUser(User user) {
-    init();
-    requestHeader["authorization"] = user.getAuthorizationString();
-  }
+  get webServiceUrl => super.rawWebServiceUrl + "TransportationLine/";
 
   Future<String> create(TransportationLine transportationLine) {
     return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(transportationLine)).then((httpRequest) {

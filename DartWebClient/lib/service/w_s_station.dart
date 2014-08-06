@@ -1,21 +1,10 @@
 part of webservice_client;
 
 class WSStation extends WebserviceClient {
+  
+  WSStation(User user) : super(user);
 
-  String webServiceUrl;
-
-  void init() {
-    webServiceUrl = super.webServiceUrl + "Station/";
-  }
-
-  WSStation() {
-    init();
-  }
-
-  WSStation.withUser(User user) {
-    init();
-    requestHeader["authorization"] = user.getAuthorizationString();
-  }
+  get webServiceUrl => super.rawWebServiceUrl + "Station/";
 
   Future<String> create(Station station) {
     return HttpRequest.request(webServiceUrl, method: httpPut, requestHeaders: requestHeader, sendData: JSON.encode(station)).then((httpRequest) {

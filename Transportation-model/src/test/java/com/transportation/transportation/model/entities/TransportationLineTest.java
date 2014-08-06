@@ -5,7 +5,6 @@
  */
 package com.transportation.transportation.model.entities;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -27,7 +26,13 @@ public class TransportationLineTest {
 
     @org.junit.Test
     public void testGetLastMapPoint() {
-        TransportationLine transportationLine = new TransportationLine();
+        TransportationLine transportationLine = new TransportationLine() {
+
+            @Override
+            public TransportationLine clone() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         Station station = new Station(2F, 2F);
         transportationLine.getMapPoints().add(new Station(1F, 1F));
         transportationLine.getMapPoints().add(station);
@@ -47,7 +52,13 @@ public class TransportationLineTest {
 
     @org.junit.Test
     public void testIsWillPassBy_Station() {
-        TransportationLine transportationLine = new TransportationLine();
+        TransportationLine transportationLine = new TransportationLine() {
+
+            @Override
+            public TransportationLine clone() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         Station station = new Station(2F, 2F);
         transportationLine.getMapPoints().add(new Station(1F, 1F));
         transportationLine.getMapPoints().add(station);
@@ -61,7 +72,13 @@ public class TransportationLineTest {
 
     @org.junit.Test
     public void testRemoveBefore() {
-        TransportationLine transportationLine = new TransportationLine();
+        TransportationLine transportationLine = new TransportationLine() {
+
+            @Override
+            public TransportationLine clone() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         Station station1 = new Station();
         station1.setId("1");
         Station station2 = new Station();
@@ -79,7 +96,13 @@ public class TransportationLineTest {
 
     @org.junit.Test
     public void testRemoveAfter() {
-        TransportationLine transportationLine = new TransportationLine();
+        TransportationLine transportationLine = new TransportationLine() {
+
+            @Override
+            public TransportationLine clone() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
         Station station1 = new Station();
         station1.setId("1");
         Station station2 = new Station();

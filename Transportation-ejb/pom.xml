@@ -42,9 +42,9 @@
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
-            <version>1.1.4.Final</version>
+            <!--<version>1.1.4.Final</version>-->
         </dependency>
-        <!-- Spring framework -->
+<!--         Spring framework 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -57,7 +57,7 @@
             <version>4.0.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Spring data mongodb -->
+         Spring data mongodb 
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
@@ -73,9 +73,10 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
+            <scope>compile</scope>
             <version>2.12.2</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -86,7 +87,7 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-            <!-- Spring framework -->
+<!--             Spring framework 
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
@@ -99,7 +100,7 @@
                 <version>4.0.5.RELEASE</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- Spring data mongodb -->
+             Spring data mongodb 
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-mongodb</artifactId>
@@ -117,7 +118,7 @@
                 <artifactId>mongo-java-driver</artifactId>
                 <version>2.12.2</version>
                 <scope>provided</scope>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
     <build>

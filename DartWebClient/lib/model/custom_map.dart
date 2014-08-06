@@ -2,9 +2,9 @@ part of model;
 
 class CustomMap extends GMap {
 
-  List<Station> stations = new List();
-  List<Station> stationSuggestions = new List();
-  List<TransportationLine> transportationLines = new List();
+  //List<Station> stations = new List();
+  //List<Station> stationSuggestions = new List();
+  //List<TransportationLine> transportationLines = new List();
   List<TransportationPath> transportationPaths = new List();
   StreamSubscription onClickStreamSubscription;
 
@@ -17,7 +17,7 @@ class CustomMap extends GMap {
     mapTypeId = MapTypeId.ROADMAP;
     visualRefresh = true;
   }
-  
+  /*
   Station getNearestStation(MapPoint mapPoint){
     Station station = stations[0];
     num minDistance = stations[0].distanceTo(mapPoint);
@@ -33,29 +33,8 @@ class CustomMap extends GMap {
     }
     return station;
   }
-
-  void deleteStation(Station station) {
-    stations.remove(station);
-    station.hide();
-  }
-  
-  void deleteStationSuggestion(Station stationSuggestion) {
-      stations.remove(stationSuggestion);
-      stationSuggestion.hide();
-  }
-
-  void showStations() {
-    for (Station station in stations) {
-      station.show(this);
-    }
-  }
-
-  void hideStations() {
-    for (Station station in stations) {
-      station.hide();
-    }
-  }
-
+*/
+/*
   void showtransportationLines() {
     for (TransportationLine transportationLine in transportationLines) {
       transportationLine.show(this);
@@ -66,7 +45,7 @@ class CustomMap extends GMap {
     for (TransportationLine transportationLine in transportationLines) {
       transportationLine.hide();
     }
-  }
+  }*/
   
   showTransportationPaths(){
     for(TransportationPath transportationPath in transportationPaths){

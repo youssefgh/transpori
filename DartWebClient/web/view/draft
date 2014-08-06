@@ -1,0 +1,60 @@
+<div id="go" ng-show="ctrl.isSuggestionMode()">
+            <button class="btn btn-info disabled" style="">Cliquer sur un point pour suggérer une station</button>
+        </div>
+        <div id="user-panel" user-ctrl ng-show="ctrl.isUserLoggedIn() && !ctrl.selected.isAdministrator()">
+            <div home-ctrl>
+                <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setSuggestionMode()" ng-show="ctrl.isPathMode()">Suggérer</button>
+                <button id="suggestions" class="btn btn-warning" ng-click="ctrl.setPathMode()" ng-show="ctrl.isSuggestionMode()">Terminer</button>
+            </div>
+        </div>
+        <div id="administrator-panel" user-ctrl ng-show="ctrl.selected.isAdministrator()">
+            <div><button id="edit" class="btn btn-danger" ng-click="ctrl.moveAdminPanel()" home-ctrl>Edit</button></div>
+            <div id="administrator-box" home-ctrl>
+                <div>
+                    <div class="btn-group btn-group-justified">
+                        <a class="btn btn-default" ng-click="ctrl.setStationMode()">Stations</a>
+                        <a class="btn btn-default" ng-click="ctrl.setLineMode()">Lines</a>
+                    </div>
+                </div>
+                <div ng-show="ctrl.isLineMode()">
+                    <select ng-model="ctrl.selectedTransportationLine" ng-change="ctrl.transportationLineChanged()" ng-hide="ctrl.selectedTransportationLine != null && ctrl.selectedTransportationLine.isNew()">
+                        <option ng-repeat="transportationLine in ctrl.customMap.transportationLines" ng-value="transportationLine">{{transportationLine.name}}</option>
+                    </select>
+                    <select ng-model="ctrl.selectedTransportationLineType" ng-show="ctrl.selectedTransportationLine == null || ctrl.selectedTransportationLine.isNew()">
+                        <option ng-repeat="transportationLineType in ctrl.transportationLineTypes" ng-value="transportationLineType">{{transportationLineType}}</option>
+                    </select>
+                    <input ng-model="ctrl.selectedTransportationLine.name" ng-show="ctrl.selectedTransportationLine != null"/>
+                    <input type="checkbox" ng-model="ctrl.lineLinkMode">lineLinkMode
+                    <button ng-click="ctrl.addReverseLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Add reverse line</button><br>
+                    <button ng-click="ctrl.newLine()" ng-show="ctrl.selectedTransportationLine == null">New line</button>
+                    <button ng-click="ctrl.addLine()" ng-show="ctrl.selectedTransportationLine != null && ctrl.selectedTransportationLine.isNew()">Add line</button>
+                    <button ng-click="ctrl.saveLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Save line</button>
+                    <button ng-click="ctrl.deleteLine()" ng-show="ctrl.selectedTransportationLine != null && !ctrl.selectedTransportationLine.isNew()">Delete line</button>
+                    <button ng-click="ctrl.resetLine()">reset</button>
+                </div>
+                <div ng-show="ctrl.isStationMode()">
+                    <select ng-model="ctrl.selectedStationType">
+                        <option ng-repeat="stationType in ctrl.stationTypes" value="{{stationType.id}}">{{stationType.type}}</option>
+                    </select>
+                    <button id="saveStations">Save stations</button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <ul class="pager"
+  ng-show="transportationPath == ctrl.selectedTransportationPath">
+  <li class="previous" ng-click="ctrl.previous()">← Older</li>
+  <li class="next" ng-click="ctrl.next()">Newer →</li>
+</ul>
