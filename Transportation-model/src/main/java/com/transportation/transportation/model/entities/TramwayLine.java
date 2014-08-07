@@ -11,5 +11,17 @@ package com.transportation.transportation.model.entities;
  * @author youssef
  */
 public class TramwayLine extends TransportationLine {
+
+    public TramwayLine() {
+    }
+
+    public TramwayLine(TransportationLine transportationLine) {
+        super(transportationLine);
+    }
+
+    @Override
+    public TransportationLine clone() {
+        return new BusLine(this);
+    }
     
 }

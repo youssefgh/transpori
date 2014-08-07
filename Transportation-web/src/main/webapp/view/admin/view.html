@@ -1,0 +1,26 @@
+<nav style="float: left;">
+	<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+		<li class="active"><a href="#/admin">Home</a></li>
+<!-- 		<li><a href="#">Profile</a></li> -->
+<!-- 		<li class="disabled"><a href="#">Disabled</a></li> -->
+		<li class="dropdown"><a class="dropdown-toggle"
+			data-toggle="dropdown">Station<span class="caret"></span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="#/admin/station/busStation/">Bus station</a></li>
+				<li class="divider"></li>
+				<li><a href="#/admin/station/trainStation/">Train station</a></li>
+				<li class="divider"></li>
+				<li><a href="#/admin/station/tramwayStation/">Tramway station</a></li>
+			</ul></li>
+    <li class="dropdown"><a class="dropdown-toggle"
+      data-toggle="dropdown">Transportation line<span class="caret"></span>
+    </a>
+      <ul class="dropdown-menu">
+        <li><a href="#/admin/transportationLine/busLine">Bus Line</a></li>
+        <li><a href="#/admin/transportationLine/trainLine">Train Line</a></li>
+        <li><a href="#/admin/transportationLine/tramwayLine">Tramway Line</a></li>
+      </ul></li>
+	</ul>
+</nav>
+<ng-view></ng-view>

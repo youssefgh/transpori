@@ -1,3 +1,6 @@
-/DartMobileClient/
-/DartWebClient/
-/Transportation-web/target/Transportation-web-1.0-SNAPSHOT.war
+/Transportation-ear/target/
+/Transportation-web/target/
+/Transportation-ejb/target/
+/Transportation-model/target/
+/DartWebClient/packages/
+/DartMobileClient/packages/

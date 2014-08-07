@@ -5,10 +5,7 @@
  */
 package com.transportation.transportation.web.services;
 
-import com.transportation.transportation.ejb.dao.DaoStation;
-import com.transportation.transportation.ejb.dao.DaoTransportationLine;
-import com.transportation.transportation.model.entities.MapPoint;
-import com.transportation.transportation.model.entities.Station;
+import com.transportation.transportation.ejb.service.ServiceTransportationLine;
 import com.transportation.transportation.model.entities.TransportationLine;
 import com.transportation.transportation.web.services.security.AdministratorAuthorized;
 import java.util.List;
@@ -40,61 +37,36 @@ public class TransportationLineResource {
     private UriInfo context;
 
     @EJB
-    private DaoTransportationLine dao;
-    @EJB
-    private DaoStation daoStation;
+    private ServiceTransportationLine service;
 
     @GET
     @Path("{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public TransportationLine getJson(@PathParam("id") String id) {
-        return dao.read(id);
+        return service.read(id);
     }
 
     @POST
     @Consumes(value = MediaType.APPLICATION_JSON)
     public void postJson(TransportationLine transportationLine) {
-        List<Station> stations = daoStation.readAll();
-        //TODO implement in client side
-        for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
-            MapPoint mapPoint = transportationLine.getMapPoints().get(i);
-            for (Station station : stations) {
-                if(mapPoint.isNear(station)){
-                    transportationLine.getMapPoints().set(i, station);
-                }
-            }
-        }
-        dao.update(transportationLine);
+        service.update(transportationLine);
     }
 
     @GET
     @Produces(value = MediaType.APPLICATION_JSON)
     public List<TransportationLine> getJsons() {
-        List<TransportationLine> transportationLines = dao.readAll();
-        return transportationLines;
+        return service.readAll();
     }
 
     @PUT
     @Consumes(value = MediaType.APPLICATION_JSON)
     public void putJson(TransportationLine transportationLine) {
-        List<Station> stations = daoStation.readAll();
-        //TODO implement in client side
-        for (int i = 0 ; i<transportationLine.getMapPoints().size() ; i++) {
-            MapPoint mapPoint = transportationLine.getMapPoints().get(i);
-            for (Station station : stations) {
-                if(mapPoint.isNear(station)){
-                    transportationLine.getMapPoints().set(i, station);
-                }
-            }
-        }
-        dao.create(transportationLine);
+        service.create(transportationLine);
     }
-    
+
     @DELETE
     @Path("{id}")
     public void deleteJson(@PathParam("id") String id) {
-        TransportationLine transportationLine = new TransportationLine();
-        transportationLine.setId(id);
-        dao.delete(transportationLine);
+        service.delete(id);
     }
 }
