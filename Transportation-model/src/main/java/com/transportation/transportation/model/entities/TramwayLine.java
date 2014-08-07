@@ -21,7 +21,7 @@ public class TramwayLine extends TransportationLine {
 
     @Override
     public TransportationLine clone() {
-        return new BusLine(this);
+        return new TramwayLine(this);
     }
     
 }

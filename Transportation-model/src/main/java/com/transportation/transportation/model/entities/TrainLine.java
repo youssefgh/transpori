@@ -20,7 +20,7 @@ public class TrainLine extends TransportationLine {
 
     @Override
     public TransportationLine clone() {
-        return new BusLine(this);
+        return new TrainLine(this);
     }
 
 }
