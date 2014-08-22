@@ -60,8 +60,8 @@ public class TransportationLineResource {
 
     @PUT
     @Consumes(value = MediaType.APPLICATION_JSON)
-    public void putJson(TransportationLine transportationLine) {
-        service.create(transportationLine);
+    public String putJson(TransportationLine transportationLine) {
+        return service.create(transportationLine);
     }
 
     @DELETE

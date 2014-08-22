@@ -25,8 +25,10 @@ public class ServiceTransportationLineImpl implements ServiceTransportationLine 
     private DaoTransportationLine dao;
 
     @Override
-    public void create(TransportationLine transportationLine) {
+    public String create(TransportationLine transportationLine) {
+        transportationLine.initId();
         dao.create(transportationLine);
+        return transportationLine.getId();
     }
 
     @Override
