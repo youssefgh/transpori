@@ -1,8 +1,0 @@
-{
-    "elements": {
-        "ng-view": {}
-    },
-    "attributes": {
-        "user-ctrl": {}
-    }
-}

@@ -33,7 +33,7 @@ class TransportationLine extends Polyline {
       infoWindow.close();
     });*/
     path.onInsertAt.listen((i){
-      mapPoints.add(new MapPoint.fromLatLng(path.getAt(i)));
+        mapPoints.insert(i, new MapPoint.fromLatLng(path.getAt(i)));
     });
     path.onSetAt.listen((i){
       mapPoints[i.index] = new MapPoint.fromLatLng(path.getAt(i.index));

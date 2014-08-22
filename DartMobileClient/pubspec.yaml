@@ -1,5 +1,7 @@
-name: transportation_dart_client
+name: transpori_mobile
 description: A sample web application
 dependencies:
+  angular: 0.13.0
+  angular_ui: any
   browser: any
   google_maps: any

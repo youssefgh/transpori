@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<div ng-class="{
+    'active': s.leaving || (s.active && !s.entering),
+    'prev': (s.next || s.active) && s.direction=='prev',
+    'next': (s.next || s.active) && s.direction=='next',
+    'right': s.direction=='prev',
+    'left': s.direction=='next'
+  }" class="item text-center"><content></content>
+</div>
