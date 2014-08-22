@@ -1,6 +1,4 @@
-/Transportation-ear/target/
-/Transportation-web/target/
-/Transportation-ejb/target/
-/Transportation-model/target/
-/DartWebClient/packages/
-/DartMobileClient/packages/
+*/target/
+*/target/
+*/target/
+*/target/
