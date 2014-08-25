@@ -53,7 +53,6 @@ class MyAppModule extends Module {
     bind(WSStationSuggestion, toValue: new WSStationSuggestion(user));
     bind(WSTransportationRequest, toValue: new WSTransportationRequest(user));
 
-    Binding.printInjectWarning = false;
     bind(RouteInitializerFn, toValue: routeInitializer);
     bind(NgRoutingUsePushState,toValue: new NgRoutingUsePushState.value(false));
   }
