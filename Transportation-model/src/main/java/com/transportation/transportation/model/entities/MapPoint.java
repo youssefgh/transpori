@@ -54,6 +54,11 @@ public class MapPoint implements Serializable {
         this.longitude = longitude;
     }
 
+    /**
+     * 
+     * @param mapPoint
+     * @return Distance in Meter
+     */
     public Double distanceTo(MapPoint mapPoint) {
         final Float radius = 6371F;
         Double dLatitude = Math.toRadians(mapPoint.getLatitude() - latitude);

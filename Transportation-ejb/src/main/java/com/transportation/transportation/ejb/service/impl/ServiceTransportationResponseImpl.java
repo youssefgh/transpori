@@ -28,10 +28,12 @@ import javax.ejb.Stateless;
 @Stateless
 public class ServiceTransportationResponseImpl implements ServiceTransportationResponse {
     
+    //Change from private to public for test purpose
+    //TODO find alt
     @EJB
-    private ServiceStation serviceStation;
+    public ServiceStation serviceStation;
     @EJB
-    private ServiceTransportationLine serviceTransportationLine;
+    public ServiceTransportationLine serviceTransportationLine;
     private List<TransportationLine> transportationLines;
     private List<Station> stations;
     

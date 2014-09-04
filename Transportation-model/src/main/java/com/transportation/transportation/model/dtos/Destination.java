@@ -14,6 +14,13 @@ import java.io.Serializable;
  * @author youssef
  */
 public class Destination extends MapPoint implements Serializable {
+
+    public Destination() {
+    }
+
+    public Destination(Float latitude, Float longitude) {
+        super(latitude, longitude);
+    }
     
     @Override
     public String toString() {
