@@ -2,6 +2,82 @@ part of controller;
 
 @Controller(selector: '[transportation-line-ctrl]', publishAs: 'ctrl')
 class TransportationLineController {
+  
+  TransportationLineService _service;
+
+  bool lineLinkMode = false;
+  MapPoint selectedMapPoint;
+
+  TransportationLineController(this._service);
+
+  get selected => _service.selected;
+  set selected(TransportationLine selected) => _service.selected = selected;
+  get stations => _service.stations;
+  get transportationLines => _service.transportationLines;
+  get selectedTransportationLines => _service.selectedTransportationLines;
+  get customMap => _service.customMap;
+  set customMap(CustomMap customMap) => _service.customMap = customMap;
+
+  addMapPoint(LatLng latLng) {
+    _service.addMapPoint(latLng);
+  }
+
+  //TODO review
+  addStation(Station station) {
+    if (!lineLinkMode) _service.addStation(station); else {
+      if (selectedMapPoint != null) _service.setStation(station, selectedMapPoint); else window.alert("select a MapPoint first");
+    }
+  }
+
+  select(TransportationLine transportationLine) {
+    _service.select(transportationLine);
+  }
+  
+  addToSelection(TransportationLine transportationLine) {
+    _service.addToSelection(transportationLine);
+  }
+
+  save() {
+    _verifyEmptyPath();
+    _service.save();
+  }
+
+  saveReverseLine() {
+    _verifyEmptyPath();
+    _service.saveReverseLine();
+  }
+
+  _verifyEmptyPath() {
+    if (_service.pathIsEmpty) {
+      window.alert("Line not added : path is empty");
+      return;
+    }
+  }
+
+  update() {
+    _service.update();
+  }
+
+  delete() {
+    _service.delete();
+  }
+
+  showAll() {
+    _service.showAll();
+  }
+
+  hideAll() {
+    _service.hideAll();
+  }
+
+  undo() {
+    _service.undo();
+  }
+  
+}
+
+@Injectable()
+class TransportationLineService {
 
   TransportationLine _selected;
   List<TransportationLine> transportationLines = new List();
@@ -10,25 +86,15 @@ class TransportationLineController {
   WSTransportationLine webService;
   CustomMap customMap;
 
-  bool _lineLinkMode = false;
-  MapPoint selectedMapPoint;
-
-  TransportationLineController(this.webService, CustomMapRepository customMapRepository, StationController stationController) {
+  TransportationLineService(this.webService, CustomMapRepository customMapRepository, StationService stationService) {
     customMap = customMapRepository.transportationLineCustomMap;
     _refreshTransportationLines();
-    //stations = stationController.stations;
-    stationController._refreshStations().then((e) {
-      stations = stationController.stations;
+    stationService._refreshStations().then((e) {
+      stations = stationService.stations;
       stations.forEach((station) {
         station.stationMarker.draggable = false;
       });
     });
-  }
-
-  get lineLinkMode => _lineLinkMode;
-
-  set lineLinkMode(bool value) {
-    _lineLinkMode = value;
   }
 
   TransportationLine get selected => _selected;
@@ -38,16 +104,15 @@ class TransportationLineController {
     _selected = transportationLine;
   }
 
+  get pathIsEmpty => selected.path.length == 0;
+
   addMapPoint(LatLng latLng) {
     MapPoint mapPoint = new MapPoint.fromLatLng(latLng);
     selected.path.push(mapPoint);
   }
 
   addStation(Station station) {
-    if (!lineLinkMode) selected.path.push(station); else {
-      if (selectedMapPoint != null) setStation(station, selectedMapPoint); else window.alert("select a MapPoint first");
-    }
-    //selected.mapPoints[selected.mapPoints.length-1] = station;
+    selected.path.push(station);
   }
 
   setStation(Station station, MapPoint mapPoint) {
@@ -70,29 +135,17 @@ class TransportationLineController {
   }
 
   save() {
-    _verifyEmptyPath();
     webService.create(selected).then((id) {
       selected.id = id;
       transportationLines.add(selected);
-      /*
-      selectedTransportationLines.add(selected);
-      selected = null;*/
     });
   }
 
   //TODO fix same reference issue 
   saveReverseLine() {
-    _verifyEmptyPath();
     selected.id = null;
     selected.reverseMapPoints();
     save();
-  }
-
-  _verifyEmptyPath() {
-    if (selected.path.length == 0) {
-      window.alert("Line not added : path is empty");
-      return;
-    }
   }
 
   update() {
@@ -124,69 +177,5 @@ class TransportationLineController {
     selectedTransportationLines.remove(selected);
     selected = null;
   }
-  /*
-  void resetLine() {
-    if (selected != null) {
-      selected.prepareForDelete();
-      selected = null;
-      selectedTransportationLineType = null;
-    }
-  }
-
-  void transportationLineChanged() {
-    if (selected != null) selected.editable = false;
-    new Future(() {
-      switch (selected.runtimeType.toString()) {
-        case "BusLine":
-          selectedTransportationLineType = "BUS_LINE";
-          break;
-        case "TrainLine":
-          selectedTransportationLineType = "TRAIN_LINE";
-          break;
-        case "TramwayLine":
-          selectedTransportationLineType = "TRAMWAY_LINE";
-          break;
-      }
-      selected.editable = true;
-      selected.onClick.listen((e) {
-        if (lineLinkMode) {
-          int i = selected.mapPoints.indexOf(new MapPoint.fromLatLng(e.latLng));
-          selectedMapPoint = selected.mapPoints.elementAt(i);
-          if (selectedMapPoint != null) {
-            //selectedMapPoint = selectedTransportationLine.path.getAt(index);
-          } else {
-            window.alert("No point selected");
-          }
-        }
-      });
-    });
-  }*/
-
-  /*
-  void newLine() {
-    if (selectedTransportationLineType == null) {
-      window.alert("No type selected");
-      return;
-    }
-    if (selected != null) {
-      selected.prepareForDelete();
-    }
-    switch (selectedTransportationLineType) {
-      case "BUS_LINE":
-        selected = new BusLine();
-        break;
-      case "TRAIN_LINE":
-        selected = new TrainLine();
-        break;
-      case "TRAMWAY_LINE":
-        selected = new TramwayLine();
-        break;
-      default:
-        window.alert("No line created");
-        return;
-    }
-    selected.map = customMap;
-    selected.editable = true;
-  }
-*/
+  
 }

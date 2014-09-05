@@ -92,12 +92,7 @@ class TransportationLine extends Polyline {
   String get type => runtimeType.toString().replaceFirst("Line", "");
 
   bool get isNew => id == null;
-
-  prepareForDelete() {
-    CustomMap.$wrap(map.$unsafe).cancelOnClick();
-    hide();
-  }
-
+  
   show(CustomMap map) {
     this.map = map;
   }

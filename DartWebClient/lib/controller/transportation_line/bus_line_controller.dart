@@ -3,7 +3,26 @@ part of controller;
 @Controller(selector: '[bus-line-ctrl]', publishAs: 'ctrl')
 class BusLineController extends TransportationLineController {
 
-  BusLineController(WSTransportationLine webService, CustomMapRepository customMapRepository, StationController stationController) : super(webService, customMapRepository, stationController);
+  BusLineController(BusLineService service) : super(service);
+
+  create() {
+    (_service as BusLineService).create();
+  }
+  
+  addMapPoint(LatLng latLng) {
+    _service.addMapPoint(latLng);
+  }
+  
+  addStation(Station station) {
+    _service.addStation(station);
+  }
+
+}
+
+@Injectable()
+class BusLineService extends TransportationLineService {
+  
+  BusLineService(WSTransportationLine webService, CustomMapRepository customMapRepository, StationService stationService) : super(webService, customMapRepository, stationService);
 
   create() {
     selected = new BusLine();

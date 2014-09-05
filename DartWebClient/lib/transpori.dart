@@ -21,7 +21,6 @@ class MyAppModule extends Module {
     bind(BusStationController);
     bind(TrainStationController);
     bind(TramwayStationController);
-    bind(StationSuggestionController);
     bind(TransportationRequestController);
 
     bind(PathCustomMapDecorator);
@@ -46,6 +45,17 @@ class MyAppModule extends Module {
     bind(TransportationLine, toValue: transportationLine);
     bind(Station, toValue: station);
     bind(CustomMapRepository, toValue: customMapRepository);
+
+    bind(UserService);
+    bind(TransportationLineService);
+    bind(BusLineService);
+    bind(TrainLineService);
+    bind(TramwayLineService);
+    bind(StationService);
+    bind(BusStationService);
+    bind(TrainStationService);
+    bind(TramwayStationService);
+    bind(TransportationRequestService);
 
     bind(WSUser, toValue: new WSUser(user));
     bind(WSTransportationLine, toValue: new WSTransportationLine(user));

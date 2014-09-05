@@ -14,7 +14,7 @@ class TransportationLineCustomMapDecorator implements AttachAware {
   attach() {
     try {
       customMap = new CustomMap(element);
-      customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
+      customMap.onClick.listen((e) {
         if (onClick != null) {
           onClick({'\$latLng':e.latLng});
         }

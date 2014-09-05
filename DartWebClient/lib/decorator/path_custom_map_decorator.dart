@@ -16,7 +16,7 @@ class PathCustomMapDecorator implements AttachAware {
   attach() {
     try {
       customMap = new CustomMap(element);
-      customMap.onClickStreamSubscription = customMap.onClick.listen((e) {
+      customMap.onClick.listen((e) {
         if (originPosition == null) {
           originPosition = new OriginPosition(e.latLng, customMap);
         } else {
