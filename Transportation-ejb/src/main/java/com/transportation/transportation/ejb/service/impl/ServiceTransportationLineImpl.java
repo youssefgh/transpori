@@ -7,7 +7,7 @@ package com.transportation.transportation.ejb.service.impl;
 
 import com.transportation.transportation.ejb.dao.DaoTransportationLine;
 import com.transportation.transportation.ejb.service.ServiceTransportationLine;
-import com.transportation.transportation.model.entities.MapPoint;
+import com.transportation.transportation.model.dtos.MapPoint;
 import com.transportation.transportation.model.entities.Station;
 import com.transportation.transportation.model.entities.TransportationLine;
 import java.util.List;

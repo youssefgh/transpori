@@ -1,8 +1,9 @@
 part of webservice_client;
 
+@Injectable()
 class WSTransportationRequest extends WebserviceClient {
 
-  WSTransportationRequest(User user) : super(user);
+  WSTransportationRequest(SessionService service) : super(service);
 
   get webServiceUrl => super.rawWebServiceUrl + "TransportationResponse/";
 

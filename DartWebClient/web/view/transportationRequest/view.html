@@ -1,11 +1,62 @@
-<section transportation-request-ctrl>
-	<div id="map" gmaps="ctrl.customMap"
-		originPosition="ctrl.originPosition" destination="ctrl.destination"
-		path-custom-map></div>
+<section>
 
-	<div ng-if="ctrl.selectedTransportationPath != null"
-		transportationPath="ctrl.selectedTransportationPath"
-		gmaps="ctrl.customMap" transportation-path></div>
+	<div id="map"
+		on_click="transportationRequestCTRL.mapClick($mouseEvent)"
+		on_created=transportationRequestCTRL.gmapCreated($gmap) custom-gmap></div>
+
+	<div
+		ng-repeat="transportationLine in transportationRequestCTRL.selectedTransportationPath.transportationLines">
+		<div ng-if=transportationLine.isBusLine()
+			gmap=transportationRequestCTRL.gmap path=transportationLine.mapPoints
+			on_mouseover=transportationRequestCTRL.mouseOver($polyMouseEvent,transportationLine)
+			on_mouseout=transportationRequestCTRL.mouseOut($polyMouseEvent)
+			bus-line>
+			<div ng-repeat="mapPoint in transportationLine.mapPoints">
+				<div ng-if="mapPoint.isStation()">
+					<div gmap=transportationRequestCTRL.gmap position=mapPoint
+						icon=iconCTRL.busStationIcon bus-station></div>
+				</div>
+			</div>
+		</div>
+		<div ng-if=transportationLine.isTrainLine()
+			gmap=transportationRequestCTRL.gmap path=transportationLine.mapPoints
+			on_mouseover=transportationRequestCTRL.mouseOver($polyMouseEvent,transportationLine)
+			on_mouseout=transportationRequestCTRL.mouseOut($polyMouseEvent)
+			train-line>
+			<div ng-repeat="mapPoint in transportationLine.mapPoints">
+				<div ng-if="mapPoint.isStation()">
+					<div gmap=transportationRequestCTRL.gmap position=mapPoint
+						icon=iconCTRL.trainStationIcon train-station></div>
+				</div>
+			</div>
+		</div>
+		<div ng-if=transportationLine.isTramwayLine()
+			gmap=transportationRequestCTRL.gmap path=transportationLine.mapPoints
+			on_mouseover=transportationRequestCTRL.mouseOver($polyMouseEvent,transportationLine)
+			on_mouseout=transportationRequestCTRL.mouseOut($polyMouseEvent)
+			tramway-line>
+			<div ng-repeat="mapPoint in transportationLine.mapPoints">
+				<div ng-if="mapPoint.isStation()">
+					<div gmap=transportationRequestCTRL.gmap position=mapPoint
+						icon=iconCTRL.tramwayStationIcon tramway-station></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div gmap=transportationRequestCTRL.gmap
+		content={{transportationRequestCTRL.overTransportationLine.name}}
+		position=transportationRequestCTRL.infoWindowPosition.latLng
+		info-window></div>
+
+	<div ng-if="transportationRequestCTRL.originPosition != null"
+		gmap=transportationRequestCTRL.gmap
+		position=transportationRequestCTRL.originPosition
+		icon=iconCTRL.startIcon start-marker></div>
+	<div ng-if="transportationRequestCTRL.destination != null"
+		gmap=transportationRequestCTRL.gmap
+		position=transportationRequestCTRL.destination
+		icon=iconCTRL.finishIcon finish-marker></div>
 
 	<div
 		style="background-color: white; opacity: 0.9; width: 100px; top: 55px; left: 90px; position: absolute; -moz-border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; padding: 10px">
@@ -29,28 +80,29 @@
 	</div>
 	<div id="go">
 		<button class="btn btn-info disabled"
-			ng-hide="ctrl.isHaveOriginPosition">Veillez choisir le point
-			de départ</button>
+			ng-hide="transportationRequestCTRL.isHaveOriginPosition()">Veillez
+			choisir le point de départ</button>
 		<button class="btn btn-info disabled"
-			ng-show="ctrl.isHaveOriginPosition && !ctrl.isHaveDestination">Veillez
+			ng-show="transportationRequestCTRL.isHaveOriginPosition() && !transportationRequestCTRL.isHaveDestination()">Veillez
 			choisir le point d'arrivée</button>
-		<button class="btn btn-info" ng-show="ctrl.isReadyToSearchPaths"
-			ng-click="ctrl.getPaths()">Recherche</button>
+		<button class="btn btn-info"
+			ng-show="transportationRequestCTRL.isReadyToSearchPaths()"
+			ng-click="transportationRequestCTRL.getPaths()">Recherche</button>
 	</div>
 
 	<div
 		style="position: absolute; max-height: 70%; top: 15%; right: -13px; overflow: scroll; overflow-x: hidden">
 		<div class="list-group">
 			<a class="list-group-item"
-				ng-repeat="transportationPath in ctrl.transportationPaths"
-				ng-click="ctrl.select(transportationPath)"
-				ng-class="{active : transportationPath == ctrl.selectedTransportationPath}">
+				ng-repeat="transportationPath in transportationRequestCTRL.transportationPaths"
+				ng-click="transportationRequestCTRL.select(transportationPath)"
+				ng-class="{active : transportationPath == transportationRequestCTRL.selectedTransportationPath}">
 				<div>Environ
-					{{transportationPath.avgInTransportationDistanceInKM}} Km en
+					{{transportationPath.avgInTransportationDistanceInKM()}} Km en
 					transport</div> <span
 				ng-repeat="transportationLine in transportationPath.transportationLines">
 					<span class="label label-success"
-					title="{{transportationLine.name}}">{{transportationLine.type}}</span>&nbsp;
+					title="{{transportationLine.name}}">{{transportationLine.type()}}</span>&nbsp;
 					<span
 					ng-hide="transportationLine == transportationPath.transportationLines.last">&nbsp;<span
 						class="glyphicon glyphicon-share-alt"></span>&nbsp;
@@ -59,4 +111,11 @@
 			</a>
 		</div>
 	</div>
+	
+	
+  <div
+    ng-if="transportationRequestCTRL.selectedTransportationPath != null"
+    gmap=transportationRequestCTRL.gmap
+    position=transportationRequestCTRL.navigationPosition person-marker></div>
+	
 </section>

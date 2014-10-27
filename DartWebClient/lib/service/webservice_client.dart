@@ -3,9 +3,8 @@ library webservice_client;
 import 'dart:html';
 import 'dart:async';
 import 'dart:convert';
+import 'package:angular/angular.dart';
 import 'package:transpori/model/model.dart';
-import 'package:transpori/model/station/station.dart';
-import 'package:transpori/model/transportation_line/transportation_line.dart';
 
 part 'w_s_transportation_line.dart';
 part 'w_s_station.dart';
@@ -24,12 +23,28 @@ class WebserviceClient {
   final Map rawRequestHeader = {
     "content-type": "application/json"
   };
-  final User user;
+  User user;
 
-  WebserviceClient(this.user);
+  WebserviceClient(SessionService service) {
+    user = service.user;
+  }
 
   Map get requestHeader {
-    if (user != null && user.id != null) rawRequestHeader["authorization"] = user.authorizationString;
+    if (user != null && user.id != null) rawRequestHeader["authorization"] = user.authorizationString();
     return rawRequestHeader;
   }
+}
+
+@Injectable()
+class SessionService {
+
+  User user;
+
+  SessionService() {
+    user = new User();
+    //user.id = "5399e80a2318e2764276aff6";
+    //user.password = "123456";
+    //user.email="admin@transpori.info";
+  }
+
 }

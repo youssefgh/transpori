@@ -12,7 +12,6 @@ import com.transportation.transportation.model.entities.User;
 import com.transportation.transportation.model.exceptions.EmailExistException;
 import com.transportation.transportation.model.exceptions.InvalidCredentialsException;
 import com.transportation.transportation.model.exceptions.UserExistException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -50,15 +49,10 @@ public class ServiceUserImpl implements ServiceUser {
 
     private User getAuthorizedUser(String authorizationString) throws InvalidCredentialsException {
         User user = new User();
-        LOG.info(authorizationString);
         user.setId(authorizationString.substring(0, authorizationString.indexOf(":")));
         user.setPassword(authorizationString.substring(authorizationString.indexOf(":")+1));
-        LOG.info(user.getId());
-        LOG.info(user.getPassword());
-        LOG.info(dao.findByIdAndPassword(user).getClass().toString());
         return dao.findByIdAndPassword(user);
     }
-    private static final Logger LOG = Logger.getLogger(ServiceUserImpl.class.getName());
 
     @Override
     public boolean isAuthorizedUser(String authorizationString) {
@@ -81,4 +75,7 @@ public class ServiceUserImpl implements ServiceUser {
         }
         return false;
     }
+
+    private static final Logger LOG = Logger.getLogger(ServiceUserImpl.class.getName());
+
 }

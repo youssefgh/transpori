@@ -67,7 +67,6 @@ public class UserResource {
     @Consumes("application/json")
     @Produces("application/json")
     public Response getJsonByNameAndPassword(@PathParam("email") String email, @PathParam("password") String password, @Context ContainerRequestContext requestContext) {
-        System.out.println(email + " " + password);
         try {
             return Response.status(Response.Status.OK).entity(service.signIn(new User(email, password))).build();
         } catch (InvalidCredentialsException ex) {

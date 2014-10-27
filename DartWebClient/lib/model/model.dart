@@ -1,18 +1,16 @@
 library model;
 
-import 'dart:html';
-import 'dart:js';
-import 'dart:async';
 import 'dart:math';
-import 'station/station.dart';
-import 'transportation_line/transportation_line.dart';
-import 'package:google_maps/google_maps.dart';
+import 'package:google_maps_angular/google_maps_angular.dart';
+import 'package:observe/observe.dart';
+
 part 'map_point.dart';
-part 'custom_map.dart';
-part 'destination.dart';
-part 'origin_position.dart';
+part 'station.dart';
+part 'transportation_line.dart';
+part 'bus_line.dart';
+part 'train_line.dart';
+part 'tramway_line.dart';
 part 'transportation_request.dart';
 part 'transportation_response.dart';
 part 'transportation_path.dart';
 part 'user.dart';
-part 'custom_map_repository.dart';

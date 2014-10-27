@@ -10,23 +10,23 @@ class TransportationPath {
     }
   }
 
-  get length {
+  num length() {
     int length = 0;
     for (TransportationLine transportationLine in transportationLines) {
-      length += transportationLine.path.length;
+      length += transportationLine.mapPoints.length;
     }
     return length;
   }
 
-  String get avgInTransportationDistanceInKM {
-    double avgInTransportationDistanceInKM = (avgInTransportationDistance / 1000);
+  String avgInTransportationDistanceInKM() {
+    double avgInTransportationDistanceInKM = (avgInTransportationDistance() / 1000);
     return avgInTransportationDistanceInKM.toString().substring(0, avgInTransportationDistanceInKM.toString().indexOf(".") + 2);
   }
 
-  double get avgInTransportationDistance {
+  double avgInTransportationDistance() {
     double avgInTransportationDistance = 0.0;
     for (TransportationLine transportationLine in transportationLines) {
-      avgInTransportationDistance += transportationLine.traveledDistance;
+      avgInTransportationDistance += transportationLine.traveledDistance();
     }
     return avgInTransportationDistance * 1.5;
   }
@@ -39,18 +39,6 @@ class TransportationPath {
     }
     avgOutTransportationDistance += transportationLines.last.mapPoints.last.distanceTo(destination);
     return avgOutTransportationDistance * 1.5;
-  }
-
-  show(CustomMap map) {
-    for (TransportationLine transportationLine in transportationLines) {
-      transportationLine.showWithStations(map);
-    }
-  }
-
-  hide() {
-    for (TransportationLine transportationLine in transportationLines) {
-      transportationLine.hideWithStations();
-    }
   }
 
 }

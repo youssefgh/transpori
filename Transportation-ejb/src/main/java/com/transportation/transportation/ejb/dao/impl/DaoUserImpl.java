@@ -28,7 +28,7 @@ public class DaoUserImpl extends DaoGenericImpl<User> implements DaoUser, Serial
     }
 
     @Override
-    public User findByIdAndPassword(User user) {System.out.println(user.toString());
+    public User findByIdAndPassword(User user) {
         return getDb().findOne(new Query().addCriteria(Criteria.where("id").is(user.getId()).and("password").is(user.getPassword())), getEntityClass());
     }
     

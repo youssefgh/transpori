@@ -1,6 +1,7 @@
 part of model;
 
 class User {
+
   String id;
   String email;
   String password;
@@ -34,7 +35,7 @@ class User {
     return this is Administrator;
   }
 
-  String get authorizationString => id + ":" + password;
+  String authorizationString() => id + ":" + password;
 
   Map toJson() {
     Map json = new Map();
@@ -46,10 +47,11 @@ class User {
     json["birthday"] = birthday.toIso8601String();
     return json;
   }
+
 }
 
 class Administrator extends User {
 
   Administrator.fromMap(Map administratorMap) : super.fromMap(administratorMap);
-  
+
 }

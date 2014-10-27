@@ -1,8 +1,9 @@
 part of webservice_client;
 
+@Injectable()
 class WSStationSuggestion extends WebserviceClient {
 
-  WSStationSuggestion(User user) : super(user);
+  WSStationSuggestion(SessionService service) : super(service);
 
   get webServiceUrl => super.rawWebServiceUrl + "StationSuggestion/";
 

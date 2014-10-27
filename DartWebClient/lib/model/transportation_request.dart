@@ -1,16 +1,17 @@
 part of model;
 
 class TransportationRequest {
-  OriginPosition originPosition;
-  Destination destination;
+
+  MapPoint originPosition;
+  MapPoint destination;
+
   TransportationRequest(this.originPosition, this.destination);
-  
-  Map toJson(){
+
+  Map toJson() {
     Map json = new Map();
-    //TODO inspect sever exception cause
-    //json["\"@type\""]= "\""+runtimeType.toString()+"\"";
-    json["originPosition"]= originPosition.toJson();
-    json["destination"]= destination.toJson();
+    json["originPosition"] = originPosition.toJson();
+    json["destination"] = destination.toJson();
     return json;
   }
+
 }

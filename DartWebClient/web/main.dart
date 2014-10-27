@@ -1,5 +1,6 @@
 import 'package:angular/application_factory.dart';
 import 'package:transpori/transpori.dart';
+import 'package:transpori/controller/controller.dart';
 //import 'package:logging/logging.dart';
 
 void main() {/*
@@ -8,5 +9,5 @@ void main() {/*
       ..onRecord.listen((LogRecord r) {
         print(r.message);
       });*/
-  applicationFactory().addModule(new MyAppModule()).run();
+  applicationFactory().rootContextType(RootContext).addModule(new MyAppModule()).run();
 }

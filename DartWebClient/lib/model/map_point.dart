@@ -1,22 +1,8 @@
 part of model;
 
-class MapPoint extends LatLng {
+class MapPoint extends LatLngWrapper {
 
-  num lat;
-  num lng;
-
-  static MapPoint $wrap(JsObject jsObject) => jsObject == null ? null : new MapPoint.fromJsObject(jsObject);
-  MapPoint.fromJsObject(JsObject jsObject) : super.fromJsObject(jsObject);
-
-  MapPoint(num lat, num lng) : super(lat, lng) {
-    this.lat = lat;
-    this.lng = lng;
-  }
-
-  MapPoint.fromLatLng(LatLng latLng) : super(latLng.lat, latLng.lng) {
-    this.lat = latLng.lat;
-    this.lng = latLng.lng;
-  }
+  MapPoint(num lat, num lng) : super(lat, lng);
 
   MapPoint.fromMap(Map mapPointMap) : super(mapPointMap["latitude"], mapPointMap["longitude"]);
 
@@ -31,6 +17,8 @@ class MapPoint extends LatLng {
     }
     return mapPoint;
   }
+  
+  bool isStation() => this is Station; 
 
   num distanceTo(MapPoint mapPoint) {
     final num radius = 6371;
@@ -44,9 +32,9 @@ class MapPoint extends LatLng {
   }
 
   num toRadians(num deg) => deg * (PI / 180);
-  
-  bool equals(LatLng latLng) {
-    return lat == latLng.lat && lng == latLng.lng;
+
+  bool equals(MapPoint mapPoint) {
+    return lat == mapPoint.lat && lng == mapPoint.lng;
   }
 
   Map toJson() {

@@ -8,6 +8,7 @@ package com.transportation.transportation.web.services;
 import com.transportation.transportation.ejb.service.ServiceTransportationResponse;
 import com.transportation.transportation.model.dtos.TransportationRequest;
 import com.transportation.transportation.model.dtos.TransportationResponse;
+import com.transportation.transportation.model.dtos.MapPoint;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -36,8 +37,8 @@ public class TransportationResponseResource {
     @POST
     @Consumes(value = MediaType.APPLICATION_JSON)
     @Produces(value = MediaType.APPLICATION_JSON)
-    public TransportationResponse getJsons(TransportationRequest transportationRequest) {
+    public TransportationResponse getJson(TransportationRequest transportationRequest) {
         return service.create(transportationRequest);
     }
-
+    
 }

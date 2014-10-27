@@ -35,37 +35,38 @@
 				</button>
 				<img src="images/header-logo.gif"
 					style="width: 50px; height: 50px; position: absolute; left: 0"
-					alt="logo"> <a class="navbar-brand"
-					data-toggle="modal" data-target="#aboutModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori
+					alt="logo"> <a class="navbar-brand" data-toggle="modal"
+					data-target="#aboutModal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transpori
 					<small style="font-size: 40%">BETA</small>
 				</a>
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
+          <li><a ng-show=userCTRL.isUserLoggedIn() href="#/admin">Adminstration</a></li>
 					<li><a href="" data-toggle="modal" data-target="#linesModal">Lines
 							inclus</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#aboutModal">A
 							propos</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right" user-ctrl>
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#" data-toggle="modal" data-target="#signUpModal"
-						ng-hide="ctrl.isUserLoggedIn()">Inscription</a></li>
+						ng-hide="userCTRL.isUserLoggedIn()">Inscription</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#logInModal"
-						ng-hide="ctrl.isUserLoggedIn()">Connexion</a></li>
-					<li><a href="#" ng-show="ctrl.isUserLoggedIn()">{{ctrl.selected.email}}</a></li>
-					<li><a href="#" ng-click="ctrl.logOut()"
-						ng-show="ctrl.isUserLoggedIn()">Déconnexion</a></li>
+						ng-hide="userCTRL.isUserLoggedIn()">Connexion</a></li>
+					<li><a href="#" ng-show="userCTRL.isUserLoggedIn()">{{userCTRL.selected.email}}</a></li>
+					<li><a href="#" ng-click="userCTRL.logOut()"
+						ng-show="userCTRL.isUserLoggedIn()">Déconnexion</a></li>
 				</ul>
 			</div>
 		</div>
 	</header>
-    
+
 	<ng-view></ng-view>
-        
+
 	<!-- Modal Log In-->
 	<div class="modal fade" id="logInModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
-		style="overflow-y: auto" user-ctrl>
+		style="overflow-y: auto">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -73,15 +74,15 @@
 						aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
 				</div>
-				<form name="logInForm" ng-submit="ctrl.logIn()">
+				<form name="logInForm" ng-submit="userCTRL.logIn()">
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="control-label" for="email1">Email</label> <input
 								class="form-control" id="email1" type="email"
-								ng-model="ctrl.selected.email" required> <label
+								ng-model="userCTRL.selected.email" required> <label
 								class="control-label" for="password">Mot de passe</label> <input
 								class="form-control" id="password" type="password"
-								ng-model="ctrl.selected.password" required>
+								ng-model="userCTRL.selected.password" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -97,7 +98,7 @@
 	<!-- Modal Sign Up-->
 	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
-		style="overflow-y: auto" user-ctrl>
+		style="overflow-y: auto">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -105,23 +106,23 @@
 						aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel">Inscription</h4>
 				</div>
-				<form name="signUpForm" ng-submit="ctrl.signUp()">
+				<form name="signUpForm" ng-submit="userCTRL.signUp()">
 					<div class="modal-body">
 						<div class="form-group">
 							<label class="control-label" for="email">Email</label> <input
 								class="form-control" id="email" type="email"
-								ng-model="ctrl.selected.email" required> <label
+								ng-model="userCTRL.selected.email" required> <label
 								class="control-label" for="password">Mot de passe</label> <input
 								class="form-control" id="password" type="password"
-								ng-model="ctrl.selected.password" required pattern=".{6,}"
+								ng-model="userCTRL.selected.password" required pattern=".{6,}"
 								title="Doit contenir au minimum 6 caractères"> <label
 								class="control-label" for="firstName">Prénom</label> <input
 								class="form-control" id="firstName" type="text"
-								ng-model="ctrl.selected.firstName" required pattern=".{2,}"
+								ng-model="userCTRL.selected.firstName" required pattern=".{2,}"
 								title="Doit contenir au minimum 2 caractères"> <label
 								class="control-label" for="birthday">Date de naissance</label> <input
 								class="form-control" id="birthday" type="date"
-								ng-model="ctrl.selected.birthday" max="2004-01-01" required>
+								ng-model="userCTRL.selected.birthday" max="2004-01-01" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -191,9 +192,9 @@
 						<p class="blink_text">
 							<span class="label label-success">Tramway</span> Casablanca
 						</p>
-            <p class="blink_text">
-              <span class="label label-success">Tramway</span> Rabat
-            </p>
+						<p class="blink_text">
+							<span class="label label-success">Tramway</span> Rabat
+						</p>
 						<p>
 							<span class="glyphicon glyphicon-refresh"></span>&nbsp;<span
 								class="label label-primary">Train</span> (Grandes lignes) <span
@@ -264,6 +265,16 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- 	Icons -->
+  <div on_created=iconCTRL.startIconCreated($icon) start-icon></div>
+  <div on_created=iconCTRL.finishIconCreated($icon)
+    finish-icon></div>
+	<div on_created=iconCTRL.busStationIconCreated($icon) bus-station-icon></div>
+  <div on_created=iconCTRL.trainStationIconCreated($icon)
+    train-station-icon></div>
+  <div on_created=iconCTRL.tramwayStationIconCreated($icon)
+    tramway-station-icon></div>
 
 	<!-- Google Analytics-->
 	<script>

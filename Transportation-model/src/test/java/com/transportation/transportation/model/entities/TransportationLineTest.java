@@ -5,7 +5,9 @@
  */
 package com.transportation.transportation.model.entities;
 
+import com.transportation.transportation.model.dtos.MapPoint;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -13,112 +15,201 @@ import static org.junit.Assert.*;
  */
 public class TransportationLineTest {
 
-    public TransportationLineTest() {
-    }
+    private TransportationLine instance;
 
-    @org.junit.Test
+    @Test
     public void testInitId() {
+        instance = new TransportationLineImpl();
+        instance.initId();
+        assertEquals(24, instance.getId().length());
     }
 
-    @org.junit.Test
-    public void testGetStations() {
+    @Test
+    public void testStations() {
+        instance = new TransportationLineImpl();
+        instance.addMapPoint(new MapPoint());
+        instance.addMapPoint(new Station());
+        instance.addMapPoint(new MapPoint());
+        instance.addMapPoint(new Station());
+        instance.addMapPoint(new MapPoint());
+        assertEquals(2, instance.stations().size());
     }
 
-    @org.junit.Test
-    public void testGetLastMapPoint() {
-        TransportationLine transportationLine = new TransportationLine() {
-
-            @Override
-            public TransportationLine clone() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-        Station station = new Station(2F, 2F);
-        transportationLine.getMapPoints().add(new Station(1F, 1F));
-        transportationLine.getMapPoints().add(station);
-        assertEquals(transportationLine.getLastMapPoint(), station);
+    @Test
+    public void testLastMapPoint() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        station1.initId();
+        station2.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        assertEquals(instance.lastMapPoint(), station2);
         MapPoint mapPoint = new MapPoint(3F, 3F);
-        transportationLine.getMapPoints().add(mapPoint);
-        assertEquals(transportationLine.getLastMapPoint(), mapPoint);
+        instance.addMapPoint(mapPoint);
+        assertEquals(instance.lastMapPoint(), mapPoint);
     }
 
-    @org.junit.Test
+    @Test
+    public void testIsLastStation() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        station1.initId();
+        station2.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        assertTrue(instance.isLastStation(station2));
+    }
+
+    @Test
+    public void testIsWillPassBy_Station() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        Station station3 = new Station();
+        station1.initId();
+        station2.initId();
+        station3.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        assertTrue(instance.isWillPassBy(station2));
+        assertFalse(instance.isWillPassBy(station3));
+    }
+
+    @Test
+    public void testIsWillPassBy_Station_Station() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        Station station3 = new Station();
+        Station station4 = new Station();
+        station1.initId();
+        station2.initId();
+        station3.initId();
+        station4.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        instance.addMapPoint(station3);
+        assertTrue(instance.isWillPassBy(station1, station3));
+        assertFalse(instance.isWillPassBy(station1, station4));
+    }
+
+    @Test
+    public void testRemoveBefore() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        Station station3 = new Station();
+        Station station4 = new Station();
+        station1.initId();
+        station2.initId();
+        station3.initId();
+        station4.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        instance.addMapPoint(station3);
+        instance.addMapPoint(station4);
+        instance.removeBefore(station2);
+        assertEquals(station2, instance.firstMapPoint());
+        assertEquals(station4, instance.lastMapPoint());
+        assertEquals(3, instance.getMapPoints().size());
+    }
+
+    @Test
+    public void testRemoveAfter() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        Station station3 = new Station();
+        Station station4 = new Station();
+        station1.initId();
+        station2.initId();
+        station3.initId();
+        station4.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        instance.addMapPoint(station3);
+        instance.addMapPoint(station4);
+        instance.removeAfter(station2);
+        assertEquals(station1, instance.firstMapPoint());
+        assertEquals(station2, instance.lastMapPoint());
+        assertEquals(2, instance.getMapPoints().size());
+    }
+
+    @Test
+    public void testFirstMapPoint() {
+        instance = new TransportationLineImpl();
+        Station station1 = new Station();
+        Station station2 = new Station();
+        station1.initId();
+        station2.initId();
+        instance.addMapPoint(station1);
+        instance.addMapPoint(station2);
+        assertEquals(instance.firstMapPoint(), station1);
+    }
+
+    @Test
+    public void testAddMapPoint() {
+        System.out.println("addMapPoint");
+        MapPoint mapPoint = new MapPoint();
+        instance = new TransportationLineImpl();
+        instance.addMapPoint(mapPoint);
+        assertEquals(1, instance.getMapPoints().size());
+    }
+
+    @Test
+    public void testEquals() {
+    }
+
+    /*
+     get, set, hashcode and toString
+     */
+    @Test
+    public void testGetId() {
+    }
+
+    @Test
+    public void testSetId() {
+    }
+
+    @Test
+    public void testGetName() {
+    }
+
+    @Test
+    public void testSetName() {
+    }
+
+    @Test
+    public void testGetMapPoints() {
+    }
+
+    @Test
     public void testSetMapPoints() {
     }
 
-    @org.junit.Test
-    public void testIsLastStation() {
+    @Test
+    public void testHashCode() {
     }
 
-    @org.junit.Test
-    public void testIsWillPassBy_Station() {
-        TransportationLine transportationLine = new TransportationLine() {
-
-            @Override
-            public TransportationLine clone() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-        Station station = new Station(2F, 2F);
-        transportationLine.getMapPoints().add(new Station(1F, 1F));
-        transportationLine.getMapPoints().add(station);
-        transportationLine.getMapPoints().add(new Station(3F, 3F));
-        assertTrue(transportationLine.isWillPassBy(station));
+    @Test
+    public void testToString() {
     }
 
-    @org.junit.Test
-    public void testIsWillPassBy_Station_Station() {
+    /*
+     impl
+     */
+    @Test
+    public void testClone() {
     }
 
-    @org.junit.Test
-    public void testRemoveBefore() {
-        TransportationLine transportationLine = new TransportationLine() {
+    public class TransportationLineImpl extends TransportationLine {
 
-            @Override
-            public TransportationLine clone() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-        Station station1 = new Station();
-        station1.setId("1");
-        Station station2 = new Station();
-        station1.setId("2");
-        Station station3 = new Station();
-        station1.setId("3");
-        transportationLine.getMapPoints().add(station1);
-        transportationLine.getMapPoints().add(station2);
-        transportationLine.getMapPoints().add(station3);
-        transportationLine.removeBefore(station2);
-        assertFalse(transportationLine.getMapPoints().isEmpty());
-        assertEquals(station2, transportationLine.getMapPoints().get(0));
-        assertTrue(transportationLine.getMapPoints().size() == 2);
-    }
-
-    @org.junit.Test
-    public void testRemoveAfter() {
-        TransportationLine transportationLine = new TransportationLine() {
-
-            @Override
-            public TransportationLine clone() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        };
-        Station station1 = new Station();
-        station1.setId("1");
-        Station station2 = new Station();
-        station1.setId("2");
-        Station station3 = new Station();
-        station1.setId("3");
-        transportationLine.getMapPoints().add(station1);
-        transportationLine.getMapPoints().add(station2);
-        transportationLine.getMapPoints().add(station3);
-        transportationLine.removeAfter(station2);
-        assertTrue(transportationLine.getMapPoints().size() == 2);
-        assertTrue(transportationLine.getMapPoints().indexOf(station2) == 1);
-    }
-
-    @org.junit.Test
-    public void testEquals() {
+        @Override
+        public TransportationLine clone() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
 }

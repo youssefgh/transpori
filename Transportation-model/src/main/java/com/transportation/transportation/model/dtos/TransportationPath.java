@@ -6,18 +6,19 @@
 
 package com.transportation.transportation.model.dtos;
 
-import com.transportation.transportation.model.entities.MapPoint;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.transportation.transportation.model.entities.TransportationLine;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
  * @author youssef
  */
 public class TransportationPath implements Serializable {
+
     private List<TransportationLine> transportationLines;
     
     {
@@ -32,7 +33,7 @@ public class TransportationPath implements Serializable {
     }
 
     public List<TransportationLine> getTransportationLines() {
-        return transportationLines;
+        return Collections.unmodifiableList(transportationLines);
     }
 
     public void setTransportationLines(List<TransportationLine> transportationLines) {
@@ -42,14 +43,28 @@ public class TransportationPath implements Serializable {
     public void addTransportationLine(TransportationLine transportationLine){
         transportationLines.add(transportationLine);
     }
+
+    void addTransportationLineToBegin(TransportationLine transportationLine) {
+        transportationLines.add(0, transportationLine);
+    }
     
     @JsonIgnore
-    public MapPoint getLastMapPoint(){
-        TransportationLine lastTransportationLine = transportationLines.get(transportationLines.size()-1);
-        return lastTransportationLine.getLastMapPoint();
+    TransportationLine firstTransportationLine(){
+        return transportationLines.get(0);
+    }
+    
+    @JsonIgnore
+    TransportationLine lastTransportationLine(){
+        return transportationLines.get(transportationLines.size()-1);
     }
     
     public void clear(){
         transportationLines.clear();
     }
+    
+    @Override
+    public TransportationPath clone(){
+        return new TransportationPath(this);
+    }
+    
 }

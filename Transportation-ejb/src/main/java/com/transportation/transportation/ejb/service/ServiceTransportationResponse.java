@@ -15,4 +15,5 @@ import com.transportation.transportation.model.dtos.TransportationResponse;
 public interface ServiceTransportationResponse {
 
     TransportationResponse create(TransportationRequest transportationRequest);
+    
 }

@@ -5,10 +5,11 @@
  */
 package com.transportation.transportation.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.transportation.transportation.model.dtos.MapPoint;
 import java.io.Serializable;
 import java.util.Objects;
 import org.bson.types.ObjectId;
-import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -67,10 +68,7 @@ public class Station extends MapPoint implements Serializable {
             return false;
         }
         final Station other = (Station) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
