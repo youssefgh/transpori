@@ -1,10 +1,4 @@
-Recommended :
-Update your Glassfish Jersey :
-//list available updates
-pkg list -u
-//install jersey update
-pkg install jersey
-
+#Depricated
 After 1st deployment :
     Activate administrator :
         create a user with an email "admin@transpori.info"

@@ -14,9 +14,8 @@
     <packaging>ear</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.directory>/home/youssef/Apps/glassfish-4.0</glassfish.directory>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -56,48 +55,6 @@
                     </modules>
                 </configuration>
             </plugin>
-            <!-- Glassfish App Server >
-            <plugin>
-                <groupId>org.glassfish.maven.plugin</groupId>
-                <artifactId>maven-glassfish-plugin</artifactId>
-                <version>2.1</version>
-                <executions>
-                    <execution>
-                        <id>gf-undeploy</id>
-                        <goals>
-                            <goal>undeploy</goal>
-                        </goals>
-                        <phase>clean</phase>
-                    </execution>
-                    <execution>
-                        <id>gf-deploy</id>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <user>admin</user>
-                    <debug>true</debug>
-                    <echo>true</echo>
-                    <glassfishDirectory>${glassfish.directory}</glassfishDirectory>
-                    <domainDirectory>${glassfish.directory}/glassfish/domains/</domainDirectory>
-                    <passwordFile>${glassfish.directory}/glassfish/domains/domain1/config/domain-passwords</passwordFile>
-                    <domain>
-                        <name>domain1</name>
-                        <adminPort>4848</adminPort>
-                        <httpPort>8080</httpPort>
-                        <httpsPort>8443</httpsPort>
-                    </domain>
-                    <components>
-                        <component>
-                            <name>Transportation</name>
-                            <artifact>target/Transportation.ear</artifact>
-                        </component>
-                    </components>
-                </configuration>
-            </plugin-->
         </plugins>
     </build>
 </project>

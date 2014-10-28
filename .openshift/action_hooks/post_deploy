@@ -1,4 +1,10 @@
 #!/bin/bash
+
+cd $OPENSHIFT_REPO_DIR
+cd DartWebClient
+$OPENSHIFT_DATA_DIR/dart-sdk/bin/pub build
+cp -r build/web/* ../Transportation-web/src/main/webapp
+
 cd $OPENSHIFT_REPO_DIR
 mvn install -s $OPENSHIFT_DATA_DIR/maven/settings.xml -X
 cp Transportation-ear/target/Transportation.ear $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/
