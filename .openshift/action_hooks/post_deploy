@@ -1,10 +1,22 @@
 #!/bin/bash
 
-cd $OPENSHIFT_REPO_DIR
-cd DartWebClient
-$OPENSHIFT_DATA_DIR/dart-sdk/bin/pub build
-cp -r build/web/* ../Transportation-web/src/main/webapp
+#Backup previous deployment
+cd $OPENSHIFT_DATA_DIR
+mkdir -p previous-deployment
+cp $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/Transportation.ear $OPENSHIFT_DATA_DIR/previous-deployment/Transportation.ear
 
+#Disabling Server side Dart compiling until Dart-sdk works on Redhat
+#cd $OPENSHIFT_REPO_DIR
+#cd DartWebClient
+#$OPENSHIFT_DATA_DIR/dart-sdk/bin/pub build
+#cp -r build/web/* ../Transportation-web/src/main/webapp
+
+#Extract Dart build and copy it to Web project
+cd $OPENSHIFT_DATA_DIR
+tar -xf dart-build.tar
+cp -r $OPENSHIFT_DATA_DIR/dart-build/web/* $OPENSHIFT_REPO_DIR/Transportation-web/src/main/webapp/
+
+#Build with maven and deploy
 cd $OPENSHIFT_REPO_DIR
 mvn install -s $OPENSHIFT_DATA_DIR/maven/settings.xml -X
 cp Transportation-ear/target/Transportation.ear $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/
