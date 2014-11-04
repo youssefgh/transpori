@@ -9,6 +9,7 @@ import com.transportation.transportation.ejb.service.ServiceUser;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,22 +23,15 @@ import javax.ws.rs.ext.Provider;
  * @author youssef
  */
 @Provider
-@Stateless
 @AdministratorAuthorized
 public class AdministratorAuthorizationRequestFilter implements ContainerRequestFilter {
 
-    //TODO remove explicite injection
-    //@EJB(lookup = "java:global/Transportation-ear/Transportation-ejb-1.0-SNAPSHOT/ServiceUserImpl")
+    @EJB
     private ServiceUser service;
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         LOG.info("Administrator filter");
-        try {
-            service = InitialContext.doLookup("java:global/Transportation-ear/Transportation-ejb-1.0-SNAPSHOT/ServiceUserImpl");
-        } catch (NamingException ex) {
-            Logger.getLogger(UserAuthorizationRequestFilter.class.getName()).log(Level.SEVERE, null, ex);
-        }
         if (requestContext.getHeaders().getFirst("authorization") == null || !service.isAuthorizedAdministrator(requestContext.getHeaders().getFirst("authorization"))) {
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("User cannot access the resource.").build());
         }

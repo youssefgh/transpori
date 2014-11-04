@@ -1,0 +1,72 @@
+<div class="panel panel-default">
+	<div class="panel-heading">Bus line</div>
+	<div class="panel-body">
+		<div style="width: 500px; height: 500px"
+			on_click=busLineCTRL.addMapPoint($mouseEvent)
+			on_created=busLineCTRL.gmapCreated($gmap) custom-gmap></div>
+		<div ng-if="busLineCTRL.selected != null" gmap=busLineCTRL.gmap
+			remove-point-on-rightclick=true path=busLineCTRL.selected.mapPoints
+			editable=true on_dbl_click=busLineCTRL.selectMapPoint($latLngWrapper) bus-line></div>
+		<div ng-hide="busLineCTRL.selected == null">
+			<input ng-model=busLineCTRL.selected.name width="50">
+			<button ng-show=busLineCTRL.selected.isNew()
+				ng-click=busLineCTRL.save()>Save</button>
+			<button ng-show=busLineCTRL.selected.isNew()
+				ng-click=busLineCTRL.undo()>Undo</button>
+			<button ng-hide=busLineCTRL.selected.isNew()
+				ng-click=busLineCTRL.saveReverseLine()>Save reversed</button>
+			<button ng-hide=busLineCTRL.selected.isNew()
+				ng-click=busLineCTRL.update()>Update</button>
+			<button ng-hide=busLineCTRL.selected.isNew()
+				ng-click=busLineCTRL.delete()>Delete</button>
+			<button ng-hide="busLineCTRL.lineLinkMode == true"
+				ng-click="busLineCTRL.setLineLinkMode()">Set link mode</button>
+		</div>
+
+		<div
+			ng-repeat="transportationLine in busLineCTRL.selectedTransportationLines"
+			gmap=busLineCTRL.gmap path=transportationLine.mapPoints
+			on_click=busLineCTRL.select(transportationLine) bus-line></div>
+
+		<div ng-repeat="station in busLineCTRL.stations">
+			<div ng-if=station.isBusStation() gmap=busLineCTRL.gmap
+				position=station icon=iconCTRL.busStationIcon
+				on_click=busLineCTRL.addStation($position) bus-station></div>
+			<div ng-if=station.isTrainStation() gmap=busLineCTRL.gmap
+				position=station icon=iconCTRL.trainStationIcon
+				on_click=busLineCTRL.addStation($position) train-station></div>
+			<div ng-if=station.isTramwayStation() gmap=busLineCTRL.gmap
+				position=station icon=iconCTRL.tramwayStationIcon
+				on_click=busLineCTRL.addStation($position) tramway-station></div>
+		</div>
+	</div>
+
+	<div style="position: absolute; top: 100px; right: 0;">
+		<div style="position: relative">
+			<div style="overflow: auto; height: 500px; width: 600px">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>TransportationLine Type</th>
+							<th>Id</th>
+							<th>Name</th>
+							<th><button ng-click=busLineCTRL.showAll()>Show all</button>
+								<button ng-click=busLineCTRL.hideAll()>Hide all</button></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="transportationLine in busLineCTRL.transportationLines"
+							ng-click=busLineCTRL.addToSelection(transportationLine)
+							ng-class={info:busLineCTRL.selectedTransportationLines.contains(transportationLine)}>
+							<td>{{transportationLine.runtimeType}}</td>
+							<td>{{transportationLine.id}}</td>
+							<td>{{transportationLine.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

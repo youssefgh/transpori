@@ -5,10 +5,10 @@
  */
 package com.transportation.transportation.web.services.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig.Feature;
 
 /**
  *
@@ -21,14 +21,13 @@ public class ObjectMapperResolver implements ContextResolver<ObjectMapper> {
 
     public ObjectMapperResolver() {
         mapper = new ObjectMapper();
-        mapper.enable(Feature.INDENT_OUTPUT);/*
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);/*
         mapper.enableDefaultTyping();
         mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.WRAPPER_OBJECT);*/
     }
 
     @Override
     public ObjectMapper getContext(Class<?> type) {
-        //System.out.println("ObjectMapperResolver.getContext(...)");
         return mapper;
     }
 }

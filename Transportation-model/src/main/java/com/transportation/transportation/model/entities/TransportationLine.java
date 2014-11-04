@@ -5,18 +5,18 @@
  */
 package com.transportation.transportation.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.transportation.transportation.model.dtos.MapPoint;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.bson.types.ObjectId;
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.annotate.JsonSubTypes;
-import org.codehaus.jackson.annotate.JsonTypeInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -47,7 +47,7 @@ public abstract class TransportationLine implements Serializable {
 
     public TransportationLine() {
     }
-    
+
     public TransportationLine(TransportationLine transportationLine) {
         id = transportationLine.getId();
         name = transportationLine.getName();
@@ -55,7 +55,7 @@ public abstract class TransportationLine implements Serializable {
     }
 
     public void initId() {
-        setId(new ObjectId().toString());
+        id = new ObjectId().toString();
     }
 
     public String getId() {
@@ -75,11 +75,11 @@ public abstract class TransportationLine implements Serializable {
     }
 
     public List<MapPoint> getMapPoints() {
-        return mapPoints;
+        return Collections.unmodifiableList(mapPoints);
     }
 
     @JsonIgnore
-    public List<Station> getStations() {
+    public List<Station> stations() {
         List<Station> stations = new ArrayList<>();
         for (MapPoint mapPoint : mapPoints) {
             if (mapPoint.isStation()) {
@@ -90,17 +90,21 @@ public abstract class TransportationLine implements Serializable {
     }
 
     @JsonIgnore
-    public MapPoint getFirstMapPoint() {
+    public MapPoint firstMapPoint() {
         return mapPoints.get(0);
     }
 
     @JsonIgnore
-    public MapPoint getLastMapPoint() {
+    public MapPoint lastMapPoint() {
         return mapPoints.get(mapPoints.size() - 1);
     }
 
     public void setMapPoints(List<MapPoint> mapPoints) {
         this.mapPoints = mapPoints;
+    }
+
+    public void addMapPoint(MapPoint mapPoint) {
+        mapPoints.add(mapPoint);
     }
 
     public Boolean isLastStation(Station station) {
@@ -114,15 +118,6 @@ public abstract class TransportationLine implements Serializable {
     public Boolean isWillPassBy(Station baseStation, Station desiredStation) {
         if (mapPoints.contains(baseStation) && mapPoints.contains(desiredStation)) {
             if (mapPoints.indexOf(baseStation) < mapPoints.indexOf(desiredStation)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Boolean isExistIn(List<TransportationLine> transportationLines) {
-        for (TransportationLine transportationLine : transportationLines) {
-            if (transportationLine.equals(this) && this.getLastMapPoint().equals(transportationLine.getLastMapPoint()) /*&& this.getFirstMapPoint().equals(transportationLine.getFirstMapPoint())*/) {
                 return true;
             }
         }
@@ -153,10 +148,7 @@ public abstract class TransportationLine implements Serializable {
             return false;
         }
         final TransportationLine other = (TransportationLine) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override

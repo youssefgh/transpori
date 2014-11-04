@@ -4,7 +4,7 @@
  */
 package com.transportation.transportation.ejb.dao;
 
-import com.transportation.transportation.model.entities.MapPoint;
+import com.transportation.transportation.model.dtos.MapPoint;
 import com.transportation.transportation.model.entities.Station;
 import javax.ejb.Local;
 

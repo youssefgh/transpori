@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface ServiceTransportationLine {
 
-    void create(TransportationLine transportationLine);
+    String create(TransportationLine transportationLine);
 
     TransportationLine read(Object id);
 

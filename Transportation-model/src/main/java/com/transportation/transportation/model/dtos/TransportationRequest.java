@@ -13,22 +13,22 @@ import java.io.Serializable;
  */
 public class TransportationRequest implements Serializable {
 
-    private OriginPosition originPosition;
-    private Destination destination;
+    private MapPoint originPosition;
+    private MapPoint destination;
 
-    public OriginPosition getOriginPosition() {
+    public MapPoint getOriginPosition() {
         return originPosition;
     }
 
-    public void setOriginPosition(OriginPosition originPosition) {
+    public void setOriginPosition(MapPoint originPosition) {
         this.originPosition = originPosition;
     }
 
-    public Destination getDestination() {
+    public MapPoint getDestination() {
         return destination;
     }
 
-    public void setDestination(Destination destination) {
+    public void setDestination(MapPoint destination) {
         this.destination = destination;
     }
 

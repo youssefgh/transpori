@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+<meta name="msapplication-tap-highlight" content="no" />
+<title>Transpori</title>
+<!-- Angular style -->
+<link href="packages/angular_ui/css/angular.css" rel="stylesheet">
+<!-- Cordova -->
+<script type="text/javascript" src="cordova.js"></script>
+<!-- GMaps API -->
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCdXjZUsvzh5TReAlXhV8nNEfzOWjU7gGM&sensor=false"></script>
+<!-- Dart -->
+<!--TODO put WebComponent here-->
+<script type="application/dart" src="main.dart"></script>
+<script type="text/javascript" src="packages/browser/dart.js"></script>
+</head>
+<body station-ctrl ng-cloak="" on-device-ready="ctrl.ready()"
+	device-ready>
+	<h1>Station saver</h1>
+	<h2>Ready ? {{ctrl.isReady}}</h2>
+	Station : {{ctrl.selected}}<br>
+	<button ng-click="ctrl.get()">Get</button>
+	<button ng-click="ctrl.save()">Save {{ctrl.selected}}</button>
+	<button ng-click="ctrl.getAndSave()">Get and Save</button>
+  <button ng-click="ctrl.clear()">Clear</button>
+	<input ng-model="ctrl.webSeviceURL">
+	<button ng-click="ctrl.send()">Send {{ctrl.stations.length}}</button>
+	<table>
+	<thead>
+	 <tr><td>lat</td><td>lng</td><td>datetime</td></tr>
+	</thead>
+	<tr ng-repeat="station in ctrl.stations"><td>{{station.lat}}</td><td>{{station.lng}}</td><td>{{station.dateTime}}</td><td><button ng-click="ctrl.remove(station)">Remove</button></td></tr>
+	</table>
+</body>
+</html>

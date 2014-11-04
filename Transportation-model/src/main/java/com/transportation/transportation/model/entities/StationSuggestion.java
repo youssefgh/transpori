@@ -5,7 +5,7 @@
  */
 package com.transportation.transportation.model.entities;
 
-import org.codehaus.jackson.annotate.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
