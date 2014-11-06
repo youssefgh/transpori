@@ -6,8 +6,8 @@ After 1st deployment :
 
 Openshift branch changes :
     *Transpotration-ejb/.../SpringConfig.xml
-    *Transpotration-web/pom.xml
     *DartClient/.../webservice_client.dart
+    *Login HTMLs
     +.openshift
     
 
