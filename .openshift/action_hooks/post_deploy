@@ -14,6 +14,7 @@ cp $OPENSHIFT_DATA_DIR/glassfish-4.1/glassfish/domains/domain1/autodeploy/Transp
 #Extract Dart build and copy it to Web project
 cd $OPENSHIFT_DATA_DIR
 tar -xf dart-build.tar
+rm -r dart-build
 mv build dart-build
 cp -r $OPENSHIFT_DATA_DIR/dart-build/web/* $OPENSHIFT_REPO_DIR/Transportation-web/src/main/webapp/
 
