@@ -20,7 +20,7 @@ cp -r $OPENSHIFT_DATA_DIR/dart-build/web/* $OPENSHIFT_REPO_DIR/Transportation-we
 #Build with maven and deploy
 cd $OPENSHIFT_REPO_DIR
 mvn install -s $OPENSHIFT_DATA_DIR/maven/settings.xml -X
-cp Transportation-ear/target/Transportation.ear $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/
+cp Transportation-ear/target/Transportation.ear $OPENSHIFT_DATA_DIR/glassfish-4.1/glassfish/domains/domain1/autodeploy/
 
 
 
