@@ -2,7 +2,7 @@
 
 set -x
 export TZ="GMT"
-$OPENSHIFT_DATA_DIR/glassfish4/glassfish/bin/asadmin start-domain &> $OPENSHIFT_DIY_LOG_DIR/start-server-"$(date)".log
+$OPENSHIFT_DATA_DIR/glassfish-4.1/glassfish/bin/asadmin start-domain &> $OPENSHIFT_DIY_LOG_DIR/start-server-"$(date)".log
 
 export PATH=$OPENSHIFT_DATA_DIR/jdk1.8.0_25/bin:$PATH
 export JAVA_HOME="$OPENSHIFT_DATA_DIR/jdk1.8.0_25"
