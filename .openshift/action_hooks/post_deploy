@@ -3,7 +3,7 @@
 #Backup previous deployment
 cd $OPENSHIFT_DATA_DIR
 mkdir -p previous-deployment
-cp $OPENSHIFT_DATA_DIR/glassfish4/glassfish/domains/domain1/autodeploy/Transportation.ear $OPENSHIFT_DATA_DIR/previous-deployment/Transportation.ear
+cp $OPENSHIFT_DATA_DIR/glassfish-4.1/glassfish/domains/domain1/autodeploy/Transportation.ear $OPENSHIFT_DATA_DIR/previous-deployment/Transportation.ear
 
 #Disabling Server side Dart compiling until Dart-sdk works on Redhat
 #cd $OPENSHIFT_REPO_DIR
