@@ -6,4 +6,10 @@ class BusLine extends TransportationLine {
 
   BusLine.fromMap(Map busLineMap) : super.fromMap(busLineMap);
 
+  Map toJson() {
+    Map json = super.toJson();
+    json["@type"] = "BusLine";
+    return json;
+  }
+  
 }

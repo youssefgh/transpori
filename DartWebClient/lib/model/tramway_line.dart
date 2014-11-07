@@ -6,4 +6,10 @@ class TramwayLine extends TransportationLine {
 
   TramwayLine.fromMap(Map tramwayLineMap) : super.fromMap(tramwayLineMap);
 
+  Map toJson() {
+    Map json = super.toJson();
+    json["@type"] = "TramwayLine";
+    return json;
+  }
+  
 }

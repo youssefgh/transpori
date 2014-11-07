@@ -33,10 +33,6 @@ class TransportationLine {
     return transportationLine;
   }
 
-  //TODO find alt
-  //used in path result
-  String type() => runtimeType.toString().replaceFirst("Line", "");
-
   bool isNew() => id == null;
 
   reverseMapPoints() {
@@ -57,7 +53,6 @@ class TransportationLine {
 
   Map toJson() {
     Map json = new Map();
-    json["@type"] = runtimeType.toString();
     json["id"] = id;
     json["name"] = name;
     List<Map> mapPointMaps = new List();
@@ -75,4 +70,5 @@ class TransportationLine {
     json["mapPoints"] = mapPointMaps;
     return json;
   }
+  
 }

@@ -29,7 +29,7 @@ class Station extends MapPoint {
   }
 
   bool isNew() => id == null;
-  
+
   bool isBusStation() => this is BusStation;
   bool isTrainStation() => this is TrainStation;
   bool isTramwayStation() => this is TramwayStation;
@@ -57,6 +57,12 @@ class BusStation extends Station {
     return new BusStation.fromMap(busStationMap);
   }
 
+  Map toJson() {
+    Map json = super.toJson();
+    json["@type"] = "BusStation";
+    return json;
+  }
+
 }
 
 class TrainStation extends Station {
@@ -74,6 +80,12 @@ class TrainStation extends Station {
     return new TrainStation.fromMap(trainStationMap);
   }
 
+  Map toJson() {
+    Map json = super.toJson();
+    json["@type"] = "TrainStation";
+    return json;
+  }
+
 }
 
 class TramwayStation extends Station {
@@ -89,6 +101,12 @@ class TramwayStation extends Station {
 
   factory TramwayStation.instanceFromMap(Map tramwayStationMap) {
     return new TramwayStation.fromMap(tramwayStationMap);
+  }
+
+  Map toJson() {
+    Map json = super.toJson();
+    json["@type"] = "TramwayStation";
+    return json;
   }
 
 }

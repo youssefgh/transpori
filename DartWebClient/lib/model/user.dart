@@ -39,7 +39,7 @@ class User {
 
   Map toJson() {
     Map json = new Map();
-    json["@type"] = runtimeType.toString();
+    json["@type"] = "User";
     json["id"] = id;
     json["email"] = email;
     json["password"] = password;
@@ -53,5 +53,11 @@ class User {
 class Administrator extends User {
 
   Administrator.fromMap(Map administratorMap) : super.fromMap(administratorMap);
+
+  Map toJson() {
+    Map json = new Map();
+    json["@type"] = "Administrator";
+    return json;
+  }
 
 }

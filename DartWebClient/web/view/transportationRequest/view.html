@@ -81,10 +81,10 @@
 	<div id="go">
 		<button class="btn btn-info disabled"
 			ng-hide="transportationRequestCTRL.isHaveOriginPosition()">Veillez
-			choisir le point de départ</button>
+			choisir le point de d��part</button>
 		<button class="btn btn-info disabled"
 			ng-show="transportationRequestCTRL.isHaveOriginPosition() && !transportationRequestCTRL.isHaveDestination()">Veillez
-			choisir le point d'arrivée</button>
+			choisir le point d'arriv��e</button>
 		<button class="btn btn-info"
 			ng-show="transportationRequestCTRL.isReadyToSearchPaths()"
 			ng-click="transportationRequestCTRL.getPaths()">Recherche</button>
@@ -102,8 +102,11 @@
 					transport</div> <span
 				ng-repeat="transportationLine in transportationPath.transportationLines">
 					<span class="label label-success"
-					title="{{transportationLine.name}}">{{transportationLine.type()}}</span>&nbsp;
-					<span
+					title="{{transportationLine.name}}"> <span
+						ng-if=transportationLine.isBusLine()>Bus</span> <span
+						ng-if=transportationLine.isTrainLine()>Train</span> <span
+						ng-if=transportationLine.isTramwayLine()>Tramway</span>
+				</span>&nbsp; <span
 					ng-hide="transportationLine == transportationPath.transportationLines.last">&nbsp;<span
 						class="glyphicon glyphicon-share-alt"></span>&nbsp;
 				</span>
@@ -111,11 +114,11 @@
 			</a>
 		</div>
 	</div>
-	
-	
-  <div
-    ng-if="transportationRequestCTRL.selectedTransportationPath != null"
-    gmap=transportationRequestCTRL.gmap
-    position=transportationRequestCTRL.navigationPosition person-marker></div>
-	
+
+
+	<div
+		ng-if="transportationRequestCTRL.selectedTransportationPath != null"
+		gmap=transportationRequestCTRL.gmap
+		position=transportationRequestCTRL.navigationPosition person-marker></div>
+
 </section>

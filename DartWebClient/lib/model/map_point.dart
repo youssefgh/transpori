@@ -39,7 +39,7 @@ class MapPoint extends LatLngWrapper {
 
   Map toJson() {
     Map json = new Map();
-    json["@type"] = runtimeType.toString();
+    json["@type"] = "MapPoint";
     json["latitude"] = lat.toString();
     json["longitude"] = lng.toString();
     return json;
