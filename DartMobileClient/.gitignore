@@ -1,3 +1,5 @@
 build/
 packages/
 .project
+.settings
+.pub
