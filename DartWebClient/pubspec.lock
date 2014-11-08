@@ -45,7 +45,7 @@ packages:
     description:
       ref: "0.0.1"
       resolved-ref: a403f8d0c50e33440d09f40a34bacce3e65225f7
-      url: "https://github.com/youssefgh/google_maps_angular.git"
+      url: "https://github.com/youssefgh/angular-dart-google-maps.git"
     source: git
     version: "0.0.1"
   html5lib:

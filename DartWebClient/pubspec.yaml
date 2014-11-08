@@ -9,7 +9,7 @@ dependencies:
   google_maps_angular:
     git:
       ref: 0.0.1
-      url: https://github.com/youssefgh/google_maps_angular.git
+      url: https://github.com/youssefgh/angular-dart-google-maps.git
   observe: any
 transformers:
 - angular:
