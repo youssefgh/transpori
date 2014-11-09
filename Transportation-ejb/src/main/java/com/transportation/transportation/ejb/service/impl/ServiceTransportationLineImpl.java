@@ -62,15 +62,9 @@ public class ServiceTransportationLineImpl implements ServiceTransportationLine 
     @Override
     public void updateAllStations(Station station) {
         List<TransportationLine> transportationLines = dao.readAll();
-        for (int i = 0; i < transportationLines.size(); i++) {
-            TransportationLine transportationLine = transportationLines.get(i);
-            for (int j = 0; j < transportationLine.getMapPoints().size(); j++) {
-                MapPoint mapPoint = transportationLine.getMapPoints().get(j);
-                if (mapPoint.equals(station)) {
-                    transportationLine.getMapPoints().set(i, station);
-                    dao.update(transportationLine);
-                    break;
-                }
+        for (TransportationLine transportationLine : transportationLines) {
+            if (transportationLine.update(station)) {
+                dao.update(transportationLine);
             }
         }
     }

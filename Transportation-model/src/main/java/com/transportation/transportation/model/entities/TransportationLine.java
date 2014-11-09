@@ -107,6 +107,18 @@ public abstract class TransportationLine implements Serializable {
         mapPoints.add(mapPoint);
     }
 
+    public Boolean update(Station station) {
+        Boolean update = false;
+        List<Station> stations = stations();
+        for (Station stationItem : stations) {
+            if (station.equals(stationItem)) {
+                mapPoints.set(mapPoints.indexOf(station), station);
+                update = true;
+            }
+        }
+        return update;
+    }
+
     public Boolean isLastStation(Station station) {
         return !mapPoints.isEmpty() && mapPoints.get(mapPoints.size() - 1).equals(station);
     }

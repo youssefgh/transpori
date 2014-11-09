@@ -6,7 +6,12 @@
 package com.transportation.transportation.model.entities;
 
 import com.transportation.transportation.model.dtos.MapPoint;
+import org.junit.After;
+import org.junit.AfterClass;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -16,6 +21,22 @@ import org.junit.Test;
 public class TransportationLineTest {
 
     private TransportationLine instance;
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
 
     @Test
     public void testInitId() {
@@ -48,6 +69,21 @@ public class TransportationLineTest {
         MapPoint mapPoint = new MapPoint(3F, 3F);
         instance.addMapPoint(mapPoint);
         assertEquals(instance.lastMapPoint(), mapPoint);
+    }
+    
+    @Test
+    public void testUpdate() {
+        System.out.println("update");
+        int i = 0;
+        Station station = new Station();
+        station.initId();
+        station.setName("a");
+        instance = new TransportationLineImpl();
+        instance.addMapPoint(station);
+        Station station1 = new Station(station.getId());
+        station1.setName("b");
+        assertThat(instance.update(station1), is(true));
+        assertEquals(instance.stations().get(0).getName(), "b");
     }
 
     @Test

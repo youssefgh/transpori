@@ -5,19 +5,18 @@
 			on_click=busStationCTRL.create($mouseEvent)
 			on_created=busStationCTRL.gmapCreated($gmap) custom-gmap></div>
 		<div ng-if="busStationCTRL.selected != null" gmap=busStationCTRL.gmap
-			position=busStationCTRL.selected icon=iconCTRL.busStationIcon draggable=true
-			on_right_click="busStationCTRL.undo()" bus-station></div>
+			position=busStationCTRL.selected icon=iconCTRL.busStationIcon
+			draggable=true on_right_click="busStationCTRL.undo()" bus-station></div>
 
-		<!--    <input ng-hide="busStationCTRL.selected == null" ng-value="busStationCTRL.selected.name" >   -->
 		<div ng-hide="busStationCTRL.selected == null">
 			<button ng-show="busStationCTRL.selected.isNew()"
 				ng-click="busStationCTRL.save()">Save</button>
-			<button
-				ng-click="busStationCTRL.undo()">Undo</button>
+			<button ng-click="busStationCTRL.undo()">Undo</button>
 			<button ng-hide="busStationCTRL.selected.isNew()"
 				ng-click="busStationCTRL.update()">Update</button>
 			<button ng-hide="busStationCTRL.selected.isNew()"
 				ng-click="busStationCTRL.delete()">Delete</button>
+			<input ng-model=busStationCTRL.selected.name width="50">
 		</div>
 
 		<div ng-repeat="station in busStationCTRL.selectedStations"
@@ -33,6 +32,7 @@
 							<tr>
 								<th>Station Type</th>
 								<th>id</th>
+								<th>name</th>
 								<th><button ng-click="busStationCTRL.showAll()">Show
 										all</button>
 									<button ng-click="busStationCTRL.hideAll()">Hide all</button></th>
@@ -44,6 +44,7 @@
 								ng-class="{info:busStationCTRL.selectedStations.contains(station)}">
 								<td>{{station.runtimeType}}</td>
 								<td>{{station.id}}</td>
+								<td>{{station.name}}</td>
 							</tr>
 						</tbody>
 					</table>

@@ -3,13 +3,15 @@ part of model;
 class Station extends MapPoint {
 
   String id;
+  String name;
 
-  Station(num lat, num lng, [String this.id]) : super(lat, lng);
+  Station(num lat, num lng, [String this.id, String this.name]) : super(lat, lng);
 
-  Station.fromMapPoint(MapPoint mapPoint, [String this.id]) : super(mapPoint.lat, mapPoint.lng);
+  Station.fromMapPoint(MapPoint mapPoint, [String this.id, String this.name]) : super(mapPoint.lat, mapPoint.lng);
 
   Station.fromMap(Map stationMap) : super(stationMap["latitude"], stationMap["longitude"]) {
     id = stationMap["id"];
+    name = stationMap["name"];
   }
 
   factory Station.instanceFromMap(Map stationMap) {
@@ -37,6 +39,7 @@ class Station extends MapPoint {
   Map toJson() {
     Map json = super.toJson();
     json["id"] = id;
+    json["name"] = name;
     return json;
   }
 

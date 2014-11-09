@@ -1,54 +1,56 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Train station</div>
-  <div class="panel-body">
-    <div style="width: 500px; height: 500px"
-      on_click=trainStationCTRL.create($mouseEvent)
-      on_created=trainStationCTRL.gmapCreated($gmap) custom-gmap></div>
-    <div ng-if="trainStationCTRL.selected != null" gmap=trainStationCTRL.gmap
-      position=trainStationCTRL.selected icon=iconCTRL.trainStationIcon draggable=true
-      on_right_click="trainStationCTRL.undo()" train-station></div>
+	<div class="panel-heading">Train station</div>
+	<div class="panel-body">
+		<div style="width: 500px; height: 500px"
+			on_click=trainStationCTRL.create($mouseEvent)
+			on_created=trainStationCTRL.gmapCreated($gmap) custom-gmap></div>
+		<div ng-if="trainStationCTRL.selected != null"
+			gmap=trainStationCTRL.gmap position=trainStationCTRL.selected
+			icon=iconCTRL.trainStationIcon draggable=true
+			on_right_click="trainStationCTRL.undo()" train-station></div>
 
-    <!--    <input ng-hide="trainStationCTRL.selected == null" ng-value="trainStationCTRL.selected.name" >   -->
-    <div ng-hide="trainStationCTRL.selected == null">
-      <button ng-show="trainStationCTRL.selected.isNew()"
-        ng-click="trainStationCTRL.save()">Save</button>
-      <button
-        ng-click="trainStationCTRL.undo()">Undo</button>
-      <button ng-hide="trainStationCTRL.selected.isNew()"
-        ng-click="trainStationCTRL.update()">Update</button>
-      <button ng-hide="trainStationCTRL.selected.isNew()"
-        ng-click="trainStationCTRL.delete()">Delete</button>
-    </div>
+		<div ng-hide="trainStationCTRL.selected == null">
+			<button ng-show="trainStationCTRL.selected.isNew()"
+				ng-click="trainStationCTRL.save()">Save</button>
+			<button ng-click="trainStationCTRL.undo()">Undo</button>
+			<button ng-hide="trainStationCTRL.selected.isNew()"
+				ng-click="trainStationCTRL.update()">Update</button>
+			<button ng-hide="trainStationCTRL.selected.isNew()"
+				ng-click="trainStationCTRL.delete()">Delete</button>
+			<input ng-model=trainStationCTRL.selected.name width="50">
+		</div>
 
-    <div ng-repeat="station in trainStationCTRL.selectedStations"
-      gmap=trainStationCTRL.gmap position=station
-      icon=iconCTRL.trainStationIcon on_click=trainStationCTRL.select(station)
-      train-station></div>
+		<div ng-repeat="station in trainStationCTRL.selectedStations"
+			gmap=trainStationCTRL.gmap position=station
+			icon=iconCTRL.trainStationIcon
+			on_click=trainStationCTRL.select(station) train-station></div>
 
-    <div style="position: absolute; top: 100px; right: 0;">
-      <div style="position: relative">
-        <div style="overflow: auto; height: 500px; width: 600px">
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th>Station Type</th>
-                <th>id</th>
-                <th><button ng-click="trainStationCTRL.showAll()">Show
-                    all</button>
-                  <button ng-click="trainStationCTRL.hideAll()">Hide all</button></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="station in trainStationCTRL.stations"
-                ng-click="trainStationCTRL.addToSelection(station)"
-                ng-class="{info:trainStationCTRL.selectedStations.contains(station)}">
-                <td>{{station.runtimeType}}</td>
-                <td>{{station.id}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div style="position: absolute; top: 100px; right: 0;">
+			<div style="position: relative">
+				<div style="overflow: auto; height: 500px; width: 600px">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Station Type</th>
+								<th>id</th>
+								<th>name</th>
+								<th><button ng-click="trainStationCTRL.showAll()">Show
+										all</button>
+									<button ng-click="trainStationCTRL.hideAll()">Hide all</button></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="station in trainStationCTRL.stations"
+								ng-click="trainStationCTRL.addToSelection(station)"
+								ng-class="{info:trainStationCTRL.selectedStations.contains(station)}">
+								<td>{{station.runtimeType}}</td>
+								<td>{{station.id}}</td>
+								<td>{{station.name}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
