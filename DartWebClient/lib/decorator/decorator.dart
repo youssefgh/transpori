@@ -3,6 +3,7 @@ library decorator;
 import 'dart:html' hide Animation;
 import 'dart:async';
 import 'package:angular/angular.dart' hide Animation;
+import 'package:google_maps_angular/google_maps_angular.dart';
 import 'package:google_maps_angular/decorator/decorator.dart';
 import 'package:google_maps/google_maps.dart';
 
