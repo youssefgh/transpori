@@ -1,5 +1,0 @@
-#!/bin/bash
-
-set -x
-export TZ="GMT"
-$OPENSHIFT_DATA_DIR/glassfish-4.1/glassfish/bin/asadmin start-domain &> $OPENSHIFT_DIY_LOG_DIR/start-server-"$(date)".log
