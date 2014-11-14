@@ -12,7 +12,7 @@ class TransportationLineController {
 
   TransportationLineController(this._service);
 
-  get selected => _service.selected;
+  TransportationLine get selected => _service.selected;
   set selected(TransportationLine selected) => _service.selected = selected;
   get stations => _service.stations;
   get transportationLines => _service.transportationLines;
@@ -125,6 +125,7 @@ class TransportationLineService {
 
   addStation(Station station) {
     selected.mapPoints.add(station);
+    selected.updateName();
   }
 
   setStation(Station station, MapPoint mapPoint) {
@@ -157,6 +158,7 @@ class TransportationLineService {
   saveReverseLine() {
     selected.id = null;
     selected.reverseMapPoints();
+    if (selected.name.isEmpty) selected.updateName();
     save();
   }
 

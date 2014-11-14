@@ -35,6 +35,10 @@ class TransportationLine {
 
   bool isNew() => id == null;
 
+  updateName() {
+    name = (mapPoints.first as Station).name + ' - ' + (mapPoints.last as Station).name;
+  }
+
   reverseMapPoints() {
     mapPoints = new ObservableList.from(mapPoints.reversed);
   }
@@ -70,5 +74,5 @@ class TransportationLine {
     json["mapPoints"] = mapPointMaps;
     return json;
   }
-  
+
 }
