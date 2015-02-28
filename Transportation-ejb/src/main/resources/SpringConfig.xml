@@ -11,10 +11,6 @@
         <mongo:options socket-keep-alive="true"></mongo:options>
     </mongo:mongo>
     <mongo:db-factory mongo-ref="mongo" dbname="transportation"/>
-<!--    <mongo:mongo id="mongo" host="127.7.28.130" port="27017">
-        <mongo:options socket-keep-alive="true"></mongo:options>
-    </mongo:mongo>
-    <mongo:db-factory mongo-ref="mongo" dbname="tmorocco" username="admin" password="FntuxzybEX2A"/>-->
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
