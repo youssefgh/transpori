@@ -12,17 +12,6 @@ class WSStation extends WebserviceClient {
     });
   }
 
-  Future<List<Station>> readAll() {
-    return HttpRequest.request(webServiceUrl, method: httpGet, requestHeaders: requestHeader).then((response) {
-      List<Map> stationMaps = JSON.decode(response.response);
-      List<Station> stations = new List();
-      for (Map stationMap in stationMaps) {
-        stations.add(new Station.instanceFromMap(stationMap));
-      }
-      return stations;
-    });
-  }
-
   Future update(Station station) {
     return HttpRequest.request(webServiceUrl, method: httpPost, requestHeaders: requestHeader, sendData: JSON.encode(station));
   }

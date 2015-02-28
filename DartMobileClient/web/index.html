@@ -20,22 +20,22 @@
 <script type="application/dart" src="main.dart"></script>
 <script type="text/javascript" src="packages/browser/dart.js"></script>
 </head>
-<body station-ctrl ng-cloak="" on-device-ready="ctrl.ready()"
+<body station-ctrl ng-cloak="" on-device-ready="ready()"
 	device-ready>
 	<h1>Station saver</h1>
-	<h2>Ready ? {{ctrl.isReady}}</h2>
-	Station : {{ctrl.selected}}<br>
-	<button ng-click="ctrl.get()">Get</button>
-	<button ng-click="ctrl.save()">Save {{ctrl.selected}}</button>
-	<button ng-click="ctrl.getAndSave()">Get and Save</button>
-  <button ng-click="ctrl.clear()">Clear</button>
-	<input ng-model="ctrl.webSeviceURL">
-	<button ng-click="ctrl.send()">Send {{ctrl.stations.length}}</button>
+	<h2>Ready ? {{isReady}}</h2>
+	Station : {{selected.lat}} {{selected.lng}}<br>
+	<button ng-click="get()">Get</button>
+	<button ng-click="save()">Save</button>
+	<button ng-click="getAndSave()">Get and Save</button>
+  <button ng-click="clear()">Clear</button>
+	<input ng-model="webSeviceURL">
+	<button ng-click="send()">Send {{stations.length}}</button>
 	<table>
 	<thead>
 	 <tr><td>lat</td><td>lng</td><td>datetime</td></tr>
 	</thead>
-	<tr ng-repeat="station in ctrl.stations"><td>{{station.lat}}</td><td>{{station.lng}}</td><td>{{station.dateTime}}</td><td><button ng-click="ctrl.remove(station)">Remove</button></td></tr>
+	<tr ng-repeat="station in stations"><td>{{station.lat}}</td><td>{{station.lng}}</td><td>{{station.dateTime}}</td><td><button ng-click="remove(station)">Remove</button></td></tr>
 	</table>
 </body>
 </html>

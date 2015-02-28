@@ -1,11 +1,12 @@
 name: transpori_mobile
 description: A sample web application
 dependencies:
-  angular: 0.14.0
+  angular: any
   angular_ui: any
   browser: any
-  google_maps: any
 transformers:
 - angular:
     html_files:
     - web/index.html
+- $dart2js:
+    csp: true

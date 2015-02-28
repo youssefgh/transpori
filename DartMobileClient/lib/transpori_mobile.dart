@@ -12,9 +12,6 @@ import 'package:transpori_mobile/model/model.dart';
 import 'package:transpori_mobile/model/station/station.dart';
 
 import 'package:logging/logging.dart';
-/*
-@MirrorsUsed(symbols: 'lat',override: '*')
-import 'dart:mirrors';*/
 
 class MyAppModule extends Module {
 
@@ -30,19 +27,18 @@ class MyAppModule extends Module {
     bind(WSStation, toValue: new WSStation(user));
     bind(WSStationSuggestion, toValue: new WSStationSuggestion(user));
 
-    bind(StationController);
     bind(DeviceReadyDecorator);
   }
 }
 
-@Controller(selector: '[station-ctrl]', publishAs: 'ctrl')
-class StationController {
+@Injectable()
+class RootContext {
   BusStationSnapshot selected;
   List<BusStationSnapshot> stations = new List();
   WSStation webSevice;
   Logger logger = new Logger("StationControllerLogger");
 
-  StationController(this.webSevice) {
+  RootContext(this.webSevice) {
     logger.info("start");
     //window.localStorage.remove("stations");
     if (window.localStorage["stations"] != null) {
@@ -70,6 +66,7 @@ class StationController {
   Future get() {
     logger.info("get");
     return Navigator.geolocation.getCurrentPosition().then((mapPoint) {
+      logger.info("return");
       selected = new BusStationSnapshot(mapPoint.lat, mapPoint.lng);
     });
     /*
@@ -143,18 +140,22 @@ class Geolocation {
   Future<MapPoint> getCurrentPosition() {
     Completer completer = new Completer();
     MapPoint mapPoint;
-      JsObject geolocationOptions = new JsObject.jsify({
-        'enableHighAccuracy': true,
-        'maximumAge': 3000,
-        'timeout': 10000
-      });
-      (context['navigator']['geolocation'] as JsObject).callMethod('getCurrentPosition', [(p) {
-          mapPoint = new MapPoint(p['coords']['latitude'], p['coords']['longitude']);
-          completer.complete(mapPoint);
-        }, (e) {
-          logger.info(e['message']);
-        }
-        , geolocationOptions]);
+    JsObject geolocationOptions = new JsObject.jsify({
+      'enableHighAccuracy': true,
+      'maximumAge': 3000,
+      'timeout': 30000
+    });
+    (context['navigator']['geolocation'] as JsObject).callMethod('getCurrentPosition', [(p) {
+        logger.info("3.3");
+        mapPoint = new MapPoint(p['coords']['latitude'], p['coords']['longitude']);
+        logger.info(p['coords']['latitude']);
+        logger.info(mapPoint.lat);
+        logger.info("4");
+        completer.complete(mapPoint);
+        logger.info("5");
+      }, (e) {
+        logger.info(e['message']);
+      }, geolocationOptions]);
     return completer.future;
   }
 }
