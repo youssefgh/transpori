@@ -14,7 +14,6 @@ part 'w_s_user.dart';
 
 class WebserviceClient {
 
-  //final String rawWebServiceUrl = "http://tmorocco-mdeveloper.rhcloud.com/rest/";
   final String rawWebServiceUrl = "http://localhost:8080/rest/";
   final String httpPut = "PUT";
   final String httpGet = "GET";
