@@ -42,9 +42,6 @@ class SessionService {
 
   SessionService() {
     user = new User();
-    //user.id = "5399e80a2318e2764276aff6";
-    //user.password = "123456";
-    //user.email="admin@transpori.info";
   }
 
 }
