@@ -45,7 +45,6 @@ public class TransportationResponse implements Serializable {
     public Boolean isHave(TransportationLine transportationLine) {
         for (TransportationPath transportationPath : transportationPaths) {
             if (transportationPath.getTransportationLines().contains(transportationLine)) {
-                System.out.println("true!!!!!!!!!!!");
                 return true;
             }
         }
