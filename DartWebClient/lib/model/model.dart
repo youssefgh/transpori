@@ -14,3 +14,5 @@ part 'transportation_request.dart';
 part 'transportation_response.dart';
 part 'transportation_path.dart';
 part 'user.dart';
+// TODO remove
+//part 'transportation_part.dart';

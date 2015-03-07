@@ -11,6 +11,8 @@ part 'w_s_station.dart';
 part 'w_s_station_suggestion.dart';
 part 'w_s_transportation_request.dart';
 part 'w_s_user.dart';
+// TODO remove
+//part 'w_s_transportation_part.dart';
 
 class WebserviceClient {
 

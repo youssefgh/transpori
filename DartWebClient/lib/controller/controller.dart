@@ -22,6 +22,9 @@ part 'tramway_station.dart';
 part 'station_suggestion.dart';
 part 'transportation_request.dart';
 part 'icon.dart';
+// TODO remove
+//part 'transportation_part.dart';
+//part 'bus_part.dart';
 
 @Injectable()
 class RootContext {
@@ -42,7 +45,9 @@ class RootContext {
   TramwayStationController tramwayStationCTRL;
   TransportationRequestController transportationRequestCTRL;
   IconController iconCTRL;
+  //TransportationPartController transportationPartCTRL;
+  //BusPartController busPartCTRL;
 
-  RootContext(this.userCTRL, this.transportationLineCTRL, this.busLineCTRL, this.trainLineCTRL, this.tramwayLineCTRL, this.stationCTRL, this.busStationCTRL, this.trainStationCTRL, this.tramwayStationCTRL, this.transportationRequestCTRL, this.iconCTRL);
+  RootContext(this.userCTRL, this.transportationLineCTRL, this.busLineCTRL, this.trainLineCTRL, this.tramwayLineCTRL, this.stationCTRL, this.busStationCTRL, this.trainStationCTRL, this.tramwayStationCTRL, this.transportationRequestCTRL, this.iconCTRL/*, this.transportationPartCTRL, this.busPartCTRL*/);
 
 }

@@ -13,8 +13,9 @@ class ApplicationRouter implements Function {
   BusLineService _busLineService;
   TrainLineService _trainLineService;
   TramwayLineService _tramwayLineService;
+  //BusPartService _busPartService;
 
-  ApplicationRouter(this._busLineService, this._busStationService, this._trainLineService, this._trainStationService, this._tramwayLineService, this._tramwayStationService);
+  ApplicationRouter(this._busLineService, this._busStationService, this._trainLineService, this._trainStationService, this._tramwayLineService, this._tramwayStationService/*, this._busPartService*/);
 
   call(Router router, RouteViewFactory routeViewFactory) {
     routeViewFactory.configure({
@@ -40,6 +41,11 @@ class ApplicationRouter implements Function {
           }),
           'tramwayLine': ngRoute(path: '/tramwayLine', view: 'view/admin/transportationLine/tramwayLine/manage.html', enter: (RouteEnterEvent e) {
             _tramwayLineService.refreshTransportationLines();
+          })
+        }),
+        'transportationPart': ngRoute(path: '/transportationPart', view: 'view/admin/transportationPart/view.html', mount: {
+          'busPart': ngRoute(path: '/busPart', view: 'view/admin/transportationPart/busPart/manage.html', enter: (RouteEnterEvent e) {
+            //_busPartService.refreshTransportationParts();
           })
         })
       })

@@ -6,6 +6,8 @@ import 'package:transpori/decorator/decorator.dart';
 import 'package:transpori/service/webservice_client.dart';
 import 'package:transpori/routing/routing.dart';
 
+import 'package:google_maps/google_maps.dart';
+
 class MyAppModule extends Module {
 
   MyAppModule() {
@@ -20,6 +22,8 @@ class MyAppModule extends Module {
     bind(TramwayStationController);
     bind(TransportationRequestController);
     bind(IconController);
+    //bind(TransportationPartController);
+    //bind(BusPartController);
 
     bind(CustomGMapDecorator);
     bind(BusStationDecorator);
@@ -48,13 +52,16 @@ class MyAppModule extends Module {
     bind(TrainStationService);
     bind(TramwayStationService);
     bind(TransportationRequestService);
+    //bind(TransportationPartService);
+    //bind(BusPartService);
 
     bind(WSUser);
     bind(WSTransportationLine);
+    //bind(WSTransportationPart);
     bind(WSStation);
     bind(WSStationSuggestion);
     bind(WSTransportationRequest);
-    
+
     bind(SessionService);
 
     bind(RouteInitializerFn, toImplementation: ApplicationRouter);
