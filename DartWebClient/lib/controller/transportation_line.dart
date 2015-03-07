@@ -9,6 +9,9 @@ class TransportationLineController {
 
   bool lineLinkMode = false;
   MapPoint selectedMapPoint;
+  //TODO change to Enum when full support added
+  List creationModes = ["directMode", "assistedMode"];
+  String creationMode = "directMode";
 
   TransportationLineController(this._service);
 
@@ -31,7 +34,11 @@ class TransportationLineController {
   }
 
   addStation(Station station) {
-    if (!lineLinkMode) _service.addStation(station); else {
+    if (!lineLinkMode) {
+      if (creationMode == "directMode") _service.addStation(station); else if (creationMode == "assistedMode") {
+        _service.addStationWithAssitance(station);
+      }
+    } else {
       if (selectedMapPoint != null) _service.setStation(station, selectedMapPoint); else window.alert("select a MapPoint first");
     }
   }
@@ -119,13 +126,37 @@ class TransportationLineService {
   get pathIsEmpty => selected.mapPoints.length == 0;
 
   addMapPoint(LatLng latLng) {
-    MapPoint mapPoint = new MapPoint(latLng.lat, latLng.lng);
-    selected.mapPoints.add(mapPoint);
+    if (selected.mapPoints.isNotEmpty) {
+      MapPoint mapPoint = new MapPoint(latLng.lat, latLng.lng);
+      selected.mapPoints.add(mapPoint);
+    }
   }
 
   addStation(Station station) {
     selected.mapPoints.add(station);
     selected.updateName();
+  }
+
+  addStationWithAssitance(Station station) {
+    Station lastStation = selected.lastStation();
+    if (lastStation != null) {
+      DirectionsRequest directionsRequest = new DirectionsRequest();
+      directionsRequest.origin = lastStation.latLng;
+      directionsRequest.destination = station.latLng;
+      directionsRequest.travelMode = TravelMode.DRIVING;
+      if (!selected.isLastMapPoint(lastStation)) {
+        //directionsRequest.waypoints = selected.mapPointsAfter(lastStation);
+      }
+      new DirectionsService().route(directionsRequest, (directionsResult, directionsStatus) {
+        if (directionsResult.routes.isNotEmpty) {
+          directionsResult.routes.first.overviewPath.forEach((latLng) {
+            selected.mapPoints.add(new MapPoint(latLng.lat, latLng.lng));
+          });
+          selected.mapPoints.add(station);
+          selected.updateName();
+        }
+      });
+    }
   }
 
   setStation(Station station, MapPoint mapPoint) {

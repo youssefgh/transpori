@@ -49,7 +49,13 @@
 							propos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				  <!-- Placeholder for authentication -->
+					<li><a href="#" data-toggle="modal" data-target="#signUpModal"
+						ng-hide="userCTRL.isUserLoggedIn()">Inscription</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#logInModal"
+						ng-hide="userCTRL.isUserLoggedIn()">Connexion</a></li>
+					<li><a href="#" ng-show="userCTRL.isUserLoggedIn()">{{userCTRL.selected.email}}</a></li>
+					<li><a href="#" ng-click="userCTRL.logOut()"
+						ng-show="userCTRL.isUserLoggedIn()">Déconnexion</a></li>
 				</ul>
 			</div>
 		</div>
@@ -57,6 +63,76 @@
 
 	<ng-view></ng-view>
 
+	<!-- Modal Log In-->
+	<div class="modal fade" id="logInModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Connexion</h4>
+				</div>
+				<form name="logInForm" ng-submit="userCTRL.logIn()">
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label" for="email1">Email</label> <input
+								class="form-control" id="email1" type="email"
+								ng-model="userCTRL.selected.email" required> <label
+								class="control-label" for="password">Mot de passe</label> <input
+								class="form-control" id="password" type="password"
+								ng-model="userCTRL.selected.password" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-success"
+							ng-disabled="logInForm.invalid">Se connecter</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Sign Up-->
+	<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		style="overflow-y: auto">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Inscription</h4>
+				</div>
+				<form name="signUpForm" ng-submit="userCTRL.signUp()">
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label" for="email">Email</label> <input
+								class="form-control" id="email" type="email"
+								ng-model="userCTRL.selected.email" required> <label
+								class="control-label" for="password">Mot de passe</label> <input
+								class="form-control" id="password" type="password"
+								ng-model="userCTRL.selected.password" required pattern=".{6,}"
+								title="Doit contenir au minimum 6 caractères"> <label
+								class="control-label" for="firstName">Prénom</label> <input
+								class="form-control" id="firstName" type="text"
+								ng-model="userCTRL.selected.firstName" required pattern=".{2,}"
+								title="Doit contenir au minimum 2 caractères"> <label
+								class="control-label" for="birthday">Date de naissance</label> <input
+								class="form-control" id="birthday" type="date"
+								ng-model="userCTRL.selected.birthday" max="2004-01-01" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="reset" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-success">S'inscrire</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- Modal Soon-->
 	<div class="modal fade" id="soonModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"

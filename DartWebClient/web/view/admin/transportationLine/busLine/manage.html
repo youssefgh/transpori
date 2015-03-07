@@ -6,7 +6,8 @@
 			on_created=busLineCTRL.gmapCreated($gmap) custom-gmap></div>
 		<div ng-if="busLineCTRL.selected != null" gmap=busLineCTRL.gmap
 			remove-point-on-rightclick=true path=busLineCTRL.selected.mapPoints
-			editable=true on_dbl_click=busLineCTRL.selectMapPoint($latLngWrapper) bus-line></div>
+			editable=true on_dbl_click=busLineCTRL.selectMapPoint($latLngWrapper)
+			bus-line></div>
 		<div ng-hide="busLineCTRL.selected == null">
 			<input ng-model=busLineCTRL.selected.name width="50">
 			<button ng-show=busLineCTRL.selected.isNew()
@@ -21,6 +22,11 @@
 				ng-click=busLineCTRL.delete()>Delete</button>
 			<button ng-hide="busLineCTRL.lineLinkMode == true"
 				ng-click="busLineCTRL.setLineLinkMode()">Set link mode</button>
+			<div ng-repeat="creationMode in busLineCTRL.creationModes">
+				<input type="radio" name="creationModes"
+					ng-model=busLineCTRL.creationMode ng-value=creationMode>
+				<label>{{creationMode}}</label>
+			</div>
 		</div>
 
 		<div

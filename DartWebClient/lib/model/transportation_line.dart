@@ -43,6 +43,24 @@ class TransportationLine {
     mapPoints = new ObservableList.from(mapPoints.reversed);
   }
 
+  Station lastStation() {
+    //TODO change to foreach
+    for (MapPoint mapPoint in mapPoints.reversed) {
+      if (mapPoint.isStation()) {
+        return mapPoint;
+      }
+    }
+    return null;
+  }
+
+  bool isLastMapPoint(MapPoint mapPoint) {
+    return mapPoints.last == mapPoint;
+  }
+
+  List<MapPoint> mapPointsAfter(MapPoint mapPoint) {
+    return mapPoints.getRange(mapPoints.indexOf(mapPoint), mapPoints.length);
+  }
+
   double traveledDistance() {
     double traveledDistance = 0.0;
     for (int i = 0; i < mapPoints.length - 1; i++) {
