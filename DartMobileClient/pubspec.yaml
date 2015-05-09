@@ -1,0 +1,26 @@
+name: transpori
+version: 0.5.0
+description: Public transportation for everyone
+dependencies:
+  angular: 1.1.1
+  angular_ui: any
+  browser: any
+  google_maps: any
+  google_maps_angular:
+    git:
+      ref: 0.0.2
+      url: https://github.com/youssefgh/angular-dart-google-maps.git
+  observe: any
+transformers:
+- angular:
+    html_files:
+    - web/index.html
+    - web/view/transportationRequest/view.html
+    - web/view/admin/station/view.html
+    - web/view/admin/station/busStation/manage.html
+    - web/view/admin/station/trainStation/manage.html
+    - web/view/admin/station/tramwayStation/manage.html
+    - web/view/admin/transportationLine/view.html
+    - web/view/admin/transportationLine/busLine/manage.html
+    - web/view/admin/transportationLine/trainLine/manage.html
+    - web/view/admin/transportationLine/tramwayLine/manage.html
