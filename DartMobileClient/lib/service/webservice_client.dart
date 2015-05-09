@@ -1,16 +1,9 @@
 library webservice_client;
 
-import 'dart:html';
-import 'dart:async';
-import 'dart:convert';
 import 'package:angular/angular.dart';
 import 'package:transpori/model/model.dart';
 
-part 'w_s_transportation_line.dart';
-part 'w_s_station.dart';
-part 'w_s_station_suggestion.dart';
 part 'w_s_transportation_request.dart';
-part 'w_s_user.dart';
 
 class WebserviceClient {
 

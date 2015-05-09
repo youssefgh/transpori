@@ -42,14 +42,13 @@
 			</div>
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
-          <li><a ng-show=userCTRL.isUserLoggedIn() href="#/admin">Adminstration</a></li>
 					<li><a href="" data-toggle="modal" data-target="#linesModal">Lines
 							inclus</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#aboutModal">A
 							propos</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				  <!-- Placeholder for authentication -->
+					<!-- Placeholder for authentication -->
 				</ul>
 			</div>
 		</div>
@@ -111,7 +110,8 @@
 					</div>
 					<div style="width: 90%; margin: auto">
 						<p>
-							<span class="label label-success">Train</span>Navettes rapides - Grandes lignes
+							<span class="label label-success">Train</span>Navettes rapides -
+							Grandes lignes
 						</p>
 						<p class="blink_text">
 							<span class="label label-success">Tramway</span> Casablanca
@@ -186,14 +186,13 @@
 	</div>
 
 	<!-- 	Icons -->
-  <div on_created=iconCTRL.startIconCreated($icon) start-icon></div>
-  <div on_created=iconCTRL.finishIconCreated($icon)
-    finish-icon></div>
+	<div on_created=iconCTRL.startIconCreated($icon) start-icon></div>
+	<div on_created=iconCTRL.finishIconCreated($icon) finish-icon></div>
 	<div on_created=iconCTRL.busStationIconCreated($icon) bus-station-icon></div>
-  <div on_created=iconCTRL.trainStationIconCreated($icon)
-    train-station-icon></div>
-  <div on_created=iconCTRL.tramwayStationIconCreated($icon)
-    tramway-station-icon></div>
+	<div on_created=iconCTRL.trainStationIconCreated($icon)
+		train-station-icon></div>
+	<div on_created=iconCTRL.tramwayStationIconCreated($icon)
+		tramway-station-icon></div>
 
 	<!-- Google Analytics-->
 	<script>

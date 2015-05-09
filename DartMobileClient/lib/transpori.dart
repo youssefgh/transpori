@@ -9,15 +9,6 @@ import 'package:transpori/routing/routing.dart';
 class MyAppModule extends Module {
 
   MyAppModule() {
-    bind(UserController);
-    bind(TransportationLineController);
-    bind(BusLineController);
-    bind(TrainLineController);
-    bind(TramwayLineController);
-    bind(StationController);
-    bind(BusStationController);
-    bind(TrainStationController);
-    bind(TramwayStationController);
     bind(TransportationRequestController);
     bind(IconController);
 
@@ -38,21 +29,8 @@ class MyAppModule extends Module {
     bind(PersonDecorator);
     bind(LineInfoWindowDecorator);
 
-    bind(UserService);
-    bind(TransportationLineService);
-    bind(BusLineService);
-    bind(TrainLineService);
-    bind(TramwayLineService);
-    bind(StationService);
-    bind(BusStationService);
-    bind(TrainStationService);
-    bind(TramwayStationService);
     bind(TransportationRequestService);
 
-    bind(WSUser);
-    bind(WSTransportationLine);
-    bind(WSStation);
-    bind(WSStationSuggestion);
     bind(WSTransportationRequest);
     
     bind(SessionService);
