@@ -2,13 +2,13 @@ name: transpori
 version: 0.5.0
 description: Public transportation for everyone
 dependencies:
-  angular: 1.0.0
+  angular: 1.1.1
   angular_ui: any
   browser: any
   google_maps: any
   google_maps_angular:
     git:
-      ref: 0.0.1
+      ref: 0.0.2
       url: https://github.com/youssefgh/angular-dart-google-maps.git
   observe: any
 transformers:
