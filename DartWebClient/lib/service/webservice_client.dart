@@ -14,7 +14,7 @@ part 'w_s_user.dart';
 
 class WebserviceClient {
 
-  final String rawWebServiceUrl = "http://localhost:8080/rest/";
+  final String rawWebServiceUrl = "http://transpori.info:8080/rest/";
   final String httpPut = "PUT";
   final String httpGet = "GET";
   final String httpPost = "POST";
