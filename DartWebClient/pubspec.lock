@@ -51,11 +51,11 @@ packages:
     version: "2.0.7"
   google_maps_angular:
     description:
-      ref: "0.0.2"
-      resolved-ref: "9ddeb43c16a790abcf557ec388da32c7abaffebb"
+      ref: "0.0.3"
+      resolved-ref: d3ec159a5b36dd6f8a68683764b419a671c5e2a2
       url: "https://github.com/youssefgh/angular-dart-google-maps.git"
     source: git
-    version: "0.0.1"
+    version: "0.0.3"
   html:
     description: html
     source: hosted
