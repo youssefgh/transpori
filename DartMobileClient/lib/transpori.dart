@@ -6,8 +6,9 @@ import 'package:transpori/decorator/decorator.dart';
 import 'package:transpori/service/webservice_client.dart';
 import 'package:transpori/routing/routing.dart';
 
-class MyAppModule extends Module {
+import 'package:transpori/resource_url_resolver_wrapper.dart';
 
+class MyAppModule extends Module {
   MyAppModule() {
     bind(TransportationRequestController);
     bind(IconController);
@@ -32,11 +33,15 @@ class MyAppModule extends Module {
     bind(TransportationRequestService);
 
     bind(WSTransportationRequest);
-    
+
     bind(SessionService);
 
     bind(RouteInitializerFn, toImplementation: ApplicationRouter);
-    bind(NgRoutingUsePushState, toValue: new NgRoutingUsePushState.value(false));
-  }
+    bind(NgRoutingUsePushState,
+        toValue: new NgRoutingUsePushState.value(false));
 
+    bind(ResourceResolverConfig,
+        toValue: new ResourceResolverConfig.resolveRelativeUrls(false));
+    bind(ResourceUrlResolver, toImplementation: ResourceUrlResolverWrapper);
+  }
 }

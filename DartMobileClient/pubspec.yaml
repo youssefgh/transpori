@@ -16,11 +16,3 @@ transformers:
     html_files:
     - web/index.html
     - web/view/transportationRequest/view.html
-    - web/view/admin/station/view.html
-    - web/view/admin/station/busStation/manage.html
-    - web/view/admin/station/trainStation/manage.html
-    - web/view/admin/station/tramwayStation/manage.html
-    - web/view/admin/transportationLine/view.html
-    - web/view/admin/transportationLine/busLine/manage.html
-    - web/view/admin/transportationLine/trainLine/manage.html
-    - web/view/admin/transportationLine/tramwayLine/manage.html
