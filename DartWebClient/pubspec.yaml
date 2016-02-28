@@ -2,7 +2,7 @@ name: transpori
 version: 0.5.0
 description: Public transportation for everyone
 dependencies:
-  angular: 1.1.1
+  angular: 1.1.2+2
   angular_ui: any
   browser: any
   google_maps: any
