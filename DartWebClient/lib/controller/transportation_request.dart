@@ -115,13 +115,13 @@ class TransportationRequestController {
   TransportationLine overTransportationLine; 
   
   mouseOver(PolyMouseEvent e,TransportationLine overTransportationLine) {
-    infoWindowPosition = new LatLngWrapper.fromLatLng(e.latLng);
-    this.overTransportationLine = overTransportationLine;
+    //this.overTransportationLine = overTransportationLine;
+    //infoWindowPosition = new LatLngWrapper.fromLatLng(e.latLng);
   }
 
   mouseOut(PolyMouseEvent e) {
-    infoWindowPosition = null;
-    overTransportationLine = null;
+    //overTransportationLine = null;
+    //infoWindowPosition = null;
   }
 
   bool isReadyToSearchPaths() => isHaveDestination() && isHaveOriginPosition();
