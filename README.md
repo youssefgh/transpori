@@ -1,14 +1,3 @@
-#Depricated
-After 1st deployment :
-    Activate administrator :
-        create a user with an email "admin@transpori.info"
-        execute activation script
+# Discontinued
 
-Openshift branch changes :
-    *Transpotration-ejb/.../SpringConfig.xml
-    *DartClient/.../webservice_client.dart
-    *Login HTMLs
-    +.openshift
-    
-
-
+This project is no longer maintained since its main features are now provided by Google Maps 
